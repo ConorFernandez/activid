@@ -56,4 +56,24 @@ describe OrdersController do
       end
     end
   end
+
+  describe 'PUT #UPDATE' do
+    let!(:order) { create(:order) }
+    before { cookies['order_secure_token'] = order.secure_token }
+
+    def test_update(field, value)
+      put :update, order: { field => value }
+      expect(order.reload[field]).to eq value
+    end
+
+    it('updates project name') { test_update :project_name, 'New Project Name' }
+    it('updates instructions') { test_update :instructions, 'Fry the fish at 100^, first...' }
+    it('updates project length') { test_update :video_length, '2 Minutes' }
+
+    it 'redirects to the /order page if the order_secure_token cookie is invalid' do
+      cookies['order_secure_token'] = 'forgery'
+      put :update, order: { 'foo' => 'bar' }
+      expect(subject).to redirect_to(orders_path)
+    end
+  end
 end
