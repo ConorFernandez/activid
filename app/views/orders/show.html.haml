@@ -1,0 +1,10 @@
+= form_for @order, url: orders_path do |f|
+  %h3 Step 1: Give your project a name
+  = f.text_field :project_name
+
+  %h3 Step 2: Upload your raw footage and music
+
+  %h3 Step 3: Give us any additional instructions
+  = f.text_area :instructions
+
+  = f.text_field :video_length

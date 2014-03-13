@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
     @order ||= Order.create! status: Order::Status::DRAFT
 
     cookies[:order_secure_token] = @order.secure_token
-    head 200
   end
 
   def update
