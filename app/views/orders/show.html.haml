@@ -1,10 +1,10 @@
-= form_for @order, url: orders_path do |f|
+= form_for @order, url: orders_path, remote: true do |f|
   %h3 Step 1: Give your project a name
-  = f.text_field :project_name
+  = f.text_field :project_name, class: 'persistent'
 
   %h3 Step 2: Upload your raw footage and music
 
   %h3 Step 3: Give us any additional instructions
-  = f.text_area :instructions
+  = f.text_area :instructions, class: 'persistent'
 
-  = f.text_field :video_length
+  = f.text_field :video_length, class: 'persistent'
