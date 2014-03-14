@@ -25,6 +25,12 @@ jQuery ()->
         console.log 'Sending File', data
 
 
+      start: (e, data) ->
+        $('button.cancel', form).fadeIn()
+
+      stop: (e, data) ->
+        $('button.cancel', form).fadeOut()
+
       progress: (e, data) ->
         # The data object we're expecting (the file upload) isn't present in the success handler.
         # Therefore, this cheap hack does the same thing.
@@ -66,6 +72,13 @@ jQuery ()->
         fu = $(this).data('fileupload')
         if fu
           fu.submit()
+
+    # Cancel all current and pending uploads.
+    $('button.cancel', form).on 'click', () ->
+      $('.attached-files .file').each () ->
+        fu = $(this).data('fileupload')
+        if fu
+          fu.abort()
 
 markAsUploaded = (data) ->
   $.ajax
