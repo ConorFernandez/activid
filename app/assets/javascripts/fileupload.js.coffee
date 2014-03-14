@@ -43,7 +43,24 @@ jQuery ()->
       done: (event, data) ->
         console.log 'Successfully uploaded all files!'
 
-    $('button.start', 'form.fileupload').on 'click', () ->
+    # TODO: this should work with file resume... so long as they don't leave the page.
+    # We're transforming the file name to include a unique key
+    # This key is appended with seconds since UNIX epoch.
+    $(form).on 'fileuploadsubmit', (e, data) ->
+      formData = form.serializeArray()
+      key =  _.find(formData, (hash)-> hash.name == 'key')
+      file = _.first(data.files)
+      filename = file.name
+      extension = _.last(filename.split('.'))
+      epoch = Math.round new Date().getTime() / 1000
+
+      regex = new RegExp("\.(#{extension})$")
+      key.value = key.value + filename.replace(regex, "_#{epoch}.$1")
+
+      data.formData = formData
+      true
+    # Start all uploads when user clicks the 'start' button
+    $('button.start', form).on 'click', () ->
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
         fu.submit()
