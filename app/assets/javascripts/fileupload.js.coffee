@@ -1,11 +1,23 @@
 jQuery ()->
+  template = $('#upload-file-template').text()
   $('form.fileupload').fileupload
     url: '/endpoint'
     dataType: 'xml'
 
     add: (event, data) ->
+      # Track Data so that we can call data.cancel if the user selects the wrong file.
       console.log 'Added', data
-      data.submit()
+      file = _.first(data.files)
+
+      rendered = Mustache.render template,
+        file_name: file.name
+        uploadable: true
+
+      $(rendered)
+        .data('fileupload', data)
+        .appendTo('.attached-files')
+        .find('.remove').on('click', ()-> $(this).parents('.file').remove() )
+        .end()
 
     send: (e, data) ->
       $('#upload-progress').fadeIn()

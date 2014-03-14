@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require jquery.fileupload
+//= require mustache
+//= require underscore-min
 //= require_tree .

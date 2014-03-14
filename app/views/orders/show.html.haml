@@ -15,18 +15,29 @@
   %button.btn.btn-primary.start(type="button")
     %i.glyphicon.glyphicon-upload
     %span Start upload
+  %button.btn.btn-warning.cancel(type="button")
+    %i.glyphicon.glyphicon-ban-circle
+    %span Cancel upload
+  #upload-progress.progress
+    .progress-bar
+      50%
 
-  %span.fielupload-process
+  .attached-files
 
-
-
-
-    #upload-progress.progress
-      .progress-bar
-        50%
 
 = form_for @order, url: orders_path, remote: true do |f|
   %h3 Step 3: Give us any additional instructions
   = f.text_area :instructions, class: 'persistent'
 
   = f.text_field :video_length, class: 'persistent'
+
+
+:plain
+  <script id="upload-file-template" type="text/x-mustache">
+    <div class='file'>
+      {{file_name}}
+      {{#uploadable}}
+        <button type='button' class='btn btn-warning remove'>Remove</button>
+      {{/uploadable}}
+    </div>
+  </script>
