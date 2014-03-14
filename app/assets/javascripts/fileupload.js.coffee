@@ -7,6 +7,8 @@ jQuery ()->
     $(form).fileupload
       url: form.attr('action')
       dataType: 'xml'
+      sequentialUploads: true
+      maxChunkSize: 10485760 # Ten Megabyte chunks
 
       add: (event, data) ->
         # Track Data so that we can call data.cancel if the user selects the wrong file.
@@ -24,26 +26,24 @@ jQuery ()->
           .end()
 
       send: (e, data) ->
+        console.log 'Sending File', data
         $('#upload-progress').fadeIn()
 
       progressall: (e, data) ->
-        percent = Math.round( (e.loaded / e.total) * 100)
+        percent = Math.round( (data.loaded / data.total) * 100)
         $('#upload-progress .progress-bar').css('width', percent + '%')
+        $('#upload-progress .progress-bar').text("#{percent}%")
 
       fail: (e, data) ->
         console.log 'Complete Failure!'
 
       success: (data) ->
-        console.log 'Success', data
+        console.log 'Success!', data
 
       done: (event, data) ->
         console.log 'Successfully uploaded all files!'
-        $('#upload-progress').fadeOut 300, () ->
-          $('#upload-progress .progress-bar').css(width: 0)
 
     $('button.start', 'form.fileupload').on 'click', () ->
-      files = []
       $('.attached-files .file').each () ->
-        files.push _.first($(this).data('fileupload').files)
-
-      $('form.fileupload').fileupload('send', files: files)
+        fu = $(this).data('fileupload')
+        fu.submit()
