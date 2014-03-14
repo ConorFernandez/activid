@@ -2,7 +2,28 @@
   %h3 Step 1: Give your project a name
   = f.text_field :project_name, class: 'persistent'
 
+=# This will be the S3 upload form... but I can't create the user account
+=# for it yet, so it's just a mock-up.
+= form_tag '#', class: 'fileupload' do
   %h3 Step 2: Upload your raw footage and music
+
+  %span.btn.btn-success.fileinput-button
+    %i.glyphicon.glyphicon-plus
+    %span Add files...
+    = file_field_tag :file, multiple: true
+
+  %button.btn.btn-primary.start(type="button")
+    %i.glyphicon.glyphicon-upload
+    %span Start upload
+
+  %span.fielupload-process
+
+
+
+
+    #upload-progress.progress
+      .progress-bar
+        50%
 
 = form_for @order, url: orders_path, remote: true do |f|
   %h3 Step 3: Give us any additional instructions
