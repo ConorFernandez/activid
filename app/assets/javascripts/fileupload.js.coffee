@@ -1,6 +1,11 @@
 jQuery ()->
   template = $('#upload-file-template').text()
 
+  # TODO: move into another file when done prototyping
+  renderFileTemplate = (data, view) ->
+    rendered = Mustache.render template, view
+    $(rendered).data('fileupload', data)
+
   $('form.fileupload').each ()->
     form = $(this)
 
@@ -12,15 +17,12 @@ jQuery ()->
 
       add: (event, data) ->
         # Track Data so that we can call data.cancel if the user selects the wrong file.
-        console.log 'Added', data
         file = _.first(data.files)
-
-        rendered = Mustache.render template,
+        data.context = renderFileTemplate data,
           file_name: file.name
           uploadable: true
 
-        $(rendered)
-          .data('fileupload', data)
+        $(data.context)
           .appendTo('.attached-files')
           .find('.remove').on('click', ()-> $(this).parents('.file').remove() )
           .end()
@@ -29,6 +31,19 @@ jQuery ()->
         console.log 'Sending File', data
         $('#upload-progress').fadeIn()
 
+      progress: (e, data) ->
+        # The data object we're expecting (the file upload) isn't present in the success handler.
+        # Therefore, this cheap hack does the same thing.
+        if data.loaded == data.total
+          file = _.first(data.files)
+          newContext = renderFileTemplate data,
+            file_name: file.name
+            uploadable: false
+            done: true
+
+          $(data.context).replaceWith(newContext)
+          data.context = newContext
+
       progressall: (e, data) ->
         percent = Math.round( (data.loaded / data.total) * 100)
         $('#upload-progress .progress-bar').css('width', percent + '%')
@@ -36,9 +51,6 @@ jQuery ()->
 
       fail: (e, data) ->
         console.log 'Complete Failure!'
-
-      success: (data) ->
-        console.log 'Success!', data
 
       done: (event, data) ->
         console.log 'Successfully uploaded all files!'
@@ -59,6 +71,7 @@ jQuery ()->
 
       data.formData = formData
       true
+
     # Start all uploads when user clicks the 'start' button
     $('button.start', form).on 'click', () ->
       $('.attached-files .file').each () ->
