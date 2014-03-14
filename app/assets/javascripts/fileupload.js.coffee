@@ -16,13 +16,14 @@ jQuery ()->
           uploadable: true
 
         $(data.context)
+          .data('fileupload', data)
           .appendTo('.attached-files')
           .find('.remove').on('click', ()-> $(this).parents('.file').remove() )
           .end()
 
       send: (e, data) ->
         console.log 'Sending File', data
-        $('#upload-progress').fadeIn()
+
 
       progress: (e, data) ->
         # The data object we're expecting (the file upload) isn't present in the success handler.
@@ -63,7 +64,8 @@ jQuery ()->
     $('button.start', form).on 'click', () ->
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
-        fu.submit()
+        if fu
+          fu.submit()
 
 markAsUploaded = (data) ->
   $.ajax
@@ -80,7 +82,7 @@ markAsUploaded = (data) ->
 renderFileTemplate = (data, view) ->
   template = $('#upload-file-template').text()
   rendered = Mustache.render template, view
-  $(rendered).data('fileupload', data)
+  $(rendered)
 
 renderSuccessUpload = (data) ->
   file = _.first(data.files)
