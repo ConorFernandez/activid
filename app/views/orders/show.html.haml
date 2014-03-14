@@ -37,6 +37,8 @@
 
   = f.text_field :video_length, class: 'persistent'
 
+:javascript
+  window.uploadedFiles = #{order_files_to_json(@order.order_files)};
 
 :plain
   <script id="upload-file-template" type="text/x-mustache">

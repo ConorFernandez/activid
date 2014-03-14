@@ -91,3 +91,12 @@ renderSuccessUpload = (data) ->
 
   $(data.context).replaceWith(newContext)
   data.context = newContext
+
+jQuery () ->
+  if window.uploadedFiles
+    _.each window.uploadedFiles, (f) =>
+      template = $('#upload-file-template').text()
+      rendered = Mustache.render template,
+        file_name: f.original_filename
+        done: true
+      $(rendered).appendTo('.attached-files')
