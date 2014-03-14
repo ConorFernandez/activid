@@ -1,11 +1,4 @@
 jQuery ()->
-  template = $('#upload-file-template').text()
-
-  # TODO: move into another file when done prototyping
-  renderFileTemplate = (data, view) ->
-    rendered = Mustache.render template, view
-    $(rendered).data('fileupload', data)
-
   $('form.fileupload').each ()->
     form = $(this)
 
@@ -17,9 +10,9 @@ jQuery ()->
 
       add: (event, data) ->
         # Track Data so that we can call data.cancel if the user selects the wrong file.
-        file = _.first(data.files)
+        data.filename = _.first(data.files).name
         data.context = renderFileTemplate data,
-          file_name: file.name
+          file_name: data.filename
           uploadable: true
 
         $(data.context)
@@ -35,14 +28,8 @@ jQuery ()->
         # The data object we're expecting (the file upload) isn't present in the success handler.
         # Therefore, this cheap hack does the same thing.
         if data.loaded == data.total
-          file = _.first(data.files)
-          newContext = renderFileTemplate data,
-            file_name: file.name
-            uploadable: false
-            done: true
-
-          $(data.context).replaceWith(newContext)
-          data.context = newContext
+          markAsUploaded(data)
+          renderSuccessUpload(data)
 
       progressall: (e, data) ->
         percent = Math.round( (data.loaded / data.total) * 100)
@@ -61,8 +48,7 @@ jQuery ()->
     $(form).on 'fileuploadsubmit', (e, data) ->
       formData = form.serializeArray()
       key =  _.find(formData, (hash)-> hash.name == 'key')
-      file = _.first(data.files)
-      filename = file.name
+      filename = data.filename
       extension = _.last(filename.split('.'))
       epoch = Math.round new Date().getTime() / 1000
 
@@ -70,6 +56,7 @@ jQuery ()->
       key.value = key.value + filename.replace(regex, "_#{epoch}.$1")
 
       data.formData = formData
+      data.renamedFile = key.value
       true
 
     # Start all uploads when user clicks the 'start' button
@@ -77,3 +64,30 @@ jQuery ()->
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
         fu.submit()
+
+markAsUploaded = (data) ->
+  $.ajax
+    type: 'PUT'
+    url: '/orders'
+    data:
+      order:
+        'order_files_attributes': [
+          uploaded_filename: data.renamedFile
+          original_filename: data.filename
+        ]
+
+# TODO: move into another file when done prototyping
+renderFileTemplate = (data, view) ->
+  template = $('#upload-file-template').text()
+  rendered = Mustache.render template, view
+  $(rendered).data('fileupload', data)
+
+renderSuccessUpload = (data) ->
+  file = _.first(data.files)
+  newContext = renderFileTemplate data,
+    file_name: file.name
+    uploadable: false
+    done: true
+
+  $(data.context).replaceWith(newContext)
+  data.context = newContext

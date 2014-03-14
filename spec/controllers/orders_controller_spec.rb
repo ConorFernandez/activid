@@ -70,6 +70,20 @@ describe OrdersController do
     it('updates instructions') { test_update :instructions, 'Fry the fish at 100^, first...' }
     it('updates project length') { test_update :video_length, '2 Minutes' }
 
+    it 'accepts order_files_attributes' do
+      expect {
+        put :update, order: {
+            order_files_attributes: [{
+                original_filename: 'Kung Fu Hustle',
+                uploaded_filename: 'Kung Fu Hustle -- DVD'
+            }]
+        }
+      }.to change{order.order_files.count}.by 1
+      order_file = order.order_files.first
+      expect(order_file.original_filename).to eq 'Kung Fu Hustle'
+      expect(order_file.uploaded_filename).to eq 'Kung Fu Hustle -- DVD'
+    end
+
     it 'redirects to the /order page if the order_secure_token cookie is invalid' do
       cookies['order_secure_token'] = 'forgery'
       put :update, order: { 'foo' => 'bar' }

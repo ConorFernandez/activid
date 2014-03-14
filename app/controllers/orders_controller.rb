@@ -16,7 +16,9 @@ class OrdersController < ApplicationController
   protected
 
   def order_params
-    params.require(:order).permit(:project_name, :video_length, :instructions)
+    params.require(:order).permit(:project_name, :video_length, :instructions,
+                                  order_files_attributes: [:original_filename, :uploaded_filename]
+    )
   end
 
   def find_order_by_cookie

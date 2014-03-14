@@ -3,6 +3,9 @@ class Order < ActiveRecord::Base
     DRAFT = 'DRAFT'
   end
 
+  has_many :order_files
+
+  accepts_nested_attributes_for :order_files
   validates :secure_token, presence: true
   validates :status, presence: true
 
