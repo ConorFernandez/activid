@@ -2,10 +2,15 @@
   %h3 Step 1: Give your project a name
   = f.text_field :project_name, class: 'persistent'
 
-=# This will be the S3 upload form... but I can't create the user account
-=# for it yet, so it's just a mock-up.
-= form_tag '#', class: 'fileupload' do
+
+%form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
   %h3 Step 2: Upload your raw footage and music
+  = hidden_field_tag :key, s3_data.key
+  = hidden_field_tag 'AWSAccessKeyId', ENV['AWS_ACCESS_KEY']
+  = hidden_field_tag :acl, 'private'
+  = hidden_field_tag :policy, s3_data.policy
+  = hidden_field_tag :signature, s3_data.signature
+  = hidden_field_tag :success_action_status, '201'
 
   %span.btn.btn-success.fileinput-button
     %i.glyphicon.glyphicon-plus
@@ -21,7 +26,7 @@
 
   #upload-progress.progress.hidden
     .progress-bar
-      50%
+      0%
 
   .attached-files
 
