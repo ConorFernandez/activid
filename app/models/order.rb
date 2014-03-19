@@ -20,6 +20,6 @@ class Order < ActiveRecord::Base
   end
 
   def preparing_for_payment?
-    preparing_for_payment == true
+    preparing_for_payment
   end
 end
