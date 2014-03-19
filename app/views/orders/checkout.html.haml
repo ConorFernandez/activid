@@ -1,0 +1,27 @@
+%h1 Summary
+
+3 Minute Video, $2495
+
+
+
+%form
+  %fieldset
+    %h3 Billing Info
+    %input(type='text' placeholder='Name on Card')
+    %input(type='text' placeholder='Address')
+    %input(type='text' placeholder='City')
+    %input(type='text' placeholder='State')
+    %input(type='text' placeholder='Zip')
+    %input(type='text' placeholder='Email')
+    %input(type='text' placeholder='Phone Number')
+
+  %fieldset
+    %h3 Credit Card Info
+    %input(type='text' placeholder='Credit Card Number')
+    %input(type='text' placeholder='MM/YY')
+    %input(type='text' placeholder='CVV')
+
+
+.navigation
+  = link_to 'Go Back', orders_path
+  = link_to 'Complete Order'
