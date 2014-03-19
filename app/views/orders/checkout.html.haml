@@ -3,6 +3,11 @@
 3 Minute Video, $2495
 
 .row
+  .col-md-12
+    .payment-errors-container(style='display: none;')
+      %h2 The following errors occurred trying to process your payment:
+      .payment-errors
+.row
   .col-md-6
     = form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f|
       %fieldset
