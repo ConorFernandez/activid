@@ -125,4 +125,16 @@ describe OrdersController do
       expect(assigns(:order)).to eq order
     end
   end
+
+  describe 'POST #SUBMIT_PAYMENT' do
+    before { StripeMock.start }
+    after { StripeMock.stop }
+    let!(:order) { create(:order) }
+    before { cookies['order_secure_token'] = order.secure_token }
+
+    it 'assigns @order' do
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(assigns(:order)).to eq order
+    end
+  end
 end

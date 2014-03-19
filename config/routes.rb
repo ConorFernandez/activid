@@ -3,6 +3,7 @@ Activid::Application.routes.draw do
   resource :orders do
     collection do
       get :checkout
+      post :submit_payment
     end
   end
 

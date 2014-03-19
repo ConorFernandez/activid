@@ -5,7 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/poltergeist'
 require 'capybara-screenshot/rspec'
-
+require 'stripe_mock'
 Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc,

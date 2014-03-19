@@ -37,6 +37,7 @@ gem 'high_voltage'
 
 gem 'haml'
 
+gem 'stripe'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -59,6 +60,7 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'capybara-screenshot'
+  gem 'stripe-ruby-mock'
 end
 
 # Use ActiveModel has_secure_password
