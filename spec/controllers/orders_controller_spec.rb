@@ -89,6 +89,16 @@ describe OrdersController do
       put :update, order: { 'foo' => 'bar' }
       expect(subject).to redirect_to(orders_path)
     end
+
+    it 'returns an errors hash if a faulty condition occurs' do
+      put :update, order: {
+          preparing_for_payment: true,
+          cardholder_email: nil
+      }
+      json_response = JSON.parse(response.body)
+      expect(json_response).to include({ 'errors' => { 'cardholder_email' => ["can't be blank"] }  })
+    end
+
   end
 
   describe 'GET #CHECKOUT' do
