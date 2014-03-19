@@ -2,26 +2,42 @@
 
 3 Minute Video, $2495
 
+.row
+  .col-md-6
+    = form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f|
+      %fieldset
+        %h3 Billing Info
+        .form-group
+          = f.label :cardholder_name
+          = f.text_field :cardholder_name
+        .form-group
+          = f.label :cardholder_address
+          = f.text_field :cardholder_address
+        .form-group
+          = f.label :cardholder_city
+          = f.text_field :cardholder_city
+        .form-group
+          = f.label :cardholder_state
+          = f.text_field :cardholder_state
+        .form-group
+          = f.label :cardholder_zipcode
+          = f.text_field :cardholder_zipcode
+        .form-group
+          = f.label :cardholder_email
+          = f.text_field :cardholder_email
+        .form-group
+          = f.label :cardholder_phone_number
+          = f.text_field :cardholder_phone_number
 
+      .navigation
+        = link_to 'Go Back', orders_path
+        %button(type="submit") Complete Order
+  .col-md-6
+    %form
+      %fieldset
+        %h3 Credit Card Info
 
-%form
-  %fieldset
-    %h3 Billing Info
-    %input(type='text' placeholder='Name on Card')
-    %input(type='text' placeholder='Address')
-    %input(type='text' placeholder='City')
-    %input(type='text' placeholder='State')
-    %input(type='text' placeholder='Zip')
-    %input(type='text' placeholder='Email')
-    %input(type='text' placeholder='Phone Number')
-
-  %fieldset
-    %h3 Credit Card Info
-    %input(type='text' placeholder='Credit Card Number')
-    %input(type='text' placeholder='MM/YY')
-    %input(type='text' placeholder='CVV')
-
-
-.navigation
-  = link_to 'Go Back', orders_path
-  = link_to 'Complete Order'
+        %input#card_number(type='text' placeholder='Credit Card Number')
+        %input#card_exp_month(type='text' placeholder='MM')
+        %input#card_exp_year(type='text' placeholder='YY')
+        %input#card_cvc(type='text' placeholder='CVC')

@@ -90,4 +90,14 @@ describe OrdersController do
       expect(subject).to redirect_to(orders_path)
     end
   end
+
+  describe 'GET #CHECKOUT' do
+    let!(:order) { create(:order) }
+    before { cookies['order_secure_token'] = order.secure_token }
+
+    it 'assigns @order' do
+      get :checkout
+      expect(assigns(:order)).to eq order
+    end
+  end
 end

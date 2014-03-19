@@ -13,6 +13,10 @@ class OrdersController < ApplicationController
     head 200
   end
 
+  def checkout
+    @order = find_order_by_cookie
+  end
+
   protected
 
   def order_params
