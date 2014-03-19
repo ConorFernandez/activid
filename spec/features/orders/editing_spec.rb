@@ -15,4 +15,11 @@ describe 'Editing on the orders page', js: true do
     it('the video length') { test_update :video_length, '2 Minutes 45 Seconds' }
   end
 
+  describe 'After editing my order ->' do
+    it 'I can move to the checkout page' do
+      click_link 'Checkout'
+      expect(current_path).to eq '/orders/checkout'
+    end
+  end
+
 end

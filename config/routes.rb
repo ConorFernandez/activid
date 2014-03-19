@@ -1,6 +1,10 @@
 Activid::Application.routes.draw do
 
-  resource :orders
+  resource :orders do
+    collection do
+      get :checkout
+    end
+  end
 
   root 'high_voltage/pages#show', id: 'home'
   # The priority is based upon order of creation: first created -> highest priority.

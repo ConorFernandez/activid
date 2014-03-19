@@ -37,6 +37,9 @@
 
   = f.text_field :video_length, class: 'persistent'
 
+.navigation
+  = link_to 'Checkout', checkout_orders_path
+
 :javascript
   window.uploadedFiles = #{order_files_to_json(@order.order_files)};
 
