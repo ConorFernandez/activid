@@ -26,7 +26,7 @@ module UploadsHelper
   def s3_upload_signature
     Base64.encode64(
         OpenSSL::HMAC.digest(
-            OpenSSL::Digest::Digest.new('sha1'),
+            OpenSSL::Digest.new('sha1'),
             ENV['AWS_SECRET_KEY'],
             s3_upload_policy_document
         )
