@@ -25,6 +25,8 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:project_name, :video_length, :instructions, :preparing_for_payment,
+                                  :cardholder_name, :cardholder_address, :cardholder_city, :cardholder_state,
+                                  :cardholder_zipcode, :cardholder_email, :cardholder_phone_number,
                                   order_files_attributes: [:original_filename, :uploaded_filename]
     )
   end

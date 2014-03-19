@@ -66,9 +66,24 @@ describe OrdersController do
       expect(order.reload[field]).to eq value
     end
 
-    it('updates project name') { test_update :project_name, 'New Project Name' }
-    it('updates instructions') { test_update :instructions, 'Fry the fish at 100^, first...' }
-    it('updates project length') { test_update :video_length, '2 Minutes' }
+    def self.test_update(field, value)
+      it "updates order.#{field} to be #{value}" do
+        put :update, order: { field => value }
+        expect(order.reload[field]).to eq value
+      end
+    end
+
+    test_update :project_name, 'New Project Name'
+    test_update :instructions, 'Fry the fish at 100 degrees'
+    test_update :video_length, '2 Minutes'
+    # Card Holder
+    test_update :cardholder_name, 'Steve McQueen'
+    test_update :cardholder_address, 'One Way USA'
+    test_update :cardholder_city, 'Hinesville'
+    test_update :cardholder_state, 'Georgia'
+    test_update :cardholder_zipcode, '31313'
+    test_update :cardholder_email, 'steve@example.com'
+    test_update :cardholder_phone_number, '1 800 94-JENNY'
 
     it 'accepts order_files_attributes' do
       expect {
