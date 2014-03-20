@@ -116,7 +116,8 @@ describe OrdersController do
           cardholder_email: nil
       }
       json_response = JSON.parse(response.body)
-      expect(json_response).to include({ 'errors' => { 'cardholder_email' => ["can't be blank"] }  })
+      expect(json_response).to have_key('errors')
+      expect(json_response['errors']).to include({ 'cardholder_email' => ["can't be blank"] })
     end
 
   end
