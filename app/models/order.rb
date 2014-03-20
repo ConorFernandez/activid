@@ -30,7 +30,7 @@ class Order < ActiveRecord::Base
   def order_cost
     cost = COSTS[video_length]
     raise "Video Length is unexpected! (Got: #{video_length})" if cost.blank?
-    cost * 1000
+    (cost * 1000).to_i
   end
 
   protected

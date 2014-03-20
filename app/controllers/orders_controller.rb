@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
         customer: @order.stripe_customer_id
     )
     @order.update_attributes(status: Order::Status::PAID)
-    head :ok
+    redirect_to success_orders_path
   end
 
   protected

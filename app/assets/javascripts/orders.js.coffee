@@ -21,8 +21,9 @@ jQuery ->
         if response.error
           showErrors('.payment-errors', response.error.message)
         else
-          alert('Payment Success!')
           token = response['id']
+          $('#stripe_token').val(token)
+          $('#stripe-token-form').submit()
 
   $('form#checkout').on 'ajax:error', (event, xhr, status)->
     if xhr.status == 400

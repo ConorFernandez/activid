@@ -22,19 +22,20 @@ describe Order do
 
   describe '#paid?' do
     it 'should be true if status == Order::Status::Paid' do
-      order = create(:order, status: Order::Status::Paid)
+      order = create(:order, status: Order::Status::PAID)
       expect(order.paid?).to be_true
     end
 
     it 'should not be true if status != Order::Status::Paid' do
-      order = create(:order, status: Order::Status::Draft)
+      order = create(:order, status: Order::Status::DRAFT)
       expect(order.paid?).not_to be_true
     end
   end
 
   describe '#order_cost' do
     it 'returns the cost of an order in pennies based on video_length' do
-      order = create(:order, video_length: Order::VIDEO_LENGTHS)
+      order = create(:order, video_length: '2 Minutes')
+      expect(order.order_cost).to eq 2950
     end
 
     it 'raises an error if video_length is an unknown value' do

@@ -160,7 +160,8 @@ describe OrdersController do
     end
 
     it 'redirects to /success if Order#status ia already Order::Status::PAID' do
-      post :submit_payment, stripe_token: 'card_void_token'
+      order.update_attributes(status: Order::Status::PAID)
+      Stripe::Charge.should_not_receive(:create)
       post :submit_payment, stripe_token: 'card_void_token'
       expect(subject).to redirect_to success_orders_path
     end
@@ -172,6 +173,11 @@ describe OrdersController do
                                                       currency: 'usd',
                                                       customer: 'Test Customer'
                                                   })
+      post :submit_payment, stripe_token: 'card_void_token'
+    end
+
+    it 'redirects to success_orders_path when successful' do
+      expect(subject).to redirect_to success_orders_path
       post :submit_payment, stripe_token: 'card_void_token'
     end
   end
