@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     end
 
     Stripe::Charge.create(
-        amount: @order.order_cost,
+        amount: @order.order_cost.fractional,
         currency: 'usd',
         customer: @order.stripe_customer_id
     )

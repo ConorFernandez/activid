@@ -40,7 +40,7 @@ describe Order do
   describe '#order_cost' do
     it 'returns the cost of an order in pennies based on video_length' do
       order = create(:order, video_length: '2 Minutes')
-      expect(order.order_cost).to eq 2950
+      expect(order.order_cost).to eq Money.new(295, 'USD')
     end
 
     it 'raises an error if video_length is an unknown value' do

@@ -169,7 +169,7 @@ describe OrdersController do
     it 'calls Stripe::Charge with the expected variables' do
       order.update_attributes(video_length: '2 Minutes', stripe_customer_id: 'Test Customer')
       Stripe::Charge.should_receive(:create).with({
-                                                      amount: 2.95 * 1000,
+                                                      amount: 295,
                                                       currency: 'usd',
                                                       customer: 'Test Customer'
                                                   })
