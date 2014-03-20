@@ -6,7 +6,7 @@
   .col-md-12
     .errors-container(style='display: none;')
       %h2 The following errors occurred trying to process your payment:
-      .payment-errors
+      .payment-errors= flash[:stripe_error]
       .order-errors
 .row
   .col-md-6
@@ -51,3 +51,7 @@
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
+
+- if flash[:stripe_error]
+  :javascript
+    $('.errors-container').show();

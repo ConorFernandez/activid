@@ -44,6 +44,10 @@ class OrdersController < ApplicationController
     )
     @order.update_attributes(status: Order::Status::PAID)
     redirect_to success_orders_path
+
+  rescue Stripe::StripeError => se
+    flash[:stripe_error] = se.message
+    redirect_to checkout_orders_path
   end
 
   protected

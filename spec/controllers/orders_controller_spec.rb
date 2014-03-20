@@ -186,5 +186,17 @@ describe OrdersController do
       post :submit_payment, stripe_token: 'card_void_token'
       expect(subject).to redirect_to success_orders_path
     end
+
+    it 'redirects back to checkout_orders_path if a StripeError occurs' do
+      StripeMock.prepare_card_error(:card_declined)
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(subject).to redirect_to checkout_orders_path
+    end
+
+    it 'creates a flash message if a StripeError occurs' do
+      StripeMock.prepare_card_error(:card_declined)
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(flash[:stripe_error]).to eq 'The card was declined'
+    end
   end
 end
