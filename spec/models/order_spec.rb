@@ -19,4 +19,29 @@ describe Order do
       expect(order.secure_token).not_to be_blank
     end
   end
+
+  describe '#paid?' do
+    it 'should be true if status == Order::Status::Paid' do
+      order = create(:order, status: Order::Status::Paid)
+      expect(order.paid?).to be_true
+    end
+
+    it 'should not be true if status != Order::Status::Paid' do
+      order = create(:order, status: Order::Status::Draft)
+      expect(order.paid?).not_to be_true
+    end
+  end
+
+  describe '#order_cost' do
+    it 'returns the cost of an order in pennies based on video_length' do
+      order = create(:order, video_length: Order::VIDEO_LENGTHS)
+    end
+
+    it 'raises an error if video_length is an unknown value' do
+      order = create(:order, video_length: 'No Minutes LOL')
+      expect {
+        order.video_length
+      }.to raise('Video Length is unexpected! (Got: No Minutes LOL)')
+    end
+  end
 end

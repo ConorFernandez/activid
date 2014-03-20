@@ -23,16 +23,26 @@ class OrdersController < ApplicationController
 
   def submit_payment
     @order = find_order_by_cookie
-    stripe_token = params[:stripe_token]
-    customer = Stripe::Customer.create(card: stripe_token,
-                            email: @order.cardholder_email,
-                            description: <<-EOS
-                            Name: #{@order.cardholder_name}.
-                            Uploaded files: s3://activid/#{@order.secure_token}/
-                            Minutes: #{@order.video_length}
-                            EOS
+    redirect_to(success_orders_path) and return if @order.paid?
+    unless @order.stripe_customer_id
+      stripe_token = params[:stripe_token]
+      customer = Stripe::Customer.create(card: stripe_token,
+                              email: @order.cardholder_email,
+                              description: <<-EOS
+                              Name: #{@order.cardholder_name}.
+                              Uploaded files: s3://activid/#{@order.secure_token}/
+                              Minutes: #{@order.video_length}
+                              EOS
+      )
+      @order.update_attributes(stripe_customer_id: customer.id)
+    end
+
+    Stripe::Charge.create(
+        amount: @order.order_cost,
+        currency: 'usd',
+        customer: @order.stripe_customer_id
     )
-    # TODO: charge customer
+    @order.update_attributes(status: Order::Status::PAID)
     head :ok
   end
 

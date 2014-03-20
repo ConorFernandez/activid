@@ -129,12 +129,50 @@ describe OrdersController do
   describe 'POST #SUBMIT_PAYMENT' do
     before { StripeMock.start }
     after { StripeMock.stop }
-    let!(:order) { create(:order) }
+    let!(:order) { create(:order, video_length: '2 Minutes') }
     before { cookies['order_secure_token'] = order.secure_token }
 
     it 'assigns @order' do
       post :submit_payment, stripe_token: 'card_void_token'
       expect(assigns(:order)).to eq order
+    end
+
+    it 'sets @order.status to Order::Status::PAID on success' do
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(order.reload.status).to eq Order::Status::PAID
+    end
+
+    it 'sets @order.stripe_customer_id when it is blank' do
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(order.reload.stripe_customer_id).to be_present
+    end
+
+    it 'does not overwrite @order.stripe_customer_id when it already exists' do
+      order.update_attributes(stripe_customer_id: 'Existing Stripe Customer ID')
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(order.reload.stripe_customer_id).to eq 'Existing Stripe Customer ID'
+    end
+
+    it 'does not call Stripe::Customer when @order.stripe_customer_id exists' do
+      order.update_attributes(stripe_customer_id: 'Existing Stripe Customer ID')
+      Stripe::Customer.should_not_receive(:create)
+      post :submit_payment, stripe_token: 'card_void_token'
+    end
+
+    it 'redirects to /success if Order#status ia already Order::Status::PAID' do
+      post :submit_payment, stripe_token: 'card_void_token'
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(subject).to redirect_to success_orders_path
+    end
+
+    it 'calls Stripe::Charge with the expected variables' do
+      order.update_attributes(video_length: '2 Minutes', stripe_customer_id: 'Test Customer')
+      Stripe::Charge.should_receive(:create).with({
+                                                      amount: 2.95 * 1000,
+                                                      currency: 'usd',
+                                                      customer: 'Test Customer'
+                                                  })
+      post :submit_payment, stripe_token: 'card_void_token'
     end
   end
 end
