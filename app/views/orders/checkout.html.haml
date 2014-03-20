@@ -43,11 +43,22 @@
     %form
       %fieldset
         %h3 Credit Card Info
-
-        %input#card_number(type='text' placeholder='Credit Card Number')
-        %input#card_exp_month(type='text' placeholder='MM')
-        %input#card_exp_year(type='text' placeholder='YYYY')
-        %input#card_cvc(type='text' placeholder='CVC')
+        .form-group
+          %label
+            Card Number
+            %input#card_number(type='text' placeholder='Credit Card Number')
+        .form-group
+          %label
+            Card Exp Month
+            %input#card_exp_month(type='text' placeholder='MM')
+        .form-group
+          %label
+            Card Exp Year
+            %input#card_exp_year(type='text' placeholder='YYYY')
+        .form-group
+          %label
+            Card CVC
+            %input#card_cvc(type='text' placeholder='CVC')
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token

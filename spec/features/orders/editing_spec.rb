@@ -6,7 +6,7 @@ describe 'Editing on the orders page', js: true do
   describe 'The following fields should save after their value changes ->' do
     def test_update(name, value)
       fill_in :"order_#{name}", with: value
-      sleep 0.1
+      wait_for_ajax
       order = Order.first
       expect(order[name]).to eq value
     end
