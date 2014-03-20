@@ -11,6 +11,11 @@ describe Order do
       order = create(:order)
       order.should_not validate_presence_of :cardholder_email
     end
+
+    it 'validates inclusion of video_length when preparing_for_payment == true' do
+      order = build(:order, preparing_for_payment: true)
+      order.should ensure_inclusion_of(:video_length).in_array(Order::VIDEO_LENGTHS)
+    end
   end
 
   describe 'secure tokens' do
@@ -41,8 +46,8 @@ describe Order do
     it 'raises an error if video_length is an unknown value' do
       order = create(:order, video_length: 'No Minutes LOL')
       expect {
-        order.video_length
-      }.to raise('Video Length is unexpected! (Got: No Minutes LOL)')
+        order.order_cost
+      }.to raise_error('Video Length is unexpected! (Got: No Minutes LOL)')
     end
   end
 end

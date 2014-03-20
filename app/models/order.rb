@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
   validates :secure_token, presence: true
   validates :status, presence: true
   validates :cardholder_email, presence: true, if: :preparing_for_payment?
-
+  validates :video_length, inclusion: { in: VIDEO_LENGTHS }, if: :preparing_for_payment?
   before_validation :generate_secure_token
 
   def paid?
