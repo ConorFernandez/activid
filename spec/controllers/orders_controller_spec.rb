@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OrdersController do
   describe 'GET #SHOW' do
-    describe 'for users with a order_secure_token cookie' do
+    describe 'for users without a order_secure_token cookie' do
       it 'creates a new order' do
         expect {
           get :show
@@ -17,6 +17,11 @@ describe OrdersController do
       it "writes a cookie called order_secure_token with the value of a new Order's #secure_token" do
         get :show
         expect(cookies[:order_secure_token]).to eq Order.pluck(:secure_token).first
+      end
+
+      it 'sets the default order.video_length to 2 Minutes' do
+        get :show
+        expect(assigns(:order).video_length).to eq '2 Minutes'
       end
     end
 

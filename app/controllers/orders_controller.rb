@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @order = find_order_by_cookie
-    @order ||= Order.create! status: Order::Status::DRAFT
+    @order ||= Order.create! status: Order::Status::DRAFT, video_length: Order::VIDEO_LENGTHS.first
 
     cookies[:order_secure_token] = @order.secure_token
   end
