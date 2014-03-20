@@ -183,8 +183,8 @@ describe OrdersController do
     end
 
     it 'redirects to success_orders_path when successful' do
-      expect(subject).to redirect_to success_orders_path
       post :submit_payment, stripe_token: 'card_void_token'
+      expect(subject).to redirect_to success_orders_path
     end
   end
 end
