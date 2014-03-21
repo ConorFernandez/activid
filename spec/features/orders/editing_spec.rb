@@ -4,20 +4,17 @@ describe 'Editing on the orders page', js: true do
   subject { page }
   before { visit '/orders' }
   describe 'The following fields should save after their value changes ->' do
-    def test_update(name, value)
-      fill_in :"order_#{name}", with: value
-      wait_for_ajax
-      order = Order.first
-      expect(order[name]).to eq value
+    def self.test_update(name, value, &block)
+      it "should update #{name} to equal #{value}" do
+        instance_exec value, &block
+        wait_for_ajax
+        order = Order.last
+        expect(order[name]).to eq value
+      end
     end
-    it('the project name') { test_update(:project_name, 'Tofu Wonders') }
-    it('the additional instructions') { test_update :instructions, 'Beat the Heat all Summer Long!' }
-    it('the video length') {
-      choose('4 Minutes')
-      wait_for_ajax
-      order = Order.last
-      expect(order.video_length).to eq '4 Minutes'
-    }
+    test_update(:project_name, 'Tofu Wonders') { |v| fill_in :order_project_name, with: v }
+    test_update(:instructions, 'Beat the Heat') { |v| fill_in :order_instructions, with: v }
+    test_update(:video_length, '4 Minutes') { |v| choose(v) }
   end
 
   describe 'When trying to upload files ->' do
