@@ -29,6 +29,15 @@ describe 'Editing on the orders page', js: true do
       expect(page).not_to have_text 'cat_in_hat.jpg'
     end
 
+    it 'I can upload attached files' do
+      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
+      click_button 'Start upload'
+      wait_for_ajax
+      within('.file') do
+        expect(page).to have_text 'uploaded!'
+      end
+    end
+
   end
 
   describe 'After editing my order ->' do
