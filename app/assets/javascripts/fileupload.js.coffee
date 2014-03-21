@@ -31,7 +31,7 @@ jQuery ()->
         $('button.cancel', form).fadeOut()
 
       progress: (e, data) ->
-        percent = Math.round( (data.loaded / (data.total) * 100)
+        percent = ( (data.loaded / data.total) * 100).toFixed(2)
         file = _.first(data.files)
         $('.progress', data.context).show();
         $('.progress-bar', data.context).css('width', percent + '%');
@@ -43,7 +43,7 @@ jQuery ()->
           renderSuccessUpload(data)
 
       progressall: (e, data) ->
-        percent = Math.round( (data.loaded / data.total) * 100)
+        percent = ( (data.loaded / data.total) * 100).toFixed(2)
         $('#upload-progress .progress-bar').css('width', percent + '%')
         $('#upload-progress .progress-bar').text("#{percent}%")
 
