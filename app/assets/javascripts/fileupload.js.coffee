@@ -6,7 +6,6 @@ jQuery ()->
       url: form.attr('action')
       dataType: 'xml'
       sequentialUploads: true
-      maxChunkSize: 10485760 # Ten Megabyte chunks
 
       add: (event, data) ->
         # Track Data so that we can call data.cancel if the user selects the wrong file.
@@ -115,3 +114,4 @@ jQuery () ->
         file_name: f.original_filename
         done: true
       $(rendered).appendTo('.attached-files')
+
