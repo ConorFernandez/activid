@@ -15,6 +15,14 @@ describe 'Editing on the orders page', js: true do
     it('the video length') { test_update :video_length, '2 Minutes 45 Seconds' }
   end
 
+  describe 'When trying to upload files ->' do
+    it 'I can attach them to my order' do
+      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
+      expect(page).to have_text 'cat_in_hat.jpg'
+    end
+
+  end
+
   describe 'After editing my order ->' do
     it 'I can move to the checkout page' do
       click_link 'Checkout'
