@@ -18,5 +18,14 @@ describe 'Visiting the orders page', js: true do
       visit '/orders'
       expect(page).to have_text 'Hot Potato Waltz.mov'
     end
+
+    it 'should not let me delete previously attached files' do
+      order.order_files.create(original_filename: 'Hot Potato Waltz.mov')
+      visit '/orders'
+      within('.attached-files') do
+        expect(page).not_to have_button 'Remove'
+      end
+
+    end
   end
 end
