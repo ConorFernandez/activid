@@ -21,6 +21,14 @@ describe 'Editing on the orders page', js: true do
       expect(page).to have_text 'cat_in_hat.jpg'
     end
 
+    it 'I can remove attached files' do
+      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
+      within('.file') do
+        click_button 'Remove'
+      end
+      expect(page).not_to have_text 'cat_in_hat.jpg'
+    end
+
   end
 
   describe 'After editing my order ->' do
