@@ -31,6 +31,11 @@ jQuery ()->
         $('button.cancel', form).fadeOut()
 
       progress: (e, data) ->
+        percent = Math.round( (data.loaded / (data.total) * 100)
+        file = _.first(data.files)
+        $('.progress', data.context).show();
+        $('.progress-bar', data.context).css('width', percent + '%');
+        $('.progress-bar', data.context).text("#{percent}%");
         # The data object we're expecting (the file upload) isn't present in the success handler.
         # Therefore, this cheap hack does the same thing.
         if data.loaded == data.total
