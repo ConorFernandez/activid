@@ -35,7 +35,10 @@
   %h3 Step 3: Give us any additional instructions
   = f.text_area :instructions, class: 'persistent'
 
-  = f.text_field :video_length, class: 'persistent'
+  - Order::VIDEO_LENGTHS.each do |video_length|
+    %label
+      = video_length
+      = f.radio_button :video_length, video_length, class: 'persistent'
 
 .navigation
   = link_to 'Checkout', checkout_orders_path

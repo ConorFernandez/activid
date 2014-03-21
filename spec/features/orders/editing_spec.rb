@@ -12,7 +12,12 @@ describe 'Editing on the orders page', js: true do
     end
     it('the project name') { test_update(:project_name, 'Tofu Wonders') }
     it('the additional instructions') { test_update :instructions, 'Beat the Heat all Summer Long!' }
-    it('the video length') { test_update :video_length, '2 Minutes 45 Seconds' }
+    it('the video length') {
+      choose('4 Minutes')
+      wait_for_ajax
+      order = Order.last
+      expect(order.video_length).to eq '4 Minutes'
+    }
   end
 
   describe 'When trying to upload files ->' do
