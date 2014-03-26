@@ -4,3 +4,8 @@
 body#orders {
   label { display: none; }
 }
+
+.preview img, .preview video {
+  width: 640px;
+  display: inline-block;
+}
