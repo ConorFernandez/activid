@@ -1,0 +1,203 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: card=tok_3jZQYEpbW8nYid&email=guy%40example.com&description=%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Name%3A%20.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Uploaded%20files%3A%20s3%3A%2F%2Factivid%2F0a174aa0d095cc1b6ae949c16f38c1f0%2F%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Minutes%3A%202%20Minutes%0A
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.10.1
+      Authorization:
+      - Bearer sk_test_aZs9IWK2fMnxQqgWCns8iIXW
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - "{\"bindings_version\":\"1.10.1\",\"lang\":\"ruby\",\"lang_version\":\"2.1.0
+        p0 (2013-12-25)\",\"platform\":\"x86_64-linux\",\"publisher\":\"stripe\",\"uname\":\"Linux
+        xxxg-sandrock 3.13.6-200.fc20.x86_64 #1 SMP Fri Mar 7 17:02:28 UTC 2014 x86_64
+        x86_64 x86_64 GNU/Linux\"}"
+      Content-Length:
+      - '452'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 26 Mar 2014 01:56:22 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1371'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache, no-store
+      Access-Control-Max-Age:
+      - '300'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "object": "customer",
+          "created": 1395798982,
+          "id": "cus_3jZQpKp1YSdQc6",
+          "livemode": false,
+          "description": "                              Name: .\n                              Uploaded files: s3://activid/0a174aa0d095cc1b6ae949c16f38c1f0/\n                              Minutes: 2 Minutes\n",
+          "email": "guy@example.com",
+          "delinquent": false,
+          "metadata": {},
+          "subscriptions": {
+            "object": "list",
+            "count": 0,
+            "url": "/v1/customers/cus_3jZQpKp1YSdQc6/subscriptions",
+            "data": []
+          },
+          "discount": null,
+          "account_balance": 0,
+          "currency": null,
+          "cards": {
+            "object": "list",
+            "count": 1,
+            "url": "/v1/customers/cus_3jZQpKp1YSdQc6/cards",
+            "data": [
+              {
+                "id": "card_3jZQ36qKTr0ahk",
+                "object": "card",
+                "last4": "4242",
+                "type": "Visa",
+                "exp_month": 1,
+                "exp_year": 2020,
+                "fingerprint": "HTtdaqhN9cG2igMo",
+                "customer": "cus_3jZQpKp1YSdQc6",
+                "country": "US",
+                "name": null,
+                "address_line1": null,
+                "address_line2": null,
+                "address_city": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_country": null,
+                "cvc_check": "pass",
+                "address_line1_check": null,
+                "address_zip_check": null
+              }
+            ]
+          },
+          "default_card": "card_3jZQ36qKTr0ahk",
+          "subscription": null
+        }
+    http_version: 
+  recorded_at: Wed, 26 Mar 2014 01:56:22 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/charges
+    body:
+      encoding: US-ASCII
+      string: amount=295&currency=usd&customer=cus_3jZQpKp1YSdQc6
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.10.1
+      Authorization:
+      - Bearer sk_test_aZs9IWK2fMnxQqgWCns8iIXW
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - "{\"bindings_version\":\"1.10.1\",\"lang\":\"ruby\",\"lang_version\":\"2.1.0
+        p0 (2013-12-25)\",\"platform\":\"x86_64-linux\",\"publisher\":\"stripe\",\"uname\":\"Linux
+        xxxg-sandrock 3.13.6-200.fc20.x86_64 #1 SMP Fri Mar 7 17:02:28 UTC 2014 x86_64
+        x86_64 x86_64 GNU/Linux\"}"
+      Content-Length:
+      - '51'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 26 Mar 2014 01:56:23 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1002'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "ch_3jZQkjSVNMk48x",
+          "object": "charge",
+          "created": 1395798983,
+          "livemode": false,
+          "paid": true,
+          "amount": 295,
+          "currency": "usd",
+          "refunded": false,
+          "card": {
+            "id": "card_3jZQ36qKTr0ahk",
+            "object": "card",
+            "last4": "4242",
+            "type": "Visa",
+            "exp_month": 1,
+            "exp_year": 2020,
+            "fingerprint": "HTtdaqhN9cG2igMo",
+            "customer": "cus_3jZQpKp1YSdQc6",
+            "country": "US",
+            "name": null,
+            "address_line1": null,
+            "address_line2": null,
+            "address_city": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_country": null,
+            "cvc_check": "pass",
+            "address_line1_check": null,
+            "address_zip_check": null
+          },
+          "captured": true,
+          "refunds": [],
+          "balance_transaction": "txn_3jZQqvfwtkE4X5",
+          "failure_message": null,
+          "failure_code": null,
+          "amount_refunded": 0,
+          "customer": "cus_3jZQpKp1YSdQc6",
+          "invoice": null,
+          "description": null,
+          "dispute": null,
+          "metadata": {},
+          "statement_description": null
+        }
+    http_version: 
+  recorded_at: Wed, 26 Mar 2014 01:56:23 GMT
+recorded_with: VCR 2.8.0

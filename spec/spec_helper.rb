@@ -48,6 +48,21 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # Webmock, VCR
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+    c.hook_into :webmock
+    c.ignore_localhost = true
+    c.configure_rspec_metadata!
+  end
+
+  config.before(:each) do
+    WebMock.disable_net_connect!
+  end
+
+  config.before(:each, js: true) do
+    WebMock.allow_net_connect!
+  end
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of

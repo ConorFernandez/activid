@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'The Checkout Page ->', js: true do
+describe 'The Checkout Page ->', js: true, vcr: true do
   subject { page }
   before { visit '/orders'; visit '/orders/checkout' }
 

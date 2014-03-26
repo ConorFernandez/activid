@@ -65,6 +65,8 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara-screenshot'
   gem 'stripe-ruby-mock'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 # Use ActiveModel has_secure_password
