@@ -98,8 +98,9 @@ markAsUploaded = (data) ->
 # TODO: move into another file when done prototyping
 renderFileTemplate = (data, view) ->
   template = $('#upload-file-template').text()
-  rendered = Mustache.render template, view
-  $(rendered)
+  rendered = $(Mustache.render template, view)
+  generatePreview(data, rendered)
+  rendered
 
 renderSuccessUpload = (data) ->
   file = _.first(data.files)
@@ -110,6 +111,26 @@ renderSuccessUpload = (data) ->
 
   $(data.context).replaceWith(newContext)
   data.context = newContext
+
+generatePreview = (data, view) ->
+  if data.files[0].type.match(/^image/)
+    generatePreviewImage(data, view)
+  else if data.files[0].type.match(/^video/)
+    generatePreviewVideo(data, view)
+
+generatePreviewImage = (data, view) ->
+  parseFileAndThen data.files[0], (e) ->
+    $('.preview img', view).attr('src', e.target.result).show()
+
+generatePreviewVideo = (data, view) ->
+  parseFileAndThen data.files[0], (e) ->
+    $('.preview video', view).attr('src', e.target.result).show()
+
+parseFileAndThen = (file, callback) ->
+  reader = new FileReader()
+  reader.onload = (e) ->
+    callback(e)
+  reader.readAsDataURL file
 
 jQuery () ->
   if window.uploadedFiles
