@@ -119,18 +119,18 @@ generatePreview = (data, view) ->
     generatePreviewVideo(data, view)
 
 generatePreviewImage = (data, view) ->
-  parseFileAndThen data.files[0], (e) ->
-    $('.preview img', view).attr('src', e.target.result).show()
+  createObjectURL data.files[0], (blobUrl) ->
+    $('.preview img', view).attr('src', blobUrl).show()
 
 generatePreviewVideo = (data, view) ->
-  parseFileAndThen data.files[0], (e) ->
-    $('.preview video', view).attr('src', e.target.result).show()
+  createObjectURL data.files[0], (blobUrl) ->
+    $('.preview video', view).attr('src', blobUrl).show()
 
-parseFileAndThen = (file, callback) ->
-  reader = new FileReader()
-  reader.onload = (e) ->
-    callback(e)
-  reader.readAsDataURL file
+# Polyfill.
+createObjectURL = (file, cb) ->
+  ns = URL || webkitURL
+  if ns && ns.createObjectURL
+    cb(ns.createObjectURL(file))
 
 jQuery () ->
   if window.uploadedFiles
