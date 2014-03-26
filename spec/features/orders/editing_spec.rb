@@ -42,6 +42,19 @@ describe 'Editing on the orders page', js: true do
 
   end
 
+  describe 'While uploading files ->' do
+    it 'the checkout link should be disabled' do
+      start_ajax
+      expect(page).to have_css 'a.disabled'
+    end
+
+    it 'the checkout link should be enabled after upload is finished' do
+      start_ajax
+      stop_ajax
+      expect(page).not_to have_css 'a.disabled'
+    end
+  end
+
   describe 'After editing my order ->' do
     it 'I can move to the checkout page' do
       click_link 'Checkout'
