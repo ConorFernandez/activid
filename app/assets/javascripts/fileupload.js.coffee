@@ -26,6 +26,7 @@ jQuery ()->
 
       start: (e, data) ->
         $('button.cancel', form).fadeIn()
+        $('#upload-progress').fadeIn()
 
       stop: (e, data) ->
         $('button.cancel', form).fadeOut()
