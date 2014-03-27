@@ -9,3 +9,10 @@ body#orders {
   width: 640px;
   display: inline-block;
 }
+
+form.edit_order {
+  textarea {
+    width: 100%;
+    height: 300px;
+  }
+}
