@@ -7,6 +7,10 @@
     = csrf_meta_tags
   %body
     .container
+      %header
+        %h1
+          Activid
+          %span.page-title= yield(:page_title)
       = yield
 
       .ajax-spinner(style='display: none;')
