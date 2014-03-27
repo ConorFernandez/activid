@@ -42,6 +42,9 @@
       .form-group
         = f.label :instructions do
           %h3 Step 3: Give us any additional instructions
+          %p.subtext
+            Please include any details you'd like to see incorporated into your video.
+            Feel free to be as brief or as detailed as you would like.
           = f.text_area :instructions, class: 'persistent', placeholder: 'Any additional instructions go here.'
       .form-group
         .btn-group.radios
