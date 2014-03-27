@@ -1,44 +1,52 @@
-= form_for @order, url: orders_path, remote: true do |f|
-  %h3 Step 1: Give your project a name
-  = f.text_field :project_name, class: 'persistent'
+.row
+  .col-md-12
+    = form_for @order, url: orders_path, remote: true do |f|
+      .form-group
+        = f.label :project_name do
+          %h3 Step 1: Give your project a name
+          = f.text_field :project_name, class: 'persistent', placeholder: 'Project name'
 
+.row
+  .col-md-12
+    %form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
+      %h3 Step 2: Upload your raw footage and music
+      = hidden_field_tag :key, s3_data.key
+      = hidden_field_tag 'AWSAccessKeyId', ENV['AWS_ACCESS_KEY']
+      = hidden_field_tag :acl, 'private'
+      = hidden_field_tag :policy, s3_data.policy
+      = hidden_field_tag :signature, s3_data.signature
+      = hidden_field_tag :success_action_status, '201'
 
-%form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
-  %h3 Step 2: Upload your raw footage and music
-  = hidden_field_tag :key, s3_data.key
-  = hidden_field_tag 'AWSAccessKeyId', ENV['AWS_ACCESS_KEY']
-  = hidden_field_tag :acl, 'private'
-  = hidden_field_tag :policy, s3_data.policy
-  = hidden_field_tag :signature, s3_data.signature
-  = hidden_field_tag :success_action_status, '201'
+      %span.btn.btn-success.fileinput-button
+        %i.glyphicon.glyphicon-plus
+        %span Add files...
+        = file_field_tag :file, multiple: true
 
-  %span.btn.btn-success.fileinput-button
-    %i.glyphicon.glyphicon-plus
-    %span Add files...
-    = file_field_tag :file, multiple: true
+      %button.btn.btn-primary.start(type="button")
+        %i.glyphicon.glyphicon-upload
+        %span Start upload
+      %button.btn.btn-warning.cancel(type="button" style="display: none;")
+        %i.glyphicon.glyphicon-ban-circle
+        %span Cancel upload
 
-  %button.btn.btn-primary.start(type="button")
-    %i.glyphicon.glyphicon-upload
-    %span Start upload
-  %button.btn.btn-warning.cancel(type="button" style="display: none;")
-    %i.glyphicon.glyphicon-ban-circle
-    %span Cancel upload
+      #upload-progress.progress
+        .progress-bar
+          0%
 
-  #upload-progress.progress
-    .progress-bar
-      0%
+      .attached-files
 
-  .attached-files
-
-
-= form_for @order, url: orders_path, remote: true do |f|
-  %h3 Step 3: Give us any additional instructions
-  = f.text_area :instructions, class: 'persistent'
-
-  - Order::VIDEO_LENGTHS.each do |video_length|
-    %label
-      = video_length
-      = f.radio_button :video_length, video_length, class: 'persistent'
+.row
+  .col-md-12
+    = form_for @order, url: orders_path, remote: true do |f|
+      .form-group
+        = f.label :instructions do
+          %h3 Step 3: Give us any additional instructions
+          = f.text_area :instructions, class: 'persistent', placeholder: 'Any additional instructions go here.'
+      .form-group
+        - Order::VIDEO_LENGTHS.each do |video_length|
+          %label
+            = video_length
+            = f.radio_button :video_length, video_length, class: 'persistent'
 
 .navigation
   = link_to 'Checkout', checkout_orders_path

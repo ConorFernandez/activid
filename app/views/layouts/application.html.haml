@@ -6,10 +6,11 @@
     %script(type='text/javascript' src='https://js.stripe.com/v2/')
     = csrf_meta_tags
   %body
-    = yield
+    .container
+      = yield
 
-    .ajax-spinner(style='display: none;')
-      AJAX IS HAPPENING...
+      .ajax-spinner(style='display: none;')
+        AJAX IS HAPPENING...
 
     :javascript
       Stripe.setPublishableKey(#{STRIPE_PUBLISHABLE_KEY.to_json})
