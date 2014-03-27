@@ -1,9 +1,20 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body#orders {
-  label { display: none; }
+
+.attached-files {
+  margin-top: 10px;
 }
+
+.file {
+  .file-name {
+    font-weight: bold;
+  }
+
+  margin-bottom: 6px;
+}
+
+
 
 .preview img, .preview video {
   width: 640px;
