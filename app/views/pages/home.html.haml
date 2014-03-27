@@ -1,4 +1,32 @@
-%h1 Welcome to Activid!
+.jumbotron
+  %h1 You film, we edit
+  %p Transform your raw footage into a beautifully edited video
+  %p.text-center= link_to 'Get started', orders_path, class: 'btn btn-primary btn-lg'
 
-%p
-  = link_to 'Click here to begin a purchase', orders_path
+.row
+  .col-md-6
+    %h2 How does Activid work?
+    %p
+      First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.
+    %p
+      Then, upload your video files to our website, and choose how long you want your final video to be.
+      We can make you a 2, 3, or 4 minute video.
+    %p
+      Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight reel set to the music
+      of your choice.
+    %p
+      Once you're happy, post your video and show off your awesomeness to friends and family.
+
+  .col-md-6
+    %h2 Why Use Activid?
+    %p
+      We work with the best video editors out there! These guys and gals are editing ninjas who focus exclusively
+      on action/adventure and vacation videos. Which means your video is going to turn out great!
+    %p
+      We guarantee a 48 hour turnaround for your final video.
+    %p
+      We offer the most affordable pricing of any video editor. A 2-minute video is just $95.
+
+.row
+  .text-center
+    = link_to 'Get started', orders_path, class: 'btn btn-primary btn-lg'
