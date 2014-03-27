@@ -14,7 +14,8 @@ describe 'Editing on the orders page', js: true do
     end
     test_update(:project_name, 'Tofu Wonders') { |v| fill_in :order_project_name, with: v }
     test_update(:instructions, 'Beat the Heat') { |v| fill_in :order_instructions, with: v }
-    test_update(:video_length, '4 Minutes') { |v| choose(v) }
+    test_update(:video_length, '4 Minutes') { |v| find('#order_video_length_4_minutes', visible: false).trigger('click') }
+    #test_update(:video_length, '4 Minutes') { |v| choose(:order_video_length_4_minutes, visible: false) }
   end
 
   describe 'When trying to upload files ->' do

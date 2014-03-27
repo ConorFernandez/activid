@@ -26,11 +26,15 @@ class Order < ActiveRecord::Base
     status == Status::PAID
   end
 
-  # Returns Order Cost as a Money object.
-  def order_cost
+  def self.video_cost(video_length)
     cost = COSTS[video_length]
     raise "Video Length is unexpected! (Got: #{video_length})" if cost.blank?
     Money.new(cost * 100, 'USD')
+  end
+
+  # Returns Order Cost as a Money object.
+  def order_cost
+    Order.video_cost(video_length)
   end
 
   protected

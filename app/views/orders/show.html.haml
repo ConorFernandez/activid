@@ -43,10 +43,13 @@
           %h3 Step 3: Give us any additional instructions
           = f.text_area :instructions, class: 'persistent', placeholder: 'Any additional instructions go here.'
       .form-group
-        - Order::VIDEO_LENGTHS.each do |video_length|
-          %label
-            = video_length
-            = f.radio_button :video_length, video_length, class: 'persistent'
+        .btn-group.radios
+          - Order::VIDEO_LENGTHS.each do |video_length|
+            %label.btn.btn-default
+              = video_length
+              %br
+              $#{Order.video_cost(video_length)}
+              = f.radio_button :video_length, video_length, class: 'persistent'
 
 .navigation
   = link_to 'Checkout', checkout_orders_path

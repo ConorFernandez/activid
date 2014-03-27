@@ -50,4 +50,16 @@ describe Order do
       }.to raise_error('Video Length is unexpected! (Got: No Minutes LOL)')
     end
   end
+
+  describe 'Order.video_cost' do
+    it 'returns the cost of an order in pennies based on video_length' do
+      expect(Order.video_cost('2 Minutes')).to eq Money.new(295, 'USD')
+    end
+
+    it 'raises an error if video_length is an unknown value' do
+      expect {
+        expect(Order.video_cost('No Minutes LOL')).to eq Money.new(295, 'USD')
+      }.to raise_error('Video Length is unexpected! (Got: No Minutes LOL)')
+    end
+  end
 end
