@@ -11,55 +11,68 @@
       .order-errors
 .row
   .col-md-6
-    = form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f|
+    = form_for @order, url: orders_path, html: { id: 'checkout', class: 'form-horizontal' }, remote: true do |f|
       = f.hidden_field :preparing_for_payment, value: true
       %fieldset
-        %h3 Billing Info
+        %legend
+          %h3 Billing Info
         .form-group
-          = f.label :cardholder_name
-          = f.text_field :cardholder_name
+          = f.label :cardholder_name, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_name, class: 'form-control'
         .form-group
-          = f.label :cardholder_address
-          = f.text_field :cardholder_address
+          = f.label :cardholder_address, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_address, class: 'form-control'
         .form-group
-          = f.label :cardholder_city
-          = f.text_field :cardholder_city
+          = f.label :cardholder_city, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_city, class: 'form-control'
         .form-group
-          = f.label :cardholder_state
-          = f.text_field :cardholder_state
+          = f.label :cardholder_state, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_state, class: 'form-control'
         .form-group
-          = f.label :cardholder_zipcode
-          = f.text_field :cardholder_zipcode
+          = f.label :cardholder_zipcode, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_zipcode, class: 'form-control'
         .form-group
-          = f.label :cardholder_email
-          = f.text_field :cardholder_email
+          = f.label :cardholder_email, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_email, class: 'form-control'
         .form-group
-          = f.label :cardholder_phone_number
-          = f.text_field :cardholder_phone_number
+          = f.label :cardholder_phone_number, class: 'control-label col-sm-4'
+          .col-sm-8
+            = f.text_field :cardholder_phone_number, class: 'form-control'
 
       .navigation
         = link_to 'Go Back', orders_path, class: 'btn btn-default'
         %button.btn.btn-primary(type="submit") Complete Order
   .col-md-6
-    %form
+    %form.form-horizontal
       %fieldset
-        %h3 Credit Card Info
+        %legend
+          %h3 Credit Card Info
         .form-group
-          %label
+          %label.control-label.col-sm-4(for='card_number')
             Card Number
-            %input#card_number(type='text' placeholder='Credit Card Number')
+          .col-sm-8
+            %input#card_number.form-control(type='text' placeholder='Credit Card Number')
         .form-group
-          %label
+          %label.control-label.col-sm-4(for='card_exp_month')
             Card Exp Month
-            %input#card_exp_month(type='text' placeholder='MM')
+          .col-sm-8
+            %input#card_exp_month.form-control(type='text' placeholder='MM')
         .form-group
-          %label
+          %label.control-label.col-sm-4(for='card_exp_year')
             Card Exp Year
-            %input#card_exp_year(type='text' placeholder='YYYY')
+          .col-sm-8
+            %input#card_exp_year.form-control(type='text' placeholder='YYYY')
         .form-group
-          %label
+          %label.control-label.col-sm-4(for='card_cvc')
             Card CVC
-            %input#card_cvc(type='text' placeholder='CVC')
+          .col-sm-8
+            %input#card_cvc.form-control(type='text' placeholder='CVC')
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
