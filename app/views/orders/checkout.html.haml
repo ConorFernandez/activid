@@ -37,8 +37,8 @@
           = f.text_field :cardholder_phone_number
 
       .navigation
-        = link_to 'Go Back', orders_path
-        %button(type="submit") Complete Order
+        = link_to 'Go Back', orders_path, class: 'btn btn-default'
+        %button.btn.btn-primary(type="submit") Complete Order
   .col-md-6
     %form
       %fieldset

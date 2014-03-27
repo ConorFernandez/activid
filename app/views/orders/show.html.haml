@@ -52,7 +52,7 @@
               = f.radio_button :video_length, video_length, class: 'persistent'
 
 .navigation
-  = link_to 'Checkout', checkout_orders_path
+  = link_to 'Checkout', checkout_orders_path, class: 'btn btn-default'
 
 :javascript
   window.uploadedFiles = #{order_files_to_json(@order.order_files)};
