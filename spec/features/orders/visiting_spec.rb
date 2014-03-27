@@ -11,7 +11,7 @@ describe 'Visiting the orders page', js: true do
 
     it { should have_field :order_project_name, with: 'Foodle' }
     it { should have_field :order_instructions, with: 'Bake @ 500 degrees C' }
-    it { should have_field :order_video_length, with: '2 Minutes' }
+    it { should have_field :order_video_length_2_minutes, with: '2 Minutes' }
 
     it 'should show me previously attached files' do
       order.order_files.create(original_filename: 'Hot Potato Waltz.mov')
