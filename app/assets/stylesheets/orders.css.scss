@@ -11,7 +11,12 @@
     font-weight: bold;
   }
 
+  &:nth-child(odd) {
+    background-color: #F9F9F9;
+  }
+
   margin-bottom: 6px;
+  padding: 5px 0 5px 0;
 }
 
 
@@ -19,6 +24,7 @@
   display: inline-block;
   text-align: center;
 }
+
 .preview img, .preview video {
   width: 640px;
   display: block;

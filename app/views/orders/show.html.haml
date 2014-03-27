@@ -68,10 +68,12 @@
         <img title='{{file_name}}' class='hidden' />
         <video class='hidden' />
         <span class='file-name'>{{file_name}}</span>
-        {{#done}}
-          <span class='label label-success'>uploaded!</span>
-        {{/done}}
       </div>
+      {{#done}}
+      <div class='pull-right'>
+        <span class='label label-success'>uploaded!</span>
+      </div>
+      {{/done}}
       {{#uploadable}}
       <div class='file-actions'>
         <button type='button' class='btn btn-warning remove'>Remove</button>
