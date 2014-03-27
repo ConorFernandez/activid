@@ -121,11 +121,11 @@ generatePreview = (data, view) ->
 
 generatePreviewImage = (data, view) ->
   createObjectURL data.files[0], (blobUrl) ->
-    $('.preview img', view).attr('src', blobUrl).show()
+    $('.preview img', view).attr('src', blobUrl).removeClass('hidden')
 
 generatePreviewVideo = (data, view) ->
   createObjectURL data.files[0], (blobUrl) ->
-    $('.preview video', view).attr('src', blobUrl).show()
+    $('.preview video', view).attr('src', blobUrl).removeClass('hidden')
 
 # Polyfill.
 createObjectURL = (file, cb) ->

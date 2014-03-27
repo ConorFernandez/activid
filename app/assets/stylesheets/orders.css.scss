@@ -15,10 +15,13 @@
 }
 
 
-
+.preview {
+  display: inline-block;
+  text-align: center;
+}
 .preview img, .preview video {
   width: 640px;
-  display: inline-block;
+  display: block;
 }
 
 form.edit_order {
