@@ -128,7 +128,7 @@ generatePreviewVideo = (data, view) ->
 
 # Polyfill.
 createObjectURL = (file, cb) ->
-  ns = URL || webkitURL
+  ns = window.URL || window.webkitURL
   if ns && ns.createObjectURL
     cb(ns.createObjectURL(file))
 
