@@ -4,6 +4,9 @@
 
 .attached-files {
   margin-top: 10px;
+  height: 250px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .file {
@@ -26,7 +29,7 @@
 }
 
 .preview img, .preview video {
-  width: 640px;
+  width: 120px;
   display: block;
 }
 
