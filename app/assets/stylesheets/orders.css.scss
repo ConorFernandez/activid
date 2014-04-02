@@ -23,15 +23,28 @@
 }
 
 
+
 .preview {
   display: inline-block;
   text-align: center;
 }
 
-.preview img, .preview video {
-  width: 120px;
-  display: block;
+.attached-files {
+  .preview img, .preview video {
+    width: 120px;
+    display: block;
+  }
 }
+
+#preview-modal {
+  .modal-dialog {
+    width: 720px;
+  }
+  .preview img, .preview video {
+    width: 640px;
+  }
+}
+
 
 form.edit_order {
   textarea {

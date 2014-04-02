@@ -142,3 +142,13 @@ jQuery () ->
         done: true
       $(rendered).appendTo('.attached-files')
 
+
+# Handle the modal preview dialogs
+jQuery ->
+  $('#preview-modal').on 'show.bs.modal', (e) ->
+    fu = $(e.relatedTarget).parents('.file').data('fileupload')
+    file = fu.files[0]
+    $('.preview img, .preview video', this).addClass('hidden')
+    $('span.filename', this).text(file.name)
+    generatePreview fu, $('#preview-modal')
+

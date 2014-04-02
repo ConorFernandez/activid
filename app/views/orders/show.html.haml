@@ -58,6 +58,22 @@
 .navigation
   = link_to 'Checkout', checkout_orders_path, class: 'btn btn-default'
 
+
+#preview-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close(type="button"  data-dismiss="modal") &times;
+        %h4
+          Preview
+          %span.filename
+      .modal-body
+        .preview
+          %img.hidden
+          %video.hidden(controls)
+      .modal-footer
+        %button.btn.btn-primary(type="button" data-dismiss="modal") Close
+
 :javascript
   window.uploadedFiles = #{order_files_to_json(@order.order_files)};
 
@@ -65,8 +81,10 @@
   <script id="upload-file-template" type="text/x-mustache">
     <div class='file'>
       <div class='preview'>
-        <img title='{{file_name}}' class='hidden' />
-        <video class='hidden' />
+        <a href data-toggle="modal" data-target="#preview-modal">
+          <img title='{{file_name}}' class='hidden'  />
+          <video class='hidden' />
+        </a>
         <span class='file-name'>{{file_name}}</span>
       </div>
       {{#done}}
