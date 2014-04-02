@@ -9,11 +9,9 @@
     .container
       %header
         %h1
-          Activid
-          %span.page-title
-            =# Only one of these will have a value at any given time.
-            = yield(:page_title)
-            = @cms_page.try(:label)
+          = link_to 'Activid', root_path
+          =# Only one of these will have a value at any given time.
+          %span.page-title= content_for(:page_title) || @cms_page.try(:label)
       = yield
 
       %footer
