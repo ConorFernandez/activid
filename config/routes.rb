@@ -1,5 +1,7 @@
 Activid::Application.routes.draw do
 
+  comfy_route :cms_admin, :path => '/admin'
+
   resource :orders do
     collection do
       get :checkout
@@ -9,6 +11,8 @@ Activid::Application.routes.draw do
   end
 
   root 'high_voltage/pages#show', id: 'home'
+  # Make sure this routeset is defined last
+  comfy_route :cms, :path => '/', :sitemap => false
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

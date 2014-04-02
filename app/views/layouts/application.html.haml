@@ -10,12 +10,16 @@
       %header
         %h1
           Activid
-          %span.page-title= yield(:page_title)
+          %span.page-title
+            =# Only one of these will have a value at any given time.
+            = yield(:page_title)
+            = @cms_page.try(:label)
       = yield
 
       %footer
-        %p
-          Some text about us goes here.
+        %nav
+          - cms_info_pages.each do |page|
+            = link_to page.label, page.full_path
       .ajax-spinner(style='display: none;')
         AJAX IS HAPPENING...
 
