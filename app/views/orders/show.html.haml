@@ -1,6 +1,6 @@
 = provide(:page_title, 'Order Information')
 .row
-  .col-md-12
+  .col-md-6
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
         = f.label :project_name do
@@ -8,7 +8,7 @@
           = f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name'
 
 .row
-  .col-md-12
+  .col-md-6
     %form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
       %h3 Step 2: Upload Your Files.
       %p.subtext
@@ -42,7 +42,7 @@
         Your files will take some time to upload. No need to sit here watching them - just come back to this page when they're finished!
 
 .row
-  .col-md-12
+  .col-md-6
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
         = f.label :instructions do
