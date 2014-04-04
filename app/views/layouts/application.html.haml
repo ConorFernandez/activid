@@ -14,13 +14,14 @@
           %span.page-title= content_for(:page_title) || @cms_page.try(:label)
       = yield
 
-      %footer
-        %nav
+    %footer
+      .container
+        %nav.text-center
           - if cms_site
             - cms_info_pages.each do |page|
               = link_to page.label, page.full_path
-      .ajax-spinner(style='display: none;')
-        AJAX IS HAPPENING...
+    .ajax-spinner(style='display: none;')
+      AJAX IS HAPPENING...
 
     :javascript
       Stripe.setPublishableKey(#{STRIPE_PUBLISHABLE_KEY.to_json})
