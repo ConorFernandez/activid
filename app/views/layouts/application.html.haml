@@ -30,9 +30,9 @@
     %footer
       .container
         %nav.text-center
-        - if cms_site
-          - cms_info_pages.each do |page|
-            = link_to page.label, page.full_path
+          - if cms_site
+            - cms_info_pages.each do |page|
+              = link_to page.label, page.full_path
 
     :javascript
       Stripe.setPublishableKey(#{STRIPE_PUBLISHABLE_KEY.to_json})
