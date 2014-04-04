@@ -1,5 +1,9 @@
 @import 'forms';
 
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
 a.disabled {
   pointer-events: none;
 }
