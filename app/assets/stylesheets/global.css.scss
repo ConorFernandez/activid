@@ -40,6 +40,12 @@ footer {
 }
 
 .ajax-spinner {
+  transition: opacity 1s;
+  opacity: 1;
+
+  &.inactive {
+    opacity: 0;
+  }
   img {
     height: 50px;
   }

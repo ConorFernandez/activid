@@ -1,11 +1,11 @@
 jQuery () ->
   $(document).on 'ajaxStart', () ->
-    $('.ajax-spinner').show()
+    $('.ajax-spinner').removeClass('inactive')
     # Disable all navigation links
     $('.navigation a').addClass('disabled')
 
   $(document).on 'ajaxStop', () ->
-    $('.ajax-spinner').hide()
+    $('.ajax-spinner').addClass('inactive')
 
     $('.navigation a').removeClass('disabled')
 
