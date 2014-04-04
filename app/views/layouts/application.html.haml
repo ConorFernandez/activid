@@ -6,13 +6,17 @@
     %script(type='text/javascript' src='https://js.stripe.com/v2/')
     = csrf_meta_tags
   %body
-    .container
-      %header
-        %h1
-          = link_to 'Activid', root_path
-          =# Only one of these will have a value at any given time.
-          %span.page-title= content_for(:page_title) || @cms_page.try(:label)
-      = yield
+    %header
+      %nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+        .container
+          .navbar-header
+            = link_to 'Activid', root_path, class: 'navbar-brand'
+          %ul.nav.navbar-nav
+            - if current_page_title
+              %li
+                =link_to current_page_title
+
+    .container= yield
 
     %footer
       .container

@@ -9,6 +9,11 @@ module ApplicationHelper
     info_page.children.published
   end
 
+  def current_page_title
+    # Only one of these will have a value at any given time.
+    content_for(:page_title) || @cms_page.try(:label)
+  end
+
   protected
 
   def default_cms_site
