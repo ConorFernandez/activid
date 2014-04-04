@@ -1,3 +1,20 @@
+- provide(:body_class, 'homepage')
+.wide-image
+  #homepage-carousel.carousel.slide(data-ride="carousel")
+    .carousel-inner
+      .item.active
+        = image_tag 'homepage/skiing.jpg'
+      .item
+        = image_tag 'homepage/biking.jpg'
+      .item
+        = image_tag 'homepage/surfing.jpg'
+
+        <!-- Controls -->
+    %a.left.carousel-control(href='#homepage-carousel' data-slide='prev')
+      %span.glyphicon.glyphicon-chevron-left
+    %a.right.carousel-control(href='#homepage-carousel' data-slide='next')
+      %span.glyphicon.glyphicon-chevron-right
+
 .jumbotron.text-center
   %h1 You film, we edit.
   %p Transform your raw footage into a beautifully edited video.
