@@ -62,7 +62,9 @@
               = f.radio_button :video_length_id, video_length.id, class: 'persistent'
 
 .navigation
-  = link_to 'Checkout', checkout_orders_path, class: 'btn btn-default'
+  = link_to checkout_orders_path, class: 'btn btn-default' do
+    Proceed to Checkout
+    %span.glyphicon.glyphicon-chevron-right
 
 
 #preview-modal.modal.fade
