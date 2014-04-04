@@ -11,39 +11,34 @@
       .order-errors
 .row
   .col-md-6
-    = form_for @order, url: orders_path, html: { id: 'checkout', class: 'form-horizontal' }, remote: true do |f|
+    = form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f|
       = f.hidden_field :preparing_for_payment, value: true
       %fieldset
         %legend
           %h3 Billing Info
         .form-group
-          = f.label :cardholder_name, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_name, class: 'form-control'
+          = f.label :cardholder_name, 'Name', class: 'control-label'
+          = f.text_field :cardholder_name, class: 'form-control', placeholder: 'Name on Card'
         .form-group
-          = f.label :cardholder_address, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_address, class: 'form-control'
+          = f.label :cardholder_address, 'Address', class: 'control-label'
+          = f.text_field :cardholder_address, class: 'form-control', placeholder: 'Address on Card'
         .form-group
-          = f.label :cardholder_city, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_city, class: 'form-control'
+          .row
+            .col-md-4
+              = f.label :cardholder_city, 'City', class: 'control-label'
+              = f.text_field :cardholder_city, class: 'form-control', placeholder: 'City'
+            .col-md-4
+              = f.label :cardholder_state, 'State', class: 'control-label'
+              = f.text_field :cardholder_state, class: 'form-control', placeholder: 'State'
+            .col-md-4
+              = f.label :cardholder_zipcode, 'Zip', class: 'control-label', placeholder: 'Zip'
+              = f.text_field :cardholder_zipcode, class: 'form-control'
         .form-group
-          = f.label :cardholder_state, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_state, class: 'form-control'
+          = f.label :cardholder_email, 'Email', class: 'control-label'
+          = f.text_field :cardholder_email, class: 'form-control', placeholder: 'Email'
         .form-group
-          = f.label :cardholder_zipcode, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_zipcode, class: 'form-control'
-        .form-group
-          = f.label :cardholder_email, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_email, class: 'form-control'
-        .form-group
-          = f.label :cardholder_phone_number, class: 'control-label col-sm-4'
-          .col-sm-8
-            = f.text_field :cardholder_phone_number, class: 'form-control'
+          = f.label :cardholder_phone_number, 'Phone', class: 'control-label'
+          = f.text_field :cardholder_phone_number, class: 'form-control', placeholder: 'Phone #'
 
   .col-md-6
     %form

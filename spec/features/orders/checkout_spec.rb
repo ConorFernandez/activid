@@ -11,8 +11,8 @@ describe 'The Checkout Page ->', js: true, vcr: true do
   end
 
   it 'I can submit an order with a valid credit card' do
-    fill_in 'Cardholder email', with: 'guy@example.com'
-    fill_in 'Cardholder phone number', with: '1-800-94-JENNY'
+    fill_in 'Email', with: 'guy@example.com'
+    fill_in 'Phone', with: '1-800-94-JENNY'
 
     fill_in 'Card Number', with: '4242424242424242'
     fill_in 'Card Exp Month', with: '01'
@@ -24,8 +24,8 @@ describe 'The Checkout Page ->', js: true, vcr: true do
   end
 
   it 'I can see a card declined error if I submit an order with an invalid card' do
-    fill_in 'Cardholder email', with: 'guy@example.com'
-    fill_in 'Cardholder phone number', with: '1-800-94-JENNY'
+    fill_in 'Email', with: 'guy@example.com'
+    fill_in 'Phone', with: '1-800-94-JENNY'
 
     fill_in 'Card Number', with: '4000000000000002'
     fill_in 'Card Exp Month', with: '01'
@@ -43,7 +43,7 @@ describe 'The Checkout Page ->', js: true, vcr: true do
   end
 
   it 'I can see a payment error if I enter an invalid card number' do
-    fill_in 'Cardholder email', with: 'guy@example.com'
+    fill_in 'Email', with: 'guy@example.com'
     fill_in 'Card Number', with: 'Gobbly Gook'
 
     click_button 'Complete Order'
