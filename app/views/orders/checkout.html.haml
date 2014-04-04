@@ -45,9 +45,6 @@
           .col-sm-8
             = f.text_field :cardholder_phone_number, class: 'form-control'
 
-      .navigation
-        = link_to 'Go Back', orders_path, class: 'btn btn-default'
-        %button.btn.btn-primary(type="submit") Complete Order
   .col-md-6
     %form.form-horizontal
       %fieldset
@@ -76,6 +73,17 @@
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
+
+.row
+  .col-md-6
+    .navigation
+      = link_to 'Go Back', orders_path, class: 'btn btn-default'
+  .col-md-6
+    .navigation
+      %button.checkout.btn.btn-primary(type="submit") Complete Order
+
+
+
 
 - if flash[:stripe_error]
   :javascript
