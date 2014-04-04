@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe OrdersController do
+  before { create_expected_video_lengths! }
   describe 'GET #SHOW' do
     describe 'for users without a order_secure_token cookie' do
       it 'creates a new order' do
@@ -19,9 +20,9 @@ describe OrdersController do
         expect(cookies[:order_secure_token]).to eq Order.pluck(:secure_token).first
       end
 
-      it 'sets the default order.video_length to 2 Minutes' do
+      it 'sets the default order.video_length to 1:30-2 Minutes' do
         get :show
-        expect(assigns(:order).video_length).to eq '2 Minutes'
+        expect(assigns(:order).video_length).to eq VideoLength.where(name: '1:30-2 Minutes').first
       end
     end
 
@@ -71,16 +72,18 @@ describe OrdersController do
       expect(order.reload[field]).to eq value
     end
 
-    def self.test_update(field, value)
-      it "updates order.#{field} to be #{value}" do
-        put :update, order: { field => value }
-        expect(order.reload[field]).to eq value
+    def self.test_update(field, name, value = nil)
+      value ||= name
+      it "updates order.#{field} to be #{name}" do
+        val = value.is_a?(Proc) ? instance_exec(&value) : value
+        put :update, order: { field => val }
+        expect(order.reload[field]).to eq val
       end
     end
 
     test_update :project_name, 'New Project Name'
     test_update :instructions, 'Fry the fish at 100 degrees'
-    test_update :video_length, '2 Minutes'
+    test_update :video_length_id, '2-3 Minutes', -> { create(:three_minute_video).id }
     # Card Holder
     test_update :cardholder_name, 'Steve McQueen'
     test_update :cardholder_address, 'One Way USA'
@@ -135,7 +138,7 @@ describe OrdersController do
   describe 'POST #SUBMIT_PAYMENT' do
     before { StripeMock.start }
     after { StripeMock.stop }
-    let!(:order) { create(:order, video_length: '2 Minutes') }
+    let!(:order) { create(:order, video_length: create(:two_minute_video)) }
     before { cookies['order_secure_token'] = order.secure_token }
 
     it 'assigns @order' do
@@ -173,9 +176,9 @@ describe OrdersController do
     end
 
     it 'calls Stripe::Charge with the expected variables' do
-      order.update_attributes(video_length: '2 Minutes', stripe_customer_id: 'Test Customer')
+      order.update_attributes(video_length: create(:three_minute_video), stripe_customer_id: 'Test Customer')
       Stripe::Charge.should_receive(:create).with({
-                                                      amount: 295,
+                                                      amount: 14600,
                                                       currency: 'usd',
                                                       customer: 'Test Customer'
                                                   })

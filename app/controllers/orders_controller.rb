@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @order = find_order_by_cookie
-    @order ||= Order.create! status: Order::Status::DRAFT, video_length: Order::VIDEO_LENGTHS.first
+    @order ||= Order.create! status: Order::Status::DRAFT, video_length: VideoLength.enabled.first
 
     cookies[:order_secure_token] = @order.secure_token
   end
@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
   protected
 
   def order_params
-    params.require(:order).permit(:project_name, :video_length, :instructions, :preparing_for_payment,
+    params.require(:order).permit(:project_name, :video_length_id, :instructions, :preparing_for_payment,
                                   :cardholder_name, :cardholder_address, :cardholder_city, :cardholder_state,
                                   :cardholder_zipcode, :cardholder_email, :cardholder_phone_number,
                                   order_files_attributes: [:original_filename, :uploaded_filename]

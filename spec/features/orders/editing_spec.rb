@@ -2,10 +2,13 @@ require 'spec_helper'
 
 describe 'Editing on the orders page', js: true do
   subject { page }
+  before { create_expected_video_lengths! }
   before { visit '/orders' }
+  let(:four_minute_video) { VideoLength.where(name: '3-4 Minutes').first! }
   describe 'The following fields should save after their value changes ->' do
-    def self.test_update(name, value, &block)
-      it "should update #{name} to equal #{value}" do
+    def self.test_update(name, text, proc = nil, &block)
+      it "should update #{name} to equal #{text}" do
+        value = proc ? instance_exec(&proc) : text
         instance_exec value, &block
         wait_for_ajax
         order = Order.last
@@ -14,8 +17,9 @@ describe 'Editing on the orders page', js: true do
     end
     test_update(:project_name, 'Tofu Wonders') { |v| fill_in :order_project_name, with: v }
     test_update(:instructions, 'Beat the Heat') { |v| fill_in :order_instructions, with: v }
-    test_update(:video_length, '4 Minutes') { |v| find('#order_video_length_4_minutes', visible: false).trigger('click') }
-    #test_update(:video_length, '4 Minutes') { |v| choose(:order_video_length_4_minutes, visible: false) }
+    test_update(:video_length_id, '3-4 Minutes', -> { four_minute_video.id }) do |video_length_id|
+      find("#order_video_length_id_#{video_length_id}", visible: false).trigger('click')
+    end
   end
 
   describe 'When trying to upload files ->' do

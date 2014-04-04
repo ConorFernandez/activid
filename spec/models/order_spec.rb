@@ -14,7 +14,7 @@ describe Order do
 
     it 'validates inclusion of video_length when preparing_for_payment == true' do
       order = build(:order, preparing_for_payment: true)
-      order.should ensure_inclusion_of(:video_length).in_array(Order::VIDEO_LENGTHS)
+      order.should validate_presence_of :video_length_id
     end
   end
 
@@ -39,27 +39,27 @@ describe Order do
 
   describe '#order_cost' do
     it 'returns the cost of an order in pennies based on video_length' do
-      order = create(:order, video_length: '2 Minutes')
-      expect(order.order_cost).to eq Money.new(295, 'USD')
+      order = create(:order, video_length: create(:three_minute_video))
+      expect(order.order_cost).to eq Money.new(14600, 'USD')
     end
 
-    it 'raises an error if video_length is an unknown value' do
-      order = create(:order, video_length: 'No Minutes LOL')
+    it 'raises an error if video_length is nil' do
+      order = create(:order, video_length: nil)
       expect {
         order.order_cost
-      }.to raise_error('Video Length is unexpected! (Got: No Minutes LOL)')
+      }.to raise_error('video_length cannot be nil!')
     end
   end
 
   describe 'Order.video_cost' do
     it 'returns the cost of an order in pennies based on video_length' do
-      expect(Order.video_cost('2 Minutes')).to eq Money.new(295, 'USD')
+      expect(Order.video_cost(create(:three_minute_video))).to eq Money.new(14600, 'USD')
     end
 
-    it 'raises an error if video_length is an unknown value' do
+    it 'raises an error if video_length is nil' do
       expect {
-        expect(Order.video_cost('No Minutes LOL')).to eq Money.new(295, 'USD')
-      }.to raise_error('Video Length is unexpected! (Got: No Minutes LOL)')
+        Order.video_cost(nil)
+      }.to raise_error('video_length cannot be nil!')
     end
   end
 end

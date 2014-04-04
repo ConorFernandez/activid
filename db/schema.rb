@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402002459) do
+ActiveRecord::Schema.define(version: 20140404020232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,7 +146,6 @@ ActiveRecord::Schema.define(version: 20140402002459) do
     t.text     "project_name"
     t.hstore   "files"
     t.text     "instructions"
-    t.string   "video_length"
     t.string   "cardholder_name"
     t.string   "cardholder_address"
     t.string   "cardholder_city"
@@ -161,6 +160,15 @@ ActiveRecord::Schema.define(version: 20140402002459) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stripe_customer_id"
+    t.integer  "video_length_id"
+  end
+
+  create_table "video_lengths", force: true do |t|
+    t.string   "name",                       null: false
+    t.decimal  "cost",                       null: false
+    t.boolean  "enabled",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

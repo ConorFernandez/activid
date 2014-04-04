@@ -48,12 +48,12 @@
           = f.text_area :instructions, class: 'persistent form-control', placeholder: 'Any additional instructions go here.'
       .form-group
         .btn-group.radios
-          - Order::VIDEO_LENGTHS.each do |video_length|
+          - VideoLength.enabled.each do |video_length|
             %label.btn.btn-default
-              = video_length
+              = video_length.name
               %br
               $#{Order.video_cost(video_length)}
-              = f.radio_button :video_length, video_length, class: 'persistent'
+              = f.radio_button :video_length_id, video_length.id, class: 'persistent'
 
 .navigation
   = link_to 'Checkout', checkout_orders_path, class: 'btn btn-default'

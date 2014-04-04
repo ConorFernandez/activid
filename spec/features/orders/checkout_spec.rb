@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe 'The Checkout Page ->', js: true, vcr: true do
   subject { page }
+  before { create_expected_video_lengths! }
   before { visit '/orders'; visit '/orders/checkout' }
 
   it 'I can go back by clicking the Go Back button' do
