@@ -10,7 +10,9 @@
 .row
   .col-md-12
     %form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
-      %h3 Step 2: Upload your raw footage and music
+      %h3 Step 2: Upload Your Files.
+      %p.subtext
+        Add videos, images, songs - any type. No size limit!
       = hidden_field_tag :key, s3_data.key
       = hidden_field_tag 'AWSAccessKeyId', ENV['AWS_ACCESS_KEY']
       = hidden_field_tag :acl, 'private'
