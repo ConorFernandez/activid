@@ -17,7 +17,7 @@ describe 'The Checkout Page ->', js: true, vcr: true do
     fill_in 'Card Number', with: '4242424242424242'
     fill_in 'Card Exp Month', with: '01'
     fill_in 'Card Exp Year', with: '2020'
-    fill_in 'Card CVC', with: '123'
+    fill_in 'CVC', with: '123'
 
     click_button 'Complete Order'
     wait_until { current_path == '/orders/success' }
@@ -30,7 +30,7 @@ describe 'The Checkout Page ->', js: true, vcr: true do
     fill_in 'Card Number', with: '4000000000000002'
     fill_in 'Card Exp Month', with: '01'
     fill_in 'Card Exp Year', with: '2020'
-    fill_in 'Card CVC', with: '123'
+    fill_in 'CVC', with: '123'
 
     click_button 'Complete Order'
     wait_for_ajax

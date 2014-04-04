@@ -46,30 +46,28 @@
             = f.text_field :cardholder_phone_number, class: 'form-control'
 
   .col-md-6
-    %form.form-horizontal
+    %form
       %fieldset
         %legend
           %h3 Credit Card Info
         .form-group
-          %label.control-label.col-sm-4(for='card_number')
+          %label.control-label(for='card_number')
             Card Number
-          .col-sm-8
-            %input#card_number.form-control(type='text' placeholder='Credit Card Number')
+          %input#card_number.form-control(type='text' placeholder='Credit Card Number')
         .form-group
-          %label.control-label.col-sm-4(for='card_exp_month')
-            Card Exp Month
-          .col-sm-8
-            %input#card_exp_month.form-control(type='text' placeholder='MM')
-        .form-group
-          %label.control-label.col-sm-4(for='card_exp_year')
-            Card Exp Year
-          .col-sm-8
-            %input#card_exp_year.form-control(type='text' placeholder='YYYY')
-        .form-group
-          %label.control-label.col-sm-4(for='card_cvc')
-            Card CVC
-          .col-sm-8
-            %input#card_cvc.form-control(type='text' placeholder='CVC')
+          %label.control-label.hidden.col-sm-4(for='card_exp_month') Card Exp Month
+          %label.control-label.hidden.col-sm-4(for='card_exp_year') Card Exp Year
+          .row
+            .col-md-6
+              %label Expiration date
+              .row
+                .col-sm-4
+                  %input#card_exp_month.form-control(type='text' placeholder='MM')
+                .col-sm-4
+                  %input#card_exp_year.form-control(type='text' placeholder='YYYY')
+            .col-md-2.col-md-offset-4
+              %label.control-label(for='card_cvc') CVC
+              %input#card_cvc.form-control(type='text' placeholder='CVC')
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
