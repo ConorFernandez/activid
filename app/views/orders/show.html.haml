@@ -53,7 +53,7 @@
           = f.text_area :instructions, class: 'persistent form-control', placeholder: 'Any additional instructions go here.'
       .form-group
         %h3 Step 4: How Long Should Your Video Be?
-        .btn-group.radios
+        .btn-group.radios.video_lengths
           - VideoLength.enabled.each do |video_length|
             %label.btn.btn-default
               = video_length.name
