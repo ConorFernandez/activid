@@ -1,10 +1,11 @@
 = provide(:page_title, 'Order Information')
+- provide(:body_class, 'orders')
 .row
   .col-md-6
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
         = f.label :project_name do
-          %h3 Step 1: Give your project a name
+          %h3 Step 1: Give your project a name.
           = f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name'
 
 .row
@@ -46,7 +47,7 @@
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
         = f.label :instructions do
-          %h3 Step 3: Give us any additional instructions
+          %h3 Step 3: Give us any additional instructions.
           %p.subtext
             Please include any details you'd like to see incorporated into your video.
             Feel free to be as brief or as detailed as you would like.
