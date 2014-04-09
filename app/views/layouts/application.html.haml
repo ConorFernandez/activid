@@ -12,10 +12,6 @@
         .container
           .navbar-header
             = link_to 'ActiVid', root_path, class: 'navbar-brand'
-          %ul.nav.navbar-nav
-            - if current_page_title
-              %li
-                =link_to current_page_title
           %ul.nav.navbar-nav.navbar-right
             %li
               .ajax-spinner.inactive
