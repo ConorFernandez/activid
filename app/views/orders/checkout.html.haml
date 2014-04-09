@@ -1,7 +1,11 @@
 = provide(:page_title, 'Checkout')
-%h1 Summary
+- provide(:body_class, 'checkout')
 
-%h4 #{@order.video_length.name} - $#{@order.order_cost}
+.order-info
+  %h1 Summary
+
+  %h4 #{@order.video_length.name} - $#{@order.order_cost}
+
 
 .row
   .col-md-12
