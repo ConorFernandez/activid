@@ -53,6 +53,9 @@
             Please include any details you'd like to see incorporated into your video.
             Feel free to be as brief or as detailed as you would like.
           = f.text_area :instructions, class: 'persistent form-control', placeholder: 'Any additional instructions go here.'
+.row.step
+  .col-md-6
+    = form_for @order, url: orders_path, remote: true do |f|
       .form-group
         %h3 Step 4: How Long Should Your Video Be?
         .btn-group.radios.video_lengths
