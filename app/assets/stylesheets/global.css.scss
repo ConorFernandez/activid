@@ -9,7 +9,7 @@ a.disabled {
 }
 
 header {
-  height: 70px;
+  height: 51px;
 }
 
 footer {
@@ -33,10 +33,6 @@ footer {
   &:before {
     content: "> ";
   }
-}
-
-.we-are-awesome {
-  margin-bottom: 25px;
 }
 
 .ajax-spinner {
