@@ -5,6 +5,10 @@
   h3 {
     text-transform: uppercase;
   }
+
+  .step {
+    margin-bottom: 2in; // Client wants "2 inches" of whitespaces between each step...
+  }
 }
 .attached-files {
   margin-top: 10px;

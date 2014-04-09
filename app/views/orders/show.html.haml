@@ -1,6 +1,6 @@
 = provide(:page_title, 'Order Information')
 - provide(:body_class, 'orders')
-.row
+.row.step
   .col-md-6
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
@@ -8,7 +8,7 @@
           %h3 Step 1: Give your project a name.
           = f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name'
 
-.row
+.row.step
   .col-md-6
     %form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
       %h3 Step 2: Upload Your Files.
@@ -42,7 +42,7 @@
       %p.subtext
         Your files will take some time to upload. No need to sit here watching them - just come back to this page when they're finished!
 
-.row
+.row.step
   .col-md-6
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
@@ -62,7 +62,7 @@
               $#{Order.video_cost(video_length)}
               = f.radio_button :video_length_id, video_length.id, class: 'persistent'
 
-.navigation
+.navigation.step
   = link_to checkout_orders_path, class: 'btn btn-default' do
     Proceed to Checkout
     %span.glyphicon.glyphicon-chevron-right
