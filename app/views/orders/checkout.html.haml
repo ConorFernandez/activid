@@ -11,8 +11,9 @@
   .col-md-12
     .errors-container(style='display: none;')
       %h2 The following errors occurred trying to process your payment:
-      .payment-errors= flash[:stripe_error]
-      .order-errors
+      .alert.alert-danger
+        .payment-errors= flash[:stripe_error]
+        .order-errors
 .row
   .col-md-6
     = form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f|
