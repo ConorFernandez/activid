@@ -30,6 +30,10 @@
     color: white;
 
     height: 768px - 50px; // Note: has to match image height of fixed position wide-image, minus 50px for the navbar.
+
+    .btn {
+      margin-top: 2in; // Client is using "in" as measurements.
+    }
   }
 
   .wide-image {
