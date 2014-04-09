@@ -10,12 +10,12 @@
 
 .row.step
   .col-md-6
-    %form.fileupload(action="https://#{ENV['S3_BUCKET']}.s3.amazonaws.com" enctype='multipart/form-data')
+    %form.fileupload(action="https://#{Rails.application.secrets.s3_bucket}.s3.amazonaws.com" enctype='multipart/form-data')
       %h3 Step 2: Upload Your Files.
       %p.subtext
         Add videos, images, songs - any type. No size limit!
       = hidden_field_tag :key, s3_data.key
-      = hidden_field_tag 'AWSAccessKeyId', ENV['AWS_ACCESS_KEY']
+      = hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key
       = hidden_field_tag :acl, 'private'
       = hidden_field_tag :policy, s3_data.policy
       = hidden_field_tag :signature, s3_data.signature

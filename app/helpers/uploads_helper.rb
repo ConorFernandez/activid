@@ -13,7 +13,7 @@ module UploadsHelper
         {
             expiration: 24.hours.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
             conditions: [
-                            { bucket: ENV['S3_BUCKET'] },
+                            { bucket: Rails.application.secrets.s3_bucket },
                             { acl: 'private' },
                             ["starts-with", "$key", "uploads/"],
                             { success_action_status: '201' }
@@ -27,7 +27,7 @@ module UploadsHelper
     Base64.encode64(
         OpenSSL::HMAC.digest(
             OpenSSL::Digest.new('sha1'),
-            ENV['AWS_SECRET_KEY'],
+            Rails.application.secrets.aws_secret_key,
             s3_upload_policy_document
         )
     ).gsub(/\n/, '')

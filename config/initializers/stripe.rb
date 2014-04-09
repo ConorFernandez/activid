@@ -1,4 +1,1 @@
-STRIPE_SECRET_KEY = ENV['STRIPE_SECRET_KEY']
-STRIPE_PUBLISHABLE_KEY = ENV['STRIPE_PUBLISHABLE_KEY']
-
-Stripe.api_key = STRIPE_SECRET_KEY
+Stripe.api_key = Rails.application.secrets[:stripe_secret_key]
