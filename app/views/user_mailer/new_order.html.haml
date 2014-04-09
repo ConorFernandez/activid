@@ -1,0 +1,12 @@
+%p Your ActiVid order has been received and will be processed shortly.
+%p Here are the details of your order:
+
+%p Invoice #{@order.secure_token}
+%p Purchase: #{@order.video_length.name}, $#{@order.order_cost}
+%p
+  Files:
+  - @order.order_files.each do |order_file|
+    = order_file.original_filename
+    %br
+%p Please contact conor@activid.co if you have any questions or issues concerning this purchase.
+%p Thank you for your purchase.

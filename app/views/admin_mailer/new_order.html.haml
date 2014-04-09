@@ -1,0 +1,31 @@
+%p Hello,
+
+%p #{@order.cardholder_name} (#{@order.cardholder_email}) has placed a new order!
+
+%p
+  Order details:
+  %br
+  Plan: #{@order.video_length.name}, $#{@order.order_cost}
+  %br
+  Project Name: #{@order.project_name}
+  %br
+  Project Files:
+  - @order.order_files.each do |order_file|
+    = "activid/#{@order.secure_token}/#{order_file.uploaded_filename}"
+    %br
+  %br
+  Additional Instructions: #{@order.instructions}
+
+%p
+  Their contact details:
+  Name: #{@order.cardholder_name}
+  %br
+  Address: #{@order.cardholder_address}
+  %br
+  State: #{@order.cardholder_state}
+  %br
+  Zipcode: #{@order.cardholder_zipcode}
+  %br
+  Email: #{@order.cardholder_email}
+  %br
+  Phone Number: #{@order.cardholder_phone_number}

@@ -44,6 +44,10 @@ class OrdersController < ApplicationController
     )
     @order.update_attributes(status: Order::Status::PAID)
     cookies.delete :order_secure_token
+
+    AdminMailer.new_order(@order).deliver
+    UserMailer.new_order(@order).deliver
+
     redirect_to success_orders_path
 
   rescue Stripe::StripeError => se

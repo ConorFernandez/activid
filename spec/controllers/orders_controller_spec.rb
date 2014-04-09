@@ -138,7 +138,9 @@ describe OrdersController do
   describe 'POST #SUBMIT_PAYMENT' do
     before { StripeMock.start }
     after { StripeMock.stop }
-    let!(:order) { create(:order, video_length: create(:two_minute_video)) }
+    let!(:order) { create(:order,
+                          cardholder_email: 'steve@gmail.com',
+                          video_length: create(:two_minute_video)) }
     before { cookies['order_secure_token'] = order.secure_token }
 
     it 'assigns @order' do
@@ -205,6 +207,16 @@ describe OrdersController do
     it 'destroys order_secure_token cookie' do
       post :submit_payment, stripe_token: 'card_void_token'
       expect(cookies['order_secure_token']).to be_nil
+    end
+
+    it 'calls AdminMailer.new_order with the current order' do
+      AdminMailer.should_receive(:new_order).with(order).and_call_original
+      post :submit_payment, stripe_token: 'card_void_token'
+    end
+
+    it 'calls UserMailer.new_order with the current order' do
+      UserMailer.should_receive(:new_order).with(order).and_call_original
+      post :submit_payment, stripe_token: 'card_void_token'
     end
   end
 end
