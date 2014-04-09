@@ -201,5 +201,10 @@ describe OrdersController do
       post :submit_payment, stripe_token: 'card_void_token'
       expect(flash[:stripe_error]).to eq 'The card was declined'
     end
+
+    it 'destroys order_secure_token cookie' do
+      post :submit_payment, stripe_token: 'card_void_token'
+      expect(cookies['order_secure_token']).to be_nil
+    end
   end
 end

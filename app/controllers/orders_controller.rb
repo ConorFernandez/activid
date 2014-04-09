@@ -43,6 +43,7 @@ class OrdersController < ApplicationController
         customer: @order.stripe_customer_id
     )
     @order.update_attributes(status: Order::Status::PAID)
+    cookies.delete :order_secure_token
     redirect_to success_orders_path
 
   rescue Stripe::StripeError => se
