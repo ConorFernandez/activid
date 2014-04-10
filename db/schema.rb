@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404020232) do
+ActiveRecord::Schema.define(version: 20140410001715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,16 @@ ActiveRecord::Schema.define(version: 20140404020232) do
   add_index "cms_snippets", ["site_id", "identifier"], name: "index_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
   add_index "cms_snippets", ["site_id", "position"], name: "index_cms_snippets_on_site_id_and_position", using: :btree
 
+  create_table "coupons", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.decimal  "discount"
+    t.boolean  "enabled"
+    t.integer  "use_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_files", force: true do |t|
     t.string   "original_filename"
     t.string   "uploaded_filename"
@@ -161,6 +171,7 @@ ActiveRecord::Schema.define(version: 20140404020232) do
     t.datetime "updated_at"
     t.string   "stripe_customer_id"
     t.integer  "video_length_id"
+    t.integer  "coupon_id"
   end
 
   create_table "video_lengths", force: true do |t|

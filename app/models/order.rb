@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
   attr_accessor :preparing_for_payment
   has_many :order_files
   belongs_to :video_length
+  belongs_to :coupon
 
   accepts_nested_attributes_for :order_files
   validates :secure_token, presence: true
