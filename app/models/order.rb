@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
 
   # Returns Order Cost as a Money object.
   def order_cost
-    Order.video_cost(video_length)
+    Order.video_cost(video_length, coupon)
   end
 
   protected
