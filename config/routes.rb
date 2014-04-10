@@ -1,5 +1,6 @@
 Activid::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/backoffice', as: 'rails_admin'
   comfy_route :cms_admin, :path => '/admin'
 
   resource :orders do
