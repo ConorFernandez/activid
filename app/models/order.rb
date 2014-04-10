@@ -20,9 +20,13 @@ class Order < ActiveRecord::Base
     status == Status::PAID
   end
 
-  def self.video_cost(video_length)
+  def self.video_cost(video_length, coupon = nil)
     raise 'video_length cannot be nil!' unless video_length
-    Money.new video_length.cost * 100, 'USD'
+    video_cost = video_length.cost * 100
+    coupon_discount = coupon ? coupon.discount * 100 : 0
+    final_cost = video_cost - coupon_discount
+    final_cost = 0 if final_cost < 0
+    Money.new final_cost
   end
 
   # Returns Order Cost as a Money object.

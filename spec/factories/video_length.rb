@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :video_length do
-
+    name 'No Name Video'
   end
 
   factory :two_minute_video, parent: :video_length do

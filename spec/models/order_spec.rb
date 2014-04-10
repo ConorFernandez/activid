@@ -61,5 +61,24 @@ describe Order do
         Order.video_cost(nil)
       }.to raise_error('video_length cannot be nil!')
     end
+
+    describe 'accepts a coupon' do
+      it 'and applies its discount' do
+        video_length = create(:video_length, cost: 20.00)
+        coupon = create(:coupon, discount: 10.00)
+        cost = Order.video_cost(video_length, coupon)
+
+        expect(cost).to eq Money.new(1000, 'USD')
+      end
+
+      it 'does not go into the negative' do
+        video_length = create(:video_length, cost: 5.00)
+        coupon = create(:coupon, discount: 10.00)
+        cost = Order.video_cost(video_length, coupon)
+
+        expect(cost).to eq Money.new(0, 'USD')
+      end
+    end
+
   end
 end
