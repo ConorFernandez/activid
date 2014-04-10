@@ -38,5 +38,5 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [Order, OrderFile]
+  config.included_models = [Order, OrderFile, Coupon]
 end
