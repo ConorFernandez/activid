@@ -7,28 +7,29 @@
     %script(type='text/javascript' src='https://js.stripe.com/v2/')
     = csrf_meta_tags
   %body(class="#{content_for(:body_class)}")
-    %header
-      %nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
-        .container
-          .navbar-header
-            = link_to 'ActiVid', root_path, class: 'navbar-brand'
-          %ul.nav.navbar-nav.navbar-right
-            %li
-              .ajax-spinner.inactive
-                = image_tag 'ajax-spinner.gif'
-    .container
-      - if @cms_page
-        .row
-          .col-md-6=yield
-      - else
-        = yield
-
-    %footer
+    #container
+      %header
+        %nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+          .container
+            .navbar-header
+              = link_to 'ActiVid', root_path, class: 'navbar-brand'
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                .ajax-spinner.inactive
+                  = image_tag 'ajax-spinner.gif'
       .container
-        %nav.text-center
-          - if cms_site
-            - cms_info_pages.each do |page|
-              = link_to page.label, page.full_path
+        - if @cms_page
+          .row
+            .col-md-6=yield
+        - else
+          = yield
+
+      %footer
+        .container
+          %nav.text-center
+            - if cms_site
+              - cms_info_pages.each do |page|
+                = link_to page.label, page.full_path
 
     :javascript
       Stripe.setPublishableKey(#{Rails.application.secrets.stripe_publishable_key.to_json})

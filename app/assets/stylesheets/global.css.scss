@@ -4,6 +4,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+html, body {
+  height: 100%;
+}
+
 a.disabled {
   pointer-events: none;
 }
@@ -19,6 +23,10 @@ footer {
 
   background-color: #232323;
 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
   a {
     font-size: 18px;
     color: #2A92E5;
@@ -26,6 +34,15 @@ footer {
 
   a ~ a {
     margin-left: 15px;
+  }
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
+
+  & > .container {
+    padding-bottom: 100px;
   }
 }
 
