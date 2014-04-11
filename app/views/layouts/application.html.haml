@@ -13,10 +13,11 @@
           .container
             .navbar-header
               = link_to 'ActiVid', root_path, class: 'navbar-brand'
-            %ul.nav.navbar-nav.navbar-right
-              %li
-                .ajax-spinner.inactive
-                  = image_tag 'ajax-spinner.gif'
+            .collapse.navbar-collapse
+              %ul.nav.navbar-nav.navbar-right
+                %li
+                  .ajax-spinner.inactive
+                    = image_tag 'ajax-spinner.gif'
       .container
         - if @cms_page
           .row
