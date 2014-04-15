@@ -219,4 +219,40 @@ describe OrdersController do
       post :submit_payment, stripe_token: 'card_void_token'
     end
   end
+
+  describe 'POST #ATTACH_COUPON' do
+    let!(:order)  { create :order }
+    let!(:coupon) { create :coupon, code: 'NASA', name: 'NASA Coupon Centre', discount: 5.00 }
+    before { cookies['order_secure_token'] = order.secure_token }
+
+    it 'attaches a coupon to an order' do
+      post :attach_coupon, coupon: { code: 'NASA' }
+      expect(order.reload.coupon).to eq coupon
+    end
+
+    describe 'when responding to a successful request' do
+      before { post :attach_coupon, coupon: { code: 'NASA'} }
+
+      it { expect(response.status).to eq 200 }
+      it 'has a JSON body with the discount for 200 OK response' do
+        json = JSON.parse(response.body)
+        expect(json).to eq({
+          'name' => 'NASA Coupon Centre',
+          'discount' => '5.0'
+        })
+      end
+    end
+
+    describe 'when responding to a failed request' do
+      before { post :attach_coupon, coupon: { code: nil } }
+      it { expect(response.status).to eq 400 }
+      it 'has a JSON body with errors for a 400 BAD REQUEST response' do
+        post :attach_coupon, coupon: { code: 'INVALID' }
+        json = JSON.parse(response.body)
+        expect(json).to eq({
+            'error' => 'Coupon code not found'
+        })
+      end
+    end
+  end
 end

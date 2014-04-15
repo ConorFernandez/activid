@@ -55,6 +55,24 @@ class OrdersController < ApplicationController
     redirect_to checkout_orders_path
   end
 
+
+  def attach_coupon
+    coupon = Coupon.where(code: coupon_params[:code]).first
+    if coupon
+      order = find_order_by_cookie
+      order.coupon = coupon
+      order.save!
+      render json: {
+          name: coupon.name,
+          discount: coupon.discount
+      }
+    else
+      render json: {
+          error: 'Coupon code not found'
+      }, status: 400
+    end
+  end
+
   protected
 
   def order_params
@@ -63,6 +81,10 @@ class OrdersController < ApplicationController
                                   :cardholder_zipcode, :cardholder_email, :cardholder_phone_number,
                                   order_files_attributes: [:original_filename, :uploaded_filename]
     )
+  end
+
+  def coupon_params
+    params.require(:coupon).permit(:code)
   end
 
   def find_order_by_cookie

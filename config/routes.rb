@@ -8,6 +8,7 @@ Activid::Application.routes.draw do
       get :checkout
       get :success
       post :submit_payment
+      post :attach_coupon
     end
   end
 
