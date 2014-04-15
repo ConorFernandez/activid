@@ -4,13 +4,26 @@
 .order-info
   %h1 Summary
 
-  %h4 #{@order.video_length.name} - $#{@order.order_cost}
+  #order-cost
+    - if @order.coupon
+      %h4
+        #{@order.video_length.name} -
+        %s= number_to_currency @order.video_length.cost
+      %h4
+        \-
+        = number_to_currency @order.coupon.discount
+        (#{@order.coupon.name})
+      %h4
+        \=
+        = @order.order_cost
+    - else
+      %h4 #{@order.video_length.name} - $#{@order.order_cost}
 
 
 .row
   .col-md-12
     .errors-container(style='display: none;')
-      %h2 The following errors occurred trying to process your payment:
+      %h2 The following errors occurred trying to process your order:
       .alert.alert-danger
         .payment-errors= flash[:stripe_error]
         .order-errors
@@ -69,6 +82,17 @@
               %label.control-label(for='card_cvc') CVC
               %input#card_cvc.form-control(type='text' placeholder='CVC')
 
+    .coupon-container
+      - unless @order.coupon
+        = form_for :coupon, url: attach_coupon_orders_path, remote: true, html: { id: 'coupon_form' } do |f|
+          .form-group
+            = f.label :code, 'Coupon Code'
+            = f.text_field :code, class: 'form-control'
+          = f.submit 'Use Coupon', class: 'btn btn-default'
+
+      - if @order.coupon
+        %p You are using the coupon '#{@order.coupon.name}' for this purchase.
+
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
 
@@ -86,3 +110,18 @@
 - if flash[:stripe_error]
   :javascript
     $('.errors-container').show();
+
+:javascript
+  var order = {
+    name: '#{@order.video_length.name}',
+    cost: #{@order.order_cost.to_f},
+    old_cost: #{@order.video_length.cost.to_f}
+  };
+
+:plain
+  <script id="discount" type="text/x-mustache">
+    <h4>{{order_name}} - <s>${{old_cost}}</s></h4>
+    <h4>- ${{coupon_discount}} ({{coupon_name}})</h4>
+    <h4>= ${{final_total}}</h4>
+  </script>
+

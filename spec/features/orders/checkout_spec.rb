@@ -72,4 +72,31 @@ describe 'The Checkout Page ->', js: true, vcr: true do
     expect(page).to have_text 'Your card number is incorrect'
   end
 
+  describe 'Coupons -->' do
+    let!(:coupon) { create :coupon, code: 'NASA', name: 'NASA Coupon Centre', discount: 5.00, enabled: true }
+
+    it 'I can attach a coupon to an order' do
+      within('#coupon_form') do
+        fill_in 'coupon_code', with: 'NASA'
+        click_button 'Use Coupon'
+      end
+      expect(page).to have_text '- $5.00 (NASA Coupon Centre)'
+      expect(page).to have_text '= $90.00'
+    end
+
+    it 'I can see an error message if I supply an invalid coupon code' do
+      within('#coupon_form') do
+        fill_in 'coupon_code', with: 'Quackers Big Day'
+        click_button 'Use Coupon'
+      end
+      expect(page).to have_text 'Coupon code not found'
+    end
+
+    it 'I can see a message if I have already used a coupon for this order' do
+      Order.last.update_attributes(coupon: coupon)
+      visit '/orders/checkout'
+
+      expect(page).to have_text "You are using the coupon 'NASA Coupon Centre' for this purchase."
+    end
+  end
 end
