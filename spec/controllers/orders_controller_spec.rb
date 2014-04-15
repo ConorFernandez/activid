@@ -222,12 +222,18 @@ describe OrdersController do
 
   describe 'POST #ATTACH_COUPON' do
     let!(:order)  { create :order }
-    let!(:coupon) { create :coupon, code: 'NASA', name: 'NASA Coupon Centre', discount: 5.00 }
+    let!(:coupon) { create :coupon, code: 'NASA', name: 'NASA Coupon Centre', discount: 5.00, enabled: true }
     before { cookies['order_secure_token'] = order.secure_token }
 
     it 'attaches a coupon to an order' do
       post :attach_coupon, coupon: { code: 'NASA' }
       expect(order.reload.coupon).to eq coupon
+    end
+
+    it 'only attaches enabled coupons to an order' do
+      create(:coupon, code: 'MEAT')
+      post :attach_coupon, coupon: { code: 'MEAT' }
+      expect(order.reload.coupon).to be_blank
     end
 
     describe 'when responding to a successful request' do

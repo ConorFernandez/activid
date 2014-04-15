@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
 
 
   def attach_coupon
-    coupon = Coupon.where(code: coupon_params[:code]).first
+    coupon = Coupon.enabled.where(code: coupon_params[:code]).first
     if coupon
       order = find_order_by_cookie
       order.coupon = coupon
