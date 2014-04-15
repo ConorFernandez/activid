@@ -86,9 +86,11 @@
       - unless @order.coupon
         = form_for :coupon, url: attach_coupon_orders_path, remote: true, html: { id: 'coupon_form' } do |f|
           .form-group
-            = f.label :code, 'Coupon Code'
-            = f.text_field :code, class: 'form-control'
-          = f.submit 'Use Coupon', class: 'btn btn-default'
+            = f.label :code, 'Got an ActiVid credit code?  Enter it below:'
+            .row
+              .col-md-4
+                = f.text_field :code, class: 'form-control'
+          = f.submit 'Use Coupon', class: 'btn btn-default', placeholder: 'Coupon code'
 
       - if @order.coupon
         %p You are using the coupon '#{@order.coupon.name}' for this purchase.
