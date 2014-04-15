@@ -64,7 +64,8 @@ class OrdersController < ApplicationController
       order.save!
       render json: {
           name: coupon.name,
-          discount: coupon.discount
+          discount: coupon.discount.to_f,
+          new_order_cost: order.order_cost.to_f
       }
     else
       render json: {

@@ -221,7 +221,7 @@ describe OrdersController do
   end
 
   describe 'POST #ATTACH_COUPON' do
-    let!(:order)  { create :order }
+    let!(:order)  { create :order, video_length: create(:two_minute_video) }
     let!(:coupon) { create :coupon, code: 'NASA', name: 'NASA Coupon Centre', discount: 5.00, enabled: true }
     before { cookies['order_secure_token'] = order.secure_token }
 
@@ -244,7 +244,8 @@ describe OrdersController do
         json = JSON.parse(response.body)
         expect(json).to eq({
           'name' => 'NASA Coupon Centre',
-          'discount' => '5.0'
+          'discount' => 5.0,
+          'new_order_cost' => 90.0
         })
       end
     end
