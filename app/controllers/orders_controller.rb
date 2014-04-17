@@ -58,19 +58,17 @@ class OrdersController < ApplicationController
 
   def attach_coupon
     coupon = Coupon.enabled.where(code: coupon_params[:code]).first
-    if coupon
+    if coupon && coupon.is_usable?
       order = find_order_by_cookie
       order.coupon = coupon
       order.save!
-      render json: {
-          name: coupon.name,
-          discount: coupon.discount.to_f,
-          new_order_cost: order.order_cost.to_f
-      }
+      render_coupon(coupon, order)
     else
-      render json: {
-          error: 'Coupon code not found'
-      }, status: 400
+      if coupon.blank?
+        render_coupon_error 'Coupon code not found'
+      elsif !coupon.is_usable?
+        render_coupon_error 'Coupon code is no longer available'
+      end
     end
   end
 
@@ -92,5 +90,19 @@ class OrdersController < ApplicationController
     secure_token = cookies[:order_secure_token]
     return nil if secure_token.blank?
     Order.where(secure_token: secure_token).first
+  end
+
+  def render_coupon_error(error)
+    render json: {
+        error: error
+    }, status: 400
+  end
+
+  def render_coupon(coupon, order)
+    render json: {
+        name: coupon.name,
+        discount: coupon.discount.to_f,
+        new_order_cost: order.order_cost.to_f
+    }
   end
 end

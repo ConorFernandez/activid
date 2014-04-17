@@ -74,6 +74,7 @@ describe 'The Checkout Page ->', js: true, vcr: true do
 
   describe 'Coupons -->' do
     let!(:coupon) { create :coupon, code: 'NASA', name: 'NASA Coupon Centre', discount: 5.00, enabled: true }
+    let!(:unusable_coupon) { create :coupon, code: 'FREE', name: 'Free Coupon', discount: 100.00, enabled: true, use_count: 0 }
 
     it 'I can attach a coupon to an order' do
       within('#coupon_form') do
@@ -90,6 +91,14 @@ describe 'The Checkout Page ->', js: true, vcr: true do
         click_button 'Use Coupon'
       end
       expect(page).to have_text 'Coupon code not found'
+    end
+
+    it 'I can see an error message if the coupon I want to use is unavailable' do
+      within('#coupon_form') do
+        fill_in 'coupon_code', with: 'FREE'
+        click_button 'Use Coupon'
+      end
+      expect(page).to have_text 'Coupon code is no longer available'
     end
 
     it 'I can see a message if I have already used a coupon for this order' do

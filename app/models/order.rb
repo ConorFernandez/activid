@@ -16,6 +16,8 @@ class Order < ActiveRecord::Base
   validates :video_length_id, presence: true, if: :preparing_for_payment?
   before_validation :generate_secure_token
 
+  scope :paid, -> { where(status: Order::Status::PAID) }
+
   def paid?
     status == Status::PAID
   end

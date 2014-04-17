@@ -236,6 +236,33 @@ describe OrdersController do
       expect(order.reload.coupon).to be_blank
     end
 
+    describe 'when handling Coupon#use_count' do
+      let!(:coupon) { create(:coupon, code: 'LIMITED', enabled: true, use_count: 2, discount: 5.00) }
+      it 'attaches coupons when Coupon#use_count is less than the number of times the coupon has been used' do
+        post :attach_coupon, coupon: { code: 'LIMITED' }
+        expect(order.reload.coupon).to be_present
+      end
+
+      it 'does not attach a coupon when it has been used more times than its #use_count' do
+        2.times { create(:order, coupon: coupon, status: Order::Status::PAID) }
+        post :attach_coupon, coupon: { code: 'LIMITED' }
+        expect(order.reload.coupon).to be_blank
+      end
+
+      describe 'when responding to a failed request' do
+        before { 2.times { create :order, status: Order::Status::PAID, coupon: coupon } }
+        before { post :attach_coupon, coupon: { code: 'LIMITED' } }
+        it { expect(response.status).to eq 400 }
+        it 'has a JSON body with errors for a 400 BAD REQUEST response' do
+          json = JSON.parse(response.body)
+          expect(json).to eq({
+                                 'error' => 'Coupon code is no longer available'
+                             })
+        end
+      end
+    end
+
+
     describe 'when responding to a successful request' do
       before { post :attach_coupon, coupon: { code: 'NASA'} }
 

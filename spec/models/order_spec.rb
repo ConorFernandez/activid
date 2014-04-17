@@ -18,6 +18,16 @@ describe Order do
     end
   end
 
+  describe 'scopes' do
+    it '#paid should only return orders with status: PAID' do
+      paid_order = create :order, status: Order::Status::PAID
+      create :order, status: Order::Status::DRAFT
+      create :order
+
+      expect(Order.paid.to_a).to eq [paid_order]
+    end
+  end
+
   describe 'secure tokens' do
     it 'should generate a secure token before save' do
       order = Order.create! status: 'footie PJs'
