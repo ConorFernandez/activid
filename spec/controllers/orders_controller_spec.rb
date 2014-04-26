@@ -170,6 +170,12 @@ describe OrdersController do
       post :submit_payment, stripe_token: 'card_void_token'
     end
 
+    it 'does not charge a customer if their order_cost is 0' do
+      order.update_attributes coupon: create(:coupon, discount: order.order_cost.to_f)
+      Stripe::Charge.should_not_receive(:create)
+      post :submit_payment, stripe_token: 'card_void_token'
+    end
+
     it 'redirects to /success if Order#status ia already Order::Status::PAID' do
       order.update_attributes(status: Order::Status::PAID)
       Stripe::Charge.should_not_receive(:create)
