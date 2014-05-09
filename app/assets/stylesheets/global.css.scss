@@ -32,8 +32,40 @@ footer {
     color: #2A92E5;
   }
 
-  a ~ a {
+  nav a ~ a {
     margin-left: 15px;
+  }
+
+  .social {
+    float: right;
+
+    a {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      text-indent: -5000px;
+      background: url(social-icons-sprite.png) no-repeat center center;
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    .facebook {
+      background-position: 0 center;
+    }
+    .twitter {
+      background-position: -32px center;
+    }
+    .instagram {
+      background-position: -64px center;
+    }
+    .youtube {
+      background-position: -96px center;
+    }
+    .vimeo {
+      background-position: -128px center;
+    }
   }
 }
 
