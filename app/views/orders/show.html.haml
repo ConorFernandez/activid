@@ -13,7 +13,7 @@
     %form.fileupload(action="https://#{Rails.application.secrets.s3_bucket}.s3.amazonaws.com" enctype='multipart/form-data')
       %h3 Step 2: Upload Your Files.
       %p.subtext
-        Add videos, images, songs - any type. No size limit!
+        Your files will take some time to upload. No need to sit here watching them &emdash; just leave this page open and come back when they're finished!
       = hidden_field_tag :key, s3_data.key
       = hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key
       = hidden_field_tag :acl, 'private'
@@ -42,6 +42,16 @@
       %p.subtext
         %em
           Your files will take some time to upload. No need to sit here watching them - just come back to this page when they're finished!
+  .col-md-1
+  .col-md-5.tip
+    %p
+      Pro Tip: When uploading video files, make sure you're on a strong
+      internet connection. A wired connection is best, but if you're on
+      wireless, use the
+      = link_to "Speedtest", "http://www.speedtest.net"
+      to make sure your upload speed is above
+      %b 15 Mbps
+      \.
 
 .row.step
   .col-md-6
@@ -51,7 +61,7 @@
           %h3 Step 3: Give us any additional instructions.
           %p.subtext
             Please include any details you'd like to see incorporated into your video.
-            Feel free to be as brief or as detailed as you would like.
+            Feel free to be as brief or as detailed as you would like. If there's a song or musical genre you want your video set to, let us know. You can also leave the song picking to us!
           = f.text_area :instructions, class: 'persistent form-control', placeholder: 'Any additional instructions go here.'
 .row.step
   .col-md-6
@@ -67,6 +77,7 @@
               = f.radio_button :video_length_id, video_length.id, class: 'persistent'
 
 .navigation.step
+  %h3 Step 5: Check out
   = link_to checkout_orders_path, class: 'btn btn-default' do
     Proceed to Checkout
     %span.glyphicon.glyphicon-chevron-right

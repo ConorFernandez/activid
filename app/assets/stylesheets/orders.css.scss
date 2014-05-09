@@ -12,6 +12,9 @@
 
   .step {
     margin-bottom: 40px; // Client wants "2 inches" of whitespaces between each step...
+    .tip {
+      padding-top: 56px;
+    }
   }
 }
 .attached-files {
