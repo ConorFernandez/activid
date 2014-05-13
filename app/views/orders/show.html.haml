@@ -13,7 +13,7 @@
     %form.fileupload(action="https://#{Rails.application.secrets.s3_bucket}.s3.amazonaws.com" enctype='multipart/form-data')
       %h3 Step 2: Upload Your Files.
       %p.subtext
-        Your files will take some time to upload. No need to sit here watching them &emdash; just leave this page open and come back when they're finished!
+        Your files will take some time to upload. No need to sit here watching them &mdash; just leave this page open and come back when they're finished!
       = hidden_field_tag :key, s3_data.key
       = hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key
       = hidden_field_tag :acl, 'private'
