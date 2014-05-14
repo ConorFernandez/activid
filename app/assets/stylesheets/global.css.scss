@@ -44,7 +44,7 @@ footer {
       height: 32px;
       display: inline-block;
       text-indent: -5000px;
-      background: url(social-icons-sprite.png) no-repeat center center;
+      background: asset-url("social-icons-sprite.png") no-repeat center center;
     }
 
     a:hover {
