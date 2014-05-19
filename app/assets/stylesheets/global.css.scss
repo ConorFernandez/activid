@@ -14,6 +14,17 @@ a.disabled {
 
 header {
   height: 51px;
+
+  a.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 5px 0;
+    background-image: asset-url("activid-logo-144x40.png");
+    width: 144px;
+    height: 40px;
+    display: block;
+    text-indent: -4000px;
+  }
 }
 
 footer {
@@ -109,4 +120,8 @@ footer {
 
 .errors-container {
   margin: 40px 0;
+}
+
+hr {
+  border-color: #8a8c8e;
 }

@@ -15,52 +15,59 @@
     %a.right.carousel-control(href='#homepage-carousel' data-slide='next')
       %span.glyphicon.glyphicon-chevron-right
 
-.jumbotron.text-center
-  %h1 You film, we edit.
-  %p Transform your raw footage into a beautifully edited video.
-  %p.text-center= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started'
+.jumbotron
+  .inner
+    %h1
+      You film
+      %br/
+      We edit
+    %p
+      Transform your raw footage
+      %br/
+      into a beautifully edited video.
+    %p= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started'
 
 .row
   .col-md-12
     .we-are-awesome
       %h2.text-center
         We create amazing videos for you to share with friends and family.
-        %br
-        Check out some of our latest ones below!
+%hr
 
+.homepage-blurb
+  %h2 How does ActiVid work?
+  .row
+    .col-md-3
+      %p(style="text-align: center")= image_tag "homepage/video.png"
+      First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.
+    .col-md-3
+      %p(style="text-align: center")= image_tag "homepage/upload.png"
+      Then, upload your video files to our website, and choose how long you want your final video to be.
+      We can make you a 2, 3, or 4 minute video.
+    .col-md-3
+      %p(style="text-align: center")= image_tag "homepage/edit.png"
+      Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight reel set to the music
+      of your choice.
+    .col-md-3
+      %p(style="text-align: center")= image_tag "homepage/stunt.png"
+      Once you're happy, post your video and show off your awesomeness to friends and family.
+
+%h2 Latest Videos
+.row
   .col-md-6.text-center.video
     <iframe src="//player.vimeo.com/video/89370714" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   .col-md-6.text-center.video
     <iframe src="//player.vimeo.com/video/89375270" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-%hr
+%h2 Why Use ActiVid?
+%ul
+  %li
+    We work with the best video editors out there! These guys and gals are editing ninjas who focus exclusively
+    on action/adventure and vacation videos. Which means your video is going to turn out great!
+  %li
+    We guarantee a 48 hour turnaround for your final video.
+  %li
+    We offer the most affordable pricing of any video editor. A 2-minute video is just $95.
 
-.row.homepage-blurb
-  .col-md-6
-    %h2 How does ActiVid work?
-    %ul
-      %li
-        First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.
-      %li
-        Then, upload your video files to our website, and choose how long you want your final video to be.
-        We can make you a 2, 3, or 4 minute video.
-      %li
-        Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight reel set to the music
-        of your choice.
-      %li
-        Once you're happy, post your video and show off your awesomeness to friends and family.
-
-  .col-md-6
-    %h2 Why Use ActiVid?
-    %ul
-      %li
-        We work with the best video editors out there! These guys and gals are editing ninjas who focus exclusively
-        on action/adventure and vacation videos. Which means your video is going to turn out great!
-      %li
-        We guarantee a 48 hour turnaround for your final video.
-      %li
-        We offer the most affordable pricing of any video editor. A 2-minute video is just $95.
-
-.row
-  .text-center
-    = link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started'
+.bottom-cta
+  = link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started'
