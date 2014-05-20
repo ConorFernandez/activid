@@ -19,8 +19,8 @@ header {
     padding-top: 0;
     padding-bottom: 0;
     margin: 5px 0;
-    background-image: asset-url("activid-logo-144x40.png");
-    width: 144px;
+    background: asset-url("activid-logo-144x40.png") no-repeat 15px top;
+    width: 174px;
     height: 40px;
     display: block;
     text-indent: -4000px;
@@ -29,10 +29,10 @@ header {
 
 footer {
   margin-top: 15px;
-  padding: 30px 0;
-  border-top: 1px solid #ccc;
+  padding: 25px 0;
+  border-top: 1px solid #acadaf;
 
-  background-color: #232323;
+  background-color: #8a8c8e;
 
   position: absolute;
   bottom: 0;
@@ -40,7 +40,12 @@ footer {
 
   a {
     font-size: 18px;
-    color: #2A92E5;
+    color: #fff
+  }
+
+  a:hover {
+    color: #fff;
+    opacity: 0.8;
   }
 
   nav a ~ a {
@@ -56,10 +61,6 @@ footer {
       display: inline-block;
       text-indent: -5000px;
       background: asset-url("social-icons-sprite.png") no-repeat center center;
-    }
-
-    a:hover {
-      opacity: 0.8;
     }
 
     .facebook {
@@ -124,4 +125,39 @@ footer {
 
 hr {
   border-color: #8a8c8e;
+}
+
+
+.carousel.fade
+{
+    opacity: 1;
+
+    .item
+    {
+        -moz-transition: opacity ease-in-out .7s;
+        -o-transition: opacity ease-in-out .7s;
+        -webkit-transition: opacity ease-in-out .7s;
+        transition: opacity ease-in-out .7s;
+        left: 0 !important;
+        opacity: 0;
+        top:0;
+        position:absolute;
+        width: 100%;
+        display:block !important;
+        z-index:1;
+        &:first-child{
+            top:auto;
+            position:relative;
+        }
+
+        &.active
+        {
+            opacity: 1;
+            -moz-transition: opacity ease-in-out .7s;
+            -o-transition: opacity ease-in-out .7s;
+            -webkit-transition: opacity ease-in-out .7s;
+            transition: opacity ease-in-out .7s;
+            z-index:2;
+        }
+    }
 }

@@ -14,8 +14,4 @@ jQuery () ->
       return "Looks like we're still working on your stuff. If you leave, you may lose some data. Are you sure?"
     return
 
-  # Homepage: Synchronize height of jumbotron to that of carousel
-  if $('.homepage').length
-    $('.homepage .jumbotron').height($('.wide-image').height())
-    $(window).on 'resize', ->
-      $('.homepage .jumbotron').height($('.wide-image').height())
+  
