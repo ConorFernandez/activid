@@ -116,8 +116,8 @@ renderSuccessUpload = (data) ->
 generatePreview = (data, view) ->
   if data.files[0].type.match(/^image/)
     generatePreviewImage(data, view)
-  else if data.files[0].type.match(/^video/)
-    generatePreviewVideo(data, view)
+  # else if data.files[0].type.match(/^video/)
+  #   generatePreviewVideo(data, view)
 
 generatePreviewImage = (data, view) ->
   createObjectURL data.files[0], (blobUrl) ->
@@ -151,4 +151,3 @@ jQuery ->
     $('.preview img, .preview video', this).addClass('hidden')
     $('span.filename', this).text(file.name)
     generatePreview fu, $('#preview-modal')
-
