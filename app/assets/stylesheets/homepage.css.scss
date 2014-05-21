@@ -23,7 +23,11 @@
     text-align: center;
 
     .icon {
-      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+
+    [class*="col-"] {
+      margin-bottom: 20px;
     }
   }
 
@@ -42,6 +46,7 @@
     color: white;
     margin-bottom: 30px;
     box-sizing: border-box;
+    padding-top: 0;
     padding-bottom: 0;
 
     .inner {
