@@ -20,51 +20,49 @@
       %span into a beautifully edited video
     %p= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started'
 
-.row
-  .col-md-12
-    .we-are-awesome
-      %h2
-        We create amazing videos for you to share with friends and family.
-        %br
-        Check out some of our latest ones below!
-%hr
+%p.we-are-awesome
+  We create amazing videos for you to share with friends and family.
+  %br
+  Check out some of our latest ones below!
 
-.row
+.row.videos
   .col-md-6.text-center.video
     <iframe src="//player.vimeo.com/video/89370714" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   .col-md-6.text-center.video
     <iframe src="//player.vimeo.com/video/89375270" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 .homepage-blurb
-  %h2 How does ActiVid work?
-  .row
-    .col-sm-3
-      %p.icon= image_tag "homepage/video.png"
-      First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.
-    .col-sm-3
-      %p.icon= image_tag "homepage/upload.png"
-      Then, upload your video files to our website, and choose how long you want your final video to be.
-      We can make you a 2, 3, or 4 minute video.
-    .col-sm-3
-      %p.icon= image_tag "homepage/edit.png"
-      Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight reel set to the music
-      of your choice.
-    .col-sm-3
-      %p.icon= image_tag "homepage/stunt.png"
-      Once you're happy, post your video and show off your awesomeness to friends and family.
+  .how
+    %h2 How does ActiVid work?
+    .row
+      .col-sm-3
+        %p.icon= image_tag "homepage/video.png"
+        First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.
+      .col-sm-3
+        %p.icon= image_tag "homepage/upload.png"
+        Then, upload your video files to our website, and choose how long you want your final video to be.
+        We can make you a 2, 3, or 4 minute video.
+      .col-sm-3
+        %p.icon= image_tag "homepage/edit.png"
+        Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight reel set to the music
+        of your choice.
+      .col-sm-3
+        %p.icon= image_tag "homepage/stunt.png"
+        Once you're happy, post your video and show off your awesomeness to friends and family.
 
-  %h2 Why Use ActiVid?
-  .row
-    .col-sm-4
-      %p.icon= image_tag 'homepage/expert.png'
-      We work with the best video editors out there! These guys and gals are editing ninjas who focus exclusively
-      on action/adventure and vacation videos. Which means your video is going to turn out great!
-    .col-sm-4
-      %p.icon= image_tag 'homepage/48h.png'
-      We guarantee a 48 hour turnaround for your final video.
-    .col-sm-4
-      %p.icon= image_tag 'homepage/cost.png'
-      We offer the most affordable pricing of any video editor. A 2-minute video is just $95.
+  .why
+    %h2 Why Use ActiVid?
+    .row
+      .col-sm-4
+        %p.icon= image_tag 'homepage/expert.png'
+        We work with the best video editors out there! These guys and gals are editing ninjas who focus exclusively
+        on action/adventure and vacation videos. Which means your video is going to turn out great!
+      .col-sm-4
+        %p.icon= image_tag 'homepage/48h.png'
+        We guarantee a 48 hour turnaround for your final video.
+      .col-sm-4
+        %p.icon= image_tag 'homepage/cost.png'
+        We offer the most affordable pricing of any video editor. A 2-minute video is just $95.
 
 .bottom-cta
   = link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started'

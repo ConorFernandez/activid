@@ -37,6 +37,7 @@
     text-transform: uppercase;
     color: #8a8c8e;
     margin-bottom: 25px;
+    font-size: 40px;
   }
 
   .jumbotron {
@@ -114,17 +115,18 @@
   }
 
   .we-are-awesome {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     text-align: center;
-
-    h2 {
-      text-transform: none;
-      margin: 0;
-    }
+    color: #8a8c8e;
+    font-size: 24px;
   }
 
-  .video {
-    margin-bottom: 40px;
+  .videos {
+    margin-bottom: 60px;
+  }
+
+  .videos, .why {
+    //background-color: #f3f3f3;
   }
 
   .bottom-cta {
