@@ -17,9 +17,19 @@
     margin-bottom: 0px;
   }
 
+  // Hack: remove container margins to allow page elements to go full-bleed.
+  // additional container subelements are added to the page content.
+  #container > .container {
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .homepage-blurb {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    padding-top: 45px;
+    padding-bottom: 45px;
     text-align: center;
 
     .icon {
@@ -29,6 +39,18 @@
     [class*="col-"] {
       margin-bottom: 20px;
     }
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+  
+  .videos .homepage-blurb, .how .homepage-blurb, .why .homepage-blurb {
+    padding-bottom: 25px;
+  }
+
+  .we-are-awesome .homepage-blurb {
+    padding-bottom: 40px;
   }
 
   h2 {
@@ -45,7 +67,7 @@
     z-index: 5;
     background: none;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     box-sizing: border-box;
     padding-top: 0;
     padding-bottom: 0;
@@ -115,24 +137,21 @@
   }
 
   .we-are-awesome {
-    margin-bottom: 60px;
-    text-align: center;
     color: #8a8c8e;
     font-size: 24px;
-  }
-
-  .videos {
-    margin-bottom: 60px;
+    p {
+      margin: 0;
+    }
   }
 
   .videos, .why {
-    //background-color: #f3f3f3;
+    background-color: #f3f3f3;
   }
 
   .bottom-cta {
     text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 45px;
+    margin-bottom: 45px;
   }
 
   .btn.btn-primary {
