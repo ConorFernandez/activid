@@ -1,0 +1,49 @@
+@import 'theme';
+.video-channel {
+  background-color: $altBg;
+  overflow: auto;
+
+  h2 {
+    color: $primaryColor;
+  }
+  .this-video {
+    padding-top: 15px;
+  }
+  .all-videos {
+    padding-right: 0;
+
+    ul {
+      margin-bottom: 0;
+      padding-left: 3px;
+      border-left: solid 1px $secondaryColor;
+      height: 400px;
+      overflow: auto;
+
+      li {
+        display: block;
+        list-style-type: none;
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+
+        .thumbnail {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+        border: solid 3px transparent;
+        border-radius: 2px;
+      }
+      li:nth-child(2n) {
+        background-color: #fff;
+        border-color: #fff;
+      }
+
+      li.selected {
+        border-color: $primaryColor;
+        .title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
