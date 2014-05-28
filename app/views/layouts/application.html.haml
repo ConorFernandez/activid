@@ -19,11 +19,7 @@
                   .ajax-spinner.inactive
                     = image_tag 'ajax-spinner.gif'
       .container
-        - if @cms_page
-          .row
-            .col-md-6=yield
-        - else
-          = yield
+        = yield
 
       %footer
         .container

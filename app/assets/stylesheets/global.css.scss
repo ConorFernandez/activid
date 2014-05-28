@@ -1,4 +1,5 @@
 @import 'forms';
+@import 'theme';
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -27,12 +28,19 @@ header {
   }
 }
 
+.btn.btn-primary {
+  background-color: $primaryColor;
+  border-color: $primaryBorder;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
 footer {
   margin-top: 15px;
   padding: 25px 0;
-  border-top: 1px solid #acadaf;
+  border-top: 1px solid $secondaryBorder;
 
-  background-color: #8a8c8e;
+  background-color: $secondaryColor;
 
   position: absolute;
   bottom: 0;
@@ -124,10 +132,14 @@ footer {
 }
 
 hr {
-  border-color: #8a8c8e;
+  border-color: $secondaryColor;
 }
 
+.content-page {
+  max-width: 800px;
+}
 
+// Custom Bootstrap style for a fading carousel
 .carousel.fade
 {
     opacity: 1;

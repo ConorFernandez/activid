@@ -1,4 +1,8 @@
+@import 'theme';
+
 .homepage {
+  $blurbSeparation: 90px;
+  $colBottomMargin: 20px;
 
   // On the homepage only...
   font-size: 18px;
@@ -28,8 +32,8 @@
   }
 
   .homepage-blurb {
-    padding-top: 45px;
-    padding-bottom: 45px;
+    padding-top: $blurbSeparation / 2;
+    padding-bottom: $blurbSeparation / 2;
     text-align: center;
 
     .icon {
@@ -37,7 +41,7 @@
     }
 
     [class*="col-"] {
-      margin-bottom: 20px;
+      margin-bottom: $colBottomMargin;
     }
 
     h2 {
@@ -46,11 +50,11 @@
   }
   
   .videos .homepage-blurb, .how .homepage-blurb, .why .homepage-blurb {
-    padding-bottom: 25px;
+    padding-bottom: $blurbSeparation / 2 - $colBottomMargin;
   }
 
   .we-are-awesome .homepage-blurb {
-    padding-bottom: 40px;
+    padding-bottom: $blurbSeparation / 2 - 5px;
   }
 
   h2 {
@@ -80,7 +84,7 @@
       h1 {
         margin-top: 0;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        color: #f19f1d;
+        color: $primaryColor;
 
         span {
           display: block;
@@ -127,7 +131,7 @@
         }
       }
       p {
-        color: #8a8c8e;
+        color: $secondaryColor;
         
         span {
           white-space: normal;
@@ -137,7 +141,7 @@
   }
 
   .we-are-awesome {
-    color: #8a8c8e;
+    color: $secondaryColor;
     font-size: 24px;
     p {
       margin: 0;
@@ -145,19 +149,13 @@
   }
 
   .videos, .why {
-    background-color: #f3f3f3;
+    background-color: $altBg;
   }
 
   .bottom-cta {
     text-align: center;
-    margin-top: 45px;
-    margin-bottom: 45px;
+    margin-top: $blurbSeparation / 2;
+    margin-bottom: $blurbSeparation / 2;
   }
 
-  .btn.btn-primary {
-    background-color: #f19f1d;
-    border-color: #ea9d24;
-    text-transform: uppercase;
-    text-shadow: none;
-  }
 }
