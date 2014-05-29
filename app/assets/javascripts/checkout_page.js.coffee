@@ -1,3 +1,3 @@
 jQuery ->
-  $('button.checkout').on 'click', ->
+  $('.checkout-btn button').on 'click', ->
     $('form#checkout').submit()

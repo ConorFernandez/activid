@@ -8,4 +8,14 @@ module OrdersHelper
       { original_filename: File.basename(of.original_filename) }
     end.to_json
   end
+
+  def random_pic
+    imgs = [
+      '//i.vimeocdn.com/video/468234911_295x166.jpg',
+      'http://i.vimeocdn.com/video/468139144_295x166.jpg',
+      'http://i.vimeocdn.com/video/468094847_295x166.jpg',
+      'http://i.vimeocdn.com/video/449882718_295x166.jpg'
+    ]
+    image_tag imgs.sample
+  end
 end

@@ -1,39 +1,51 @@
 = provide(:page_title, 'Checkout')
 - provide(:body_class, 'checkout')
 
-.order-info
-  %h1 Summary
+.row
+  .col-md-8
+    %h1 Complete your Order
 
-  #order-cost
-    - if @order.coupon
-      %h4
-        #{@order.video_length.name} -
-        %s= number_to_currency @order.video_length.cost
-      %h4
-        \-
-        = number_to_currency @order.coupon.discount
-        (#{@order.coupon.name})
-      %h4
-        \=
-        = @order.order_cost
-    - else
-      %h4 #{@order.video_length.name} - $#{@order.order_cost}
+    .row-fluid.order-summary
+      .col-sm-8
+        %table#order-cost
+          %tr
+            %td= @order.video_length.name + " video edit"
+            %td.price= number_to_currency @order.video_length.cost
+          - if @order.coupon
+            %tr
+              %td= @order.coupon.name
+              %td.price= "-#{number_to_currency @order.coupon.discount}"
+          %tr.separator
+            %td(colspan="2")
+              %hr/
+          %tr
+            %td= link_to "edit my order", orders_path
+            %td.total
+              Total $#{@order.order_cost}
 
+        - unless @order.coupon
+          = form_for :coupon, url: attach_coupon_orders_path, remote: true, html: { id: 'coupon_form' } do |f|
+            .form-group
+              = f.label :code, 'Got an Activid credit code?  Enter it below:'
+              .row
+                .col-xs-4
+                  = f.text_field :code, class: 'form-control'
+                .col-xs-8= f.submit 'Use Coupon', class: 'btn btn-default', placeholder: 'Coupon code'
+      .col-sm-4.video-pic= random_pic
+
+.errors-container(style='display: none;')
+  %h2 The following errors occurred trying to process your order:
+  .alert.alert-danger
+    .payment-errors= flash[:stripe_error]
+    .order-errors
 
 .row
-  .col-md-12
-    .errors-container(style='display: none;')
-      %h2 The following errors occurred trying to process your order:
-      .alert.alert-danger
-        .payment-errors= flash[:stripe_error]
-        .order-errors
-.row
-  .col-md-6
+  .col-md-5
     = form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f|
       = f.hidden_field :preparing_for_payment, value: true
       %fieldset
         %legend
-          %h3 Billing Info
+          %h3 Billing Information
         .form-group
           = f.label :cardholder_name, 'Name', class: 'control-label'
           = f.text_field :cardholder_name, class: 'form-control', placeholder: 'Name on Card'
@@ -42,13 +54,13 @@
           = f.text_field :cardholder_address, class: 'form-control', placeholder: 'Address on Card'
         .form-group
           .row
-            .col-md-4
+            .col-sm-6
               = f.label :cardholder_city, 'City', class: 'control-label'
               = f.text_field :cardholder_city, class: 'form-control', placeholder: 'City'
-            .col-md-4
+            .col-sm-3
               = f.label :cardholder_state, 'State', class: 'control-label'
               = f.text_field :cardholder_state, class: 'form-control', placeholder: 'State'
-            .col-md-4
+            .col-sm-3
               = f.label :cardholder_zipcode, 'Zip', class: 'control-label', placeholder: 'Zip'
               = f.text_field :cardholder_zipcode, class: 'form-control'
         .form-group
@@ -58,56 +70,43 @@
           = f.label :cardholder_phone_number, 'Phone', class: 'control-label'
           = f.text_field :cardholder_phone_number, class: 'form-control', placeholder: 'Phone #'
 
-  .col-md-6
+  .col-md-4
     %form
       %fieldset
         %legend
-          %h3 Credit Card Info
+          %h3 Credit Card Information
         .form-group
-          %label.control-label(for='card_number')
-            Card Number
-          %input#card_number.form-control(type='text' placeholder='Credit Card Number')
+          .card-number-row
+            .card-col
+              %label.control-label(for='card_number')
+                Card Number
+              %input#card_number.form-control(type='text' placeholder='Credit Card Number')
+            .cvc-col
+              %label.control-label(for='card_cvc') CVC
+              %input#card_cvc.form-control(type='text' placeholder='CVC')
         .form-group
           %label.control-label.hidden.col-sm-4(for='card_exp_month') Card Exp Month
           %label.control-label.hidden.col-sm-4(for='card_exp_year') Card Exp Year
-          .row
-            .col-md-6
+          .card-meta-row
+            .exp-date
               %label Expiration date
-              .row
-                .col-sm-4
-                  %input#card_exp_month.form-control(type='text' placeholder='MM')
-                .col-sm-4
-                  %input#card_exp_year.form-control(type='text' placeholder='YYYY')
-            .col-md-2.col-md-offset-4
-              %label.control-label(for='card_cvc') CVC
-              %input#card_cvc.form-control(type='text' placeholder='CVC')
-
-    .coupon-container
-      - unless @order.coupon
-        = form_for :coupon, url: attach_coupon_orders_path, remote: true, html: { id: 'coupon_form' } do |f|
-          .form-group
-            = f.label :code, 'Got an ActiVid credit code?  Enter it below:'
-            .row
-              .col-md-4
-                = f.text_field :code, class: 'form-control'
-          = f.submit 'Use Coupon', class: 'btn btn-default', placeholder: 'Coupon code'
-
-      - if @order.coupon
-        %p You are using the coupon '#{@order.coupon.name}' for this purchase.
+              .col-month
+                %input#card_exp_month.form-control(type='text' placeholder='MM')
+              .col-year
+                %input#card_exp_year.form-control(type='text' placeholder='YYYY')
+            .cards
+              = image_tag 'credit-cards-1.png'
+              = image_tag 'credit-cards-2.png'
+    .checkout-btn
+      %button.btn.btn-lg.btn-primary(type="submit") Complete Order
+  .col-md-3.after
+    %h3 After you order
+    %p You will receive an automatic confirmation email with more details.
+    %p Your edited video will be completed within 48 hours, guaranteed.
+    %p Once your video is ready, a representative will contact you with download instructions. If you are not satisfied with your video, we will make every effort to fix the problem.
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
-
-.row
-  .col-md-6
-    .navigation
-      = link_to 'Go Back', orders_path, class: 'btn btn-default'
-  .col-md-6
-    .navigation
-      %button.checkout.btn.btn-primary(type="submit") Complete Order
-
-
-
 
 - if flash[:stripe_error]
   :javascript
@@ -115,15 +114,28 @@
 
 :javascript
   var order = {
-    name: '#{@order.video_length.name}',
+    name: '#{@order.video_length.name} video edit',
     cost: #{@order.order_cost.to_f},
     old_cost: #{@order.video_length.cost.to_f}
   };
 
-:plain
+:erb
   <script id="discount" type="text/x-mustache">
-    <h4>{{order_name}} - <s>${{old_cost}}</s></h4>
-    <h4>- ${{coupon_discount}} ({{coupon_name}})</h4>
-    <h4>= ${{final_total}}</h4>
+    <tr>
+      <td>{{order_name}}</td>
+      <td class="price">${{old_cost}}</td>
+    </tr>
+    <tr>
+      <td>{{coupon_name}}</td>
+      <td class="price">-${{coupon_discount}}</td>
+    </tr>
+    <tr class="separator">
+      <td colspan="2"><hr/></td>
+    </tr>
+    <tr>
+      <td><%= link_to "edit my order", orders_path %></td>
+      <td class="total">
+        Total ${{final_total}}
+      </td>
+    </tr>
   </script>
-

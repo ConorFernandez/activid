@@ -1,14 +1,84 @@
+@import 'theme';
+
 .checkout {
-  .order-info {
-    margin-bottom: 40px;
+  .order-summary {
+    table {
+      width: 100%;
+    }
+    .video-pic {
+      text-align: center;
+      img {
+        max-width: 100%;
+      }
+    }
+    .separator td {
+      font-size: 1px;
+      line-height: 5px;
+
+      hr {
+        margin: 8px 0 2px;
+      }
+    }
+    .price {
+      text-align: right;
+    }
+    .total {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    #coupon_form {
+      margin-top: 20px;
+    }
+
   }
 
-  .navigation {
-    margin-top: 40px;
+  .card-number-row {
+    position: relative;
+    $cvcWidth: 50px;
+    .card-col {
+      margin-right: 20px + $cvcWidth;
+    }
+    .cvc-col {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $cvcWidth;
+    }
   }
 
-  #coupon_form {
-    margin-top:74px;
+  .card-meta-row {
+    .cards {
+      margin-right: 150px;
+      img {
+        width: 100%;
+        max-width: 250px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+    }
+    .exp-date {
+      float: right;
+      width: 130px;
+      .col-month {
+        float: left;
+        width: 50px;
+        margin-right: 20px;
+      }
+      .col-year {
+        width: 60px;
+      }
+    }
   }
 
+  .checkout-btn {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .after {
+    background-color: $altBg;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
 }
