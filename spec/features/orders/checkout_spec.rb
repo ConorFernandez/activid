@@ -6,7 +6,7 @@ describe 'The Checkout Page ->', js: true, vcr: true do
   before { visit '/orders'; visit '/orders/checkout' }
 
   it 'I can go back by clicking the Go Back button' do
-    click_link 'Go Back'
+    click_link 'edit my order'
     expect(current_path).to eq '/orders'
   end
 
@@ -81,8 +81,9 @@ describe 'The Checkout Page ->', js: true, vcr: true do
         fill_in 'coupon_code', with: 'NASA'
         click_button 'Use Coupon'
       end
-      expect(page).to have_text '- $5.00 (NASA Coupon Centre)'
-      expect(page).to have_text '= $90.00'
+      expect(page).to have_text 'NASA Coupon Centre'
+      expect(page).to have_text '-$5.00'
+      expect(page).to have_text '$90.00'
     end
 
     it 'I can see an error message if I supply an invalid coupon code' do
@@ -105,7 +106,7 @@ describe 'The Checkout Page ->', js: true, vcr: true do
       Order.last.update_attributes(coupon: coupon)
       visit '/orders/checkout'
 
-      expect(page).to have_text "You are using the coupon 'NASA Coupon Centre' for this purchase."
+      expect(page).to have_text "NASA Coupon Centre"
     end
   end
 end
