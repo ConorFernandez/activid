@@ -2,6 +2,8 @@
 
 .checkout {
   .order-summary {
+    overflow: auto;
+    margin-bottom: 40px;
     table {
       width: 100%;
     }
@@ -50,9 +52,10 @@
   .card-meta-row {
     .cards {
       margin-right: 150px;
+      text-align: center;
       img {
         width: 100%;
-        max-width: 250px;
+        max-width: 150px;
         margin-right: 10px;
         margin-bottom: 10px;
       }
@@ -66,6 +69,7 @@
         margin-right: 20px;
       }
       .col-year {
+        float: left;
         width: 60px;
       }
     }
@@ -80,5 +84,10 @@
     background-color: $altBg;
     padding-top: 1px;
     padding-bottom: 1px;
+  }
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .after {
+      margin-top: -20px;
+    }
   }
 }

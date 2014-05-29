@@ -101,9 +101,8 @@
       %button.btn.btn-lg.btn-primary(type="submit") Complete Order
   .col-md-3.after
     %h3 After you order
-    %p You will receive an automatic confirmation email with more details.
-    %p Your edited video will be completed within 48 hours, guaranteed.
-    %p Once your video is ready, a representative will contact you with download instructions. If you are not satisfied with your video, we will make every effort to fix the problem.
+    %p Once your order is complete, you will receive a confirmation email. In the meantime, one of our editors will begin working on your video.
+    %p Your final video will be ready within three business days &mdash; once we're finished, you'll receive a link to download the video. If you have any comments or changes, we're happy to make them!
 
 = form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do
   = hidden_field_tag :stripe_token
