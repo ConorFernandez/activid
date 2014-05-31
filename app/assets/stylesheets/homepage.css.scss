@@ -1,7 +1,7 @@
 @import 'theme';
 
 .homepage {
-  $blurbSeparation: 90px;
+  $blurbSeparation: 110px;
   $colBottomMargin: 20px;
 
   // On the homepage only...
@@ -59,11 +59,11 @@
 
   h2 {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 70px;
     text-transform: uppercase;
-    color: #8a8c8e;
-    margin-bottom: 25px;
-    font-size: 40px;
+    color: $primaryColor;
+    margin-bottom: 55px;
+    font-size: 46px;
   }
 
   .jumbotron {
@@ -148,7 +148,7 @@
     }
   }
 
-  .videos, .why {
+  .videos, .why, .we-are-awesome {
     background-color: $altBg;
   }
 
