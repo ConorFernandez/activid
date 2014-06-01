@@ -183,15 +183,17 @@ describe OrdersController do
       expect(subject).to redirect_to success_orders_path
     end
 
-    it 'calls Stripe::Charge with the expected variables' do
-      order.update_attributes(video_length: create(:three_minute_video), stripe_customer_id: 'Test Customer')
-      Stripe::Charge.should_receive(:create).with({
-                                                      amount: 14600,
-                                                      currency: 'usd',
-                                                      customer: 'Test Customer'
-                                                  })
-      post :submit_payment, stripe_token: 'card_void_token'
-    end
+    # NOTE: remove test on 6/14/2014 if this is still the desired behavior.
+    # See orders_controller.rb:40
+    # it 'calls Stripe::Charge with the expected variables' do
+    #   order.update_attributes(video_length: create(:three_minute_video), stripe_customer_id: 'Test Customer')
+    #   Stripe::Charge.should_receive(:create).with({
+    #                                                   amount: 14600,
+    #                                                   currency: 'usd',
+    #                                                   customer: 'Test Customer'
+    #                                               })
+    #   post :submit_payment, stripe_token: 'card_void_token'
+    # end
 
     it 'redirects to success_orders_path when successful' do
       post :submit_payment, stripe_token: 'card_void_token'
@@ -199,13 +201,13 @@ describe OrdersController do
     end
 
     it 'redirects back to checkout_orders_path if a StripeError occurs' do
-      StripeMock.prepare_card_error(:card_declined)
+      StripeMock.prepare_card_error(:card_declined, :new_customer)
       post :submit_payment, stripe_token: 'card_void_token'
       expect(subject).to redirect_to checkout_orders_path
     end
 
     it 'creates a flash message if a StripeError occurs' do
-      StripeMock.prepare_card_error(:card_declined)
+      StripeMock.prepare_card_error(:card_declined, :new_customer)
       post :submit_payment, stripe_token: 'card_void_token'
       expect(flash[:stripe_error]).to eq 'The card was declined'
     end

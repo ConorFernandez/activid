@@ -37,13 +37,14 @@ class OrdersController < ApplicationController
       @order.update_attributes(stripe_customer_id: customer.id)
     end
 
-    unless @order.order_cost.fractional == 0
-      Stripe::Charge.create(
-          amount: @order.order_cost.fractional,
-          currency: 'usd',
-          customer: @order.stripe_customer_id
-      )
-    end
+    # NOTE: remove block on 6/14/2014 if this is still the desired behavior.
+    # unless @order.order_cost.fractional == 0
+    #   Stripe::Charge.create(
+    #       amount: @order.order_cost.fractional,
+    #       currency: 'usd',
+    #       customer: @order.stripe_customer_id
+    #   )
+    # end
     @order.update_attributes(status: Order::Status::PAID)
     cookies.delete :order_secure_token
 
