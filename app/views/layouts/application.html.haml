@@ -1,9 +1,10 @@
 %html
   %head
-    %title ActiVid
+    %title Activid
     = stylesheet_link_tag    "application"#, media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application"#, "data-turbolinks-track" => true
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,700,600,400,300' rel='stylesheet' type='text/css'>
+    %link(rel='icon' href='/activid_favicon.png' type='image/png')
     %script(type='text/javascript' src='https://js.stripe.com/v2/')
     = csrf_meta_tags
   %body(class="#{content_for(:body_class)}")
