@@ -31,6 +31,11 @@
                 .col-xs-4
                   = f.text_field :code, class: 'form-control'
                 .col-xs-8= f.submit 'Use Coupon', class: 'btn btn-default', placeholder: 'Coupon code'
+        %p.subtext
+          %em
+            Don't worry, your credit card won't be charged until
+            %u after
+            you are 100% satisfied with your video.
       .col-sm-4.video-pic= random_pic
 
 .errors-container(style='display: none;')

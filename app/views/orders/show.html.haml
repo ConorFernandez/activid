@@ -67,7 +67,7 @@
   .col-md-6
     = form_for @order, url: orders_path, remote: true do |f|
       .form-group
-        %h3 Step 4: How Long Should Your Video Be?
+        %h3 Step 4: When do you want your video back?
         .btn-group.radios.video_lengths
           - VideoLength.enabled.each do |video_length|
             %label.btn.btn-default
@@ -75,6 +75,11 @@
               %br
               $#{Order.video_cost(video_length)}
               = f.radio_button :video_length_id, video_length.id, class: 'persistent'
+        %p.subtext
+          %em
+            Don't worry, your credit card won't be charged until
+            %u after
+            you are 100% satisfied with your video.
 
 .navigation.step
   %h3 Step 5: Check out
