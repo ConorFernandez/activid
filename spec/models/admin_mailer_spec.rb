@@ -18,10 +18,10 @@ describe AdminMailer do
 
   before do
     create_expected_video_lengths!
-    create :order_file, uploaded_filename: 'Three Sixty Kick Flip.mov', order: order
-    create :order_file, uploaded_filename: 'Do What Dance.mp4', order: order
+    create :order_file, uploaded_filename: 'uploads/RANDOM_SECURE_TOKEN/Three Sixty Kick Flip.mov', order: order
+    create :order_file, uploaded_filename: 'uploads/RANDOM_SECURE_TOKEN/Do What Dance.mp4', order: order
   end
-  
+
   describe '#new_order' do
     subject(:mail) { AdminMailer.new_order(order) }
     its(:to) { should eq ['conor@activid.co'] }
@@ -30,7 +30,7 @@ describe AdminMailer do
 
     describe 'email body' do
       subject { mail.body.to_s }
-      
+
       it { should include 'Cowboy Coders' }
       it { should include 'Add more cowbell' }
       it { should include 'Steve McQueen' }
@@ -43,8 +43,8 @@ describe AdminMailer do
       it { should include 'Plan: 1:30-2 Minutes, $95.00' }
 
       # Uploaded Files
-      it { should include 'activid/RANDOM_SECURE_TOKEN/Three Sixty Kick Flip.mov' }
-      it { should include 'activid/RANDOM_SECURE_TOKEN/Do What Dance.mp4' }
+      it { should include 'activid/uploads/RANDOM_SECURE_TOKEN/Three Sixty Kick Flip.mov' }
+      it { should include 'activid/uploads/RANDOM_SECURE_TOKEN/Do What Dance.mp4' }
     end
   end
 end

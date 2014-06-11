@@ -11,7 +11,7 @@
   %br
   Project Files:
   - @order.order_files.each do |order_file|
-    = "activid/#{@order.secure_token}/#{order_file.uploaded_filename}"
+    = "activid/#{order_file.uploaded_filename}"
     %br
   %br
   Additional Instructions: #{@order.instructions}
