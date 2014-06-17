@@ -89,12 +89,6 @@ class OrdersController < ApplicationController
     params.require(:coupon).permit(:code)
   end
 
-  def find_order_by_cookie
-    secure_token = cookies[:order_secure_token]
-    return nil if secure_token.blank?
-    Order.where(secure_token: secure_token).first
-  end
-
   def render_coupon_error(error)
     render json: {
         error: error

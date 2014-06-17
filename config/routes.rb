@@ -10,6 +10,8 @@ Activid::Application.routes.draw do
       post :submit_payment
       post :attach_coupon
     end
+
+    resources :order_files
   end
 
   root 'high_voltage/pages#show', id: 'home'

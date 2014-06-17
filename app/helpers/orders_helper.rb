@@ -5,7 +5,7 @@ module OrdersHelper
 
   def order_files_to_json(order_files)
     order_files.map do |of|
-      { original_filename: File.basename(of.original_filename) }
+      { id: of.id, original_filename: File.basename(of.original_filename) }
     end.to_json
   end
 

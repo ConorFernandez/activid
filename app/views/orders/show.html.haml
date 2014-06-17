@@ -43,22 +43,22 @@
         %span Add files...
         = file_field_tag :file, multiple: true
 
-      %button.btn.btn-primary.start(type="button")
-        %i.glyphicon.glyphicon-upload
-        %span Start upload
+      -# %button.btn.btn-primary.start(type="button")
+      -#   %i.glyphicon.glyphicon-upload
+      -#   %span Start upload
       %button.btn.btn-warning.cancel(type="button" style="display: none;")
         %i.glyphicon.glyphicon-ban-circle
         %span Cancel upload
 
-      #upload-progress.progress(style="display: none;")
-        .progress-bar
-          0%
+    #upload-progress.progress(style="display: none;")
+      .progress-bar
+        0%
 
-      .attached-files
+    .attached-files
 
-      %p.subtext
-        %em
-          Your files will take some time to upload. No need to sit here watching them &mdash; just leave this page open and come back when they're finished!
+    %p.subtext
+      %em
+        Your files will take some time to upload. No need to sit here watching them &mdash; just leave this page open and come back when they're finished!
   .col-md-1
   .col-md-5.tip
     %p
@@ -131,6 +131,7 @@
 :plain
   <script id="upload-file-template" type="text/x-mustache">
     <div class='file'>
+      <input type='hidden' value='{{file_id}}' name='file_id'/>
       <div class='preview'>
         <a href data-toggle="modal" data-target="#preview-modal">
           <img title='{{file_name}}' class='hidden'  />
@@ -142,10 +143,12 @@
       <div class='pull-right'>
         <span class='label label-success'>uploaded!</span>
       </div>
+      <div class='file-actions'>
+        <button type='button' class='btn btn-warning delete'>Delete</button>
+      </div>
       {{/done}}
       {{#uploadable}}
       <div class='file-actions'>
-        <button type='button' class='btn btn-warning remove'>Remove</button>
         <div class='progress' style='display:none'>
           <div class='progress-bar'></div>
         </div>

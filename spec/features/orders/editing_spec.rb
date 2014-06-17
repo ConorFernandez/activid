@@ -23,26 +23,41 @@ describe 'Editing on the orders page', js: true do
   end
 
   describe 'When trying to upload files ->' do
-    it 'I can attach them to my order' do
+    it 'I can upload files just by adding them' do
       attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
-      expect(page).to have_text 'cat_in_hat.jpg'
-    end
-
-    it 'I can remove attached files' do
-      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
-      within('.file') do
-        click_button 'Remove'
-      end
-      expect(page).not_to have_text 'cat_in_hat.jpg'
-    end
-
-    it 'I can upload attached files' do
-      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
-      click_button 'Start upload'
       wait_for_ajax
       within('.file') do
         expect(page).to have_text 'uploaded!'
       end
+    end
+
+    it 'I can delete files after they have been uploaded' do
+      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
+      wait_for_ajax
+      within('.file') do
+        click_button 'Delete'
+      end
+
+      wait_for_ajax
+
+      expect(page).not_to have_text 'cat_in_hat.jpg'
+      expect(OrderFile.count).to eq 0
+    end
+
+    it 'I can delete files after they have been uploaded and I revisit the page' do
+      attach_file 'file', 'spec/fixtures/cat_in_hat.jpg'
+      wait_for_ajax
+
+      visit '/orders'
+
+      within('.file') do
+        click_button 'Delete'
+      end
+
+      wait_for_ajax
+
+      expect(page).not_to have_text 'cat_in_hat.jpg'
+      expect(OrderFile.count).to eq 0
     end
 
   end
