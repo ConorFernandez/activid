@@ -54,6 +54,7 @@ RSpec.configure do |config|
     c.hook_into :webmock
     c.ignore_localhost = true
     c.configure_rspec_metadata!
+    c.ignore_hosts 'activid-test.s3.amazonaws.com'
   end
 
   config.before(:each) do
