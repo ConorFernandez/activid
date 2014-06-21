@@ -9,6 +9,22 @@
     = csrf_meta_tags
 
     = yield :header
+
+    :javascript
+      (function() {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+          var fbds = document.createElement('script');
+          fbds.async = true;
+          fbds.src = '//connect.facebook.net/en_US/fbds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(fbds, s);
+          _fbq.loaded = true;
+        }
+        _fbq.push(['addPixelId', '142283342608773']);
+      })();
+      window._fbq = window._fbq || [];
+      window._fbq.push(['track', 'PixelInitialized', {}]);
   %body(class="#{content_for(:body_class)}")
     #container
       %header
