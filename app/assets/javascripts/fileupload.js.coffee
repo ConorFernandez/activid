@@ -164,3 +164,9 @@ jQuery ->
 
     deleteUploadedFile(fileId)
     fileDiv.remove()
+
+  $('.attached-files').on 'click', '.file .cancel', ->
+    fileDiv = $(this).parents('.file')
+    fu = fileDiv.data('fileupload')
+    fu.abort()
+    fileDiv.remove()
