@@ -70,6 +70,7 @@ jQuery ()->
 
     # Start all uploads when user clicks the 'start' button
     $('button.start', form).on 'click', () ->
+      $(this).fadeOut()
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
         if fu
@@ -77,6 +78,7 @@ jQuery ()->
 
     # Cancel all current and pending uploads.
     $('button.cancel', form).on 'click', () ->
+      $('button.start', form).fadeIn()
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
         if fu
