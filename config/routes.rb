@@ -17,6 +17,8 @@ Activid::Application.routes.draw do
   resource :pages 
   get 'about' => 'pages#about'
   get 'faq' => 'pages#faq'
+  get 'how_it_works' => 'pages#how_it_works'
+  get 'videos' => 'pages#videos'
   
   # Make sure this routeset is defined last
   comfy_route :cms, :path => '/', :sitemap => false

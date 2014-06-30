@@ -7,4 +7,10 @@ class PagesController < ApplicationController
   
   def faq
   end
+  
+  def how_it_works
+  end
+  
+  def videos
+  end
 end
