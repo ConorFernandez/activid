@@ -12,7 +12,12 @@ Activid::Application.routes.draw do
     end
   end
 
-  root 'high_voltage/pages#show', id: 'home'
+  #root 'high_voltage/pages#show', id: 'home'
+  root 'pages#home'
+  resource :pages 
+  get 'about' => 'pages#about'
+  get 'faq' => 'pages#faq'
+  
   # Make sure this routeset is defined last
   comfy_route :cms, :path => '/', :sitemap => false
   # The priority is based upon order of creation: first created -> highest priority.

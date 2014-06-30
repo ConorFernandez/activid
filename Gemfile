@@ -37,7 +37,7 @@ gem 'pg'
 gem 'bootstrap-sass'
 
 # Static Pages
-gem 'high_voltage'
+# gem 'high_voltage'
 
 gem 'haml'
 

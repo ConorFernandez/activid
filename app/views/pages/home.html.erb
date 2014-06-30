@@ -1,0 +1,129 @@
+<% provide(:body_class, 'homepage') %>
+<div class="wide-image">
+  <div class="carousel fade" id="homepage-carousel" data-ride="carousel" data-interval="10000">
+    <div class="carousel-inner">
+      <div class="item active">
+        <%= image_tag 'homepage/skiing.jpg' %>
+      </div>
+      <div class="item">
+        <%= image_tag 'homepage/biking.jpg' %>
+      </div>
+      <div class="item">
+        <%= image_tag 'homepage/surfing.jpg' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="jumbotron">
+    <div class="spacer"></div>
+    <div class="inner">
+      <h1>
+        <span>You Film.</span>
+        <span>We Edit.</span>
+      </h1>
+      <p>
+        <span>Transform your raw footage</span>
+        <span>into a beautifully edited video</span>
+      </p>
+      <p>
+        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="we-are-awesome">
+  <div class="container homepage-blurb">
+    <p>
+      We create amazing videos for you to share with friends and family.
+      <br/>
+      Check out some of our latest ones below!
+    </p>
+  </div>
+</div>
+<div class="videos">
+  <div class="container homepage-blurb">
+    <div class="row">
+      <div class="col-md-6 text-center video">
+        <iframe src="//player.vimeo.com/video/89370714" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <div class="col-md-6 text-center video">
+        <iframe src="//player.vimeo.com/video/89375270" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="how">
+  <div class="container homepage-blurb">
+    <h2>How does ActiVid work?</h2>
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag "homepage/video.png" %>
+        </p>
+        <h3>Transfer</h3>
+        First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.
+      </div>
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag "homepage/upload.png" %>
+        </p>
+        <h3>Upload</h3>
+        Then, upload your video files through our website, or send us a Dropbox link.
+      </div>
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag "homepage/edit.png" %>
+        </p>
+        <h3>Edit</h3>
+        Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight video.
+      </div>
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag "homepage/stunt.png" %>
+        </p>
+        <h3>Share</h3>
+        Once you're happy, post your video and show off your awesomeness to friends and family.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="why">
+  <div class="container homepage-blurb">
+    <h2>Why Use ActiVid?</h2>
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag 'homepage/expert.png' %>
+        </p>
+        <h3>Quality</h3>
+        We work with the best video editors out there, which means your video is going to turn out great!
+      </div>
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag 'homepage/72h.png' %>
+        </p>
+        <h3>Speed</h3>
+        We guarantee a 3 business day turnaround for your final video.
+      </div>
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag 'homepage/cost.png' %>
+        </p>
+        <h3>Affordability</h3>
+        We offer the most affordable pricing of any video editing service. While others can charge over $250, an Actvid video starts at just $95.
+      </div>
+      <div class="col-sm-3">
+        <p class="icon">
+          <%= image_tag 'homepage/guarantee.png' %>
+        </p>
+        <h3>Guarantee</h3>
+        Get a video that you absolutely love, or your money back. Guaranteed.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container bottom-cta">
+  <p>Let us turn your raw footage into an amazing video!</p>
+  <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
+</div>

@@ -1,0 +1,22 @@
+<footer>
+  <div class="container">
+		<div>
+			<%= link_to "About Us", about_path %>
+			<%= link_to "Customer Videos", "#" %>
+		</div>
+    <div class="social">
+      <%= link_to "Facebook", "https://www.facebook.com/actividfilms", class: "facebook", title: "Facebook", target: "_blank" %>
+      <%= link_to "Twitter", "https://twitter.com/actividfilms", class: "twitter", title: "Twitter", target: "_blank" %>
+      <%= link_to "Instagram", "https://instagram.com/actividfilms", class: "instagram", title: "Instagram", target: "_blank" %>
+      <%= link_to "YouTube", "https://youtube.com/actividfilms", class: "youtube", title: "YouTube", target: "_blank" %>
+      <%= link_to "Vimeo", "https://vimeo.com/activid", class: "vimeo", title: "Vimeo", target: "_blank" %>
+    </div>
+    <nav>
+      <% if cms_site %>
+        <% cms_info_pages.each do |page| %>
+          <%= link_to page.label, page.full_path %>
+        <% end %>
+      <% end %>
+    </nav>
+  </div>
+</footer>
