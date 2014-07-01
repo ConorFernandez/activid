@@ -1,0 +1,213 @@
+@import 'theme';
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+h1, h2, h3, h4 {
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+	color: $primaryColor;
+}
+
+a.disabled {
+  pointer-events: none;
+}
+
+header {
+  height: 51px;
+
+  a.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 5px 0;
+    background: asset-url("activid-logo-144x40.png") no-repeat 15px top;
+    width: 174px;
+    height: 40px;
+    display: block;
+    text-indent: -4000px;
+  }
+}
+
+/* Navbar */
+
+.navbar {
+	min-height: 60px;
+}
+
+.navbar-default {
+	border: none;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	padding-top: 5px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	font-size: 11pt;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 15px;
+  padding: 25px 0;
+  border-top: 1px solid $secondaryBorder;
+
+  background-color: $secondaryColor;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  a {
+    color: #fff;
+		font-size: 11pt;
+  }
+
+  a:hover {
+    color: #fff;
+    opacity: 0.8;
+		text-decoration: none;
+  }
+
+  nav a ~ a {
+    margin-left: 15px;
+  }
+
+  .social {
+    float: right;
+
+    a {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      text-indent: -5000px;
+      background: asset-url("social-icons-sprite.png") no-repeat center center;
+    }
+
+    .facebook {
+      background-position: 0 center;
+    }
+    .twitter {
+      background-position: -32px center;
+    }
+    .instagram {
+      background-position: -64px center;
+    }
+    .youtube {
+      background-position: -96px center;
+    }
+    .vimeo {
+      background-position: -128px center;
+    }
+  }
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
+
+  & > .container {
+    padding-bottom: 100px;
+  }
+}
+
+.page-title:not(:empty) {
+  &:before {
+    content: "> ";
+  }
+}
+
+.ajax-spinner {
+  transition: opacity 1s;
+  opacity: 1;
+
+  &.inactive {
+    opacity: 0;
+  }
+  img {
+    height: 50px;
+  }
+}
+
+.navigation {
+  .btn {
+    font-size: 14px;
+  }
+}
+
+/* Buttons */
+.btn.btn-primary {
+  background-color: $primaryColor;
+  border-color: $primaryBorder;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+.btn-xxl {
+  font-size: 14px;
+	padding: 12px;
+}
+
+.errors-container {
+  margin: 40px 0;
+}
+
+hr {
+  border-color: $secondaryColor;
+}
+
+.content-page {
+  max-width: 800px;
+}
+
+// Custom Bootstrap style for a fading carousel
+.carousel.fade
+{
+    opacity: 1;
+
+    .item
+    {
+        -moz-transition: opacity ease-in-out .7s;
+        -o-transition: opacity ease-in-out .7s;
+        -webkit-transition: opacity ease-in-out .7s;
+        transition: opacity ease-in-out .7s;
+        left: 0 !important;
+        opacity: 0;
+        top:0;
+        position:absolute;
+        width: 100%;
+        display:block !important;
+        z-index:1;
+        &:first-child{
+            top:auto;
+            position:relative;
+        }
+
+        &.active
+        {
+            opacity: 1;
+            -moz-transition: opacity ease-in-out .7s;
+            -o-transition: opacity ease-in-out .7s;
+            -webkit-transition: opacity ease-in-out .7s;
+            transition: opacity ease-in-out .7s;
+            z-index:2;
+        }
+    }
+}
+
+/* Homepage */
+
+.homepage-blurb {
+  padding-bottom: 110px / 2 - 5px;
+}
+
+homepage-container {
+	width: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}

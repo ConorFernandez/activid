@@ -17,6 +17,7 @@ Activid::Application.routes.draw do
   resource :pages 
   get 'about' => 'pages#about'
   get 'faq' => 'pages#faq'
+  get 'filming_tips' => 'pages#filming_tips'
   get 'how_it_works' => 'pages#how_it_works'
   get 'videos' => 'pages#videos'
   
