@@ -1,0 +1,16 @@
+<%= provide(:page_title, 'Checkout Completed!') %>
+<%= provide :body_class, 'success' %>
+<div class="container">
+	<h1>Success!</h1>
+	<div class="row">
+	  <div class="col-md-6">
+	    <p>
+	      You've successfully completed your purchase!
+	    </p>
+	    <p>
+	      An e-mail confirmation will be sent to you shortly, and one of our editors will begin working on your video immediately!
+	    </p>
+	  </div>
+	</div>
+	<%= render partial: 'pages/featured_videos' %>
+</div>

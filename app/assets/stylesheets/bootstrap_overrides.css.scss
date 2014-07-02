@@ -244,6 +244,13 @@ hr {
 	padding-bottom: 100px;
 }
 
+/* Checkout */
+
+.cards {
+	width: 100px;
+	margin-top: 20px;
+}
+
 /* Images */
 
 .thumbnail {
@@ -255,4 +262,23 @@ hr {
 	width: 340px;
 	margin-top: 20px;
 	margin-left: 40px;
+}
+
+/* Checkout */
+
+.no-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.summary_table > tbody > tr > td {
+	border-top: 0px;
+}
+
+.summary_table > tbody > tr.total {
+	border-top: 1px solid #dddddd;
+}
+
+.right-text {
+	text-align: right;
 }

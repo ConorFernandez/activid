@@ -1,0 +1,215 @@
+<div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+	    <h1>Summary</h1>
+		</div>
+	</div>
+	
+	<div class="row order-summary">
+   <div class="col-md-8">
+     <table class="table summary_table" id="order-cost">
+       <tr>
+         <td>
+           <%= @order.video_length.name + " video edit" %>
+         </td>
+         <td class="price right-text">
+           <%= number_to_currency @order.video_length.cost %>
+         </td>
+       </tr>
+       <% if @order.coupon %>
+         <tr>
+           <td>
+             <%= @order.coupon.name %>
+           </td>
+           <td class="price right-text">
+             <%= "-#{number_to_currency @order.coupon.discount}" %>
+           </td>
+         </tr>
+       <% end %>
+       <tr class="total">
+         <td>
+           Total (<%= link_to "edit my order", orders_path %>)
+         </td>
+         <td class="total right-text">
+           $<%= @order.order_cost %>
+         </td>
+       </tr>
+     </table>
+     <% unless @order.coupon %>
+       <%= form_for :coupon, url: attach_coupon_orders_path, remote: true, html: { id: 'coupon_form' } do |f| %>
+         <div class="form-group">
+           <%= f.label :code, 'Got an Activid credit code?  Enter it below:' %>
+           <div class="row">
+             <div class="col-xs-4">
+               <%= f.text_field :code, class: 'form-control' %>
+             </div>
+             <div class="col-xs-8">
+               <%= f.submit 'Apply', class: 'btn btn-primary', placeholder: 'Coupon code' %>
+             </div>
+           </div>
+         </div>
+       <% end %>
+     <% end %>
+     <p class="subtext">
+       <em>
+         Don't worry, your credit card won't be charged until
+         <u>after</u>
+         you are 100% satisfied with your video.
+       </em>
+     </p>
+   </div>
+
+   <div class="col-md-4 video-pic">
+     <%= random_pic %>
+   </div>
+	</div>
+	<div class="errors-container" style="display: none">
+	  <h2>The following errors occurred trying to process your order:</h2>
+	  <div class="alert alert-danger">
+	    <div class="payment-errors">
+	      <%= flash[:stripe_error] %>
+	    </div>
+	    <div class="order-errors"></div>
+	  </div>
+	</div>
+	
+	<div class="row dark_section">
+	  <div class="col-md-6">
+	    <%= form_for @order, url: orders_path, html: { id: 'checkout' }, remote: true do |f| %>
+	      <%= f.hidden_field :preparing_for_payment, value: true %>
+	      <fieldset>
+	        <h3>Billing Information</h3>
+	        <div class="form-group">
+	          <%= f.label :cardholder_name, 'Name', class: 'control-label' %>
+	          <%= f.text_field :cardholder_name, class: 'form-control', placeholder: 'Name on Card' %>
+	        </div>
+	        <div class="form-group">
+	          <%= f.label :cardholder_address, 'Address', class: 'control-label' %>
+	          <%= f.text_field :cardholder_address, class: 'form-control', placeholder: 'Address on Card' %>
+	        </div>
+	        	<div class="form-group">
+		          <div class="row">
+		            <div class="col-sm-6">
+		              <%= f.text_field :cardholder_city, class: 'form-control', placeholder: 'City' %>
+		            </div>
+		            <div class="col-sm-3">
+		              <%= f.text_field :cardholder_state, class: 'form-control', placeholder: 'State' %>
+		            </div>
+		            <div class="col-sm-3">
+		              <%= f.text_field :cardholder_zipcode, class: 'form-control', placeholder: 'Zip' %>
+		            </div>
+		          </div>
+		        </div>
+					<div class="form-horizontal">
+	        	<div class="form-group">
+		          <%= f.label :cardholder_email, 'Email', class: 'control-label col-sm-2' %>
+							<div class="col-sm-10">
+		          	<%= f.text_field :cardholder_email, class: 'form-control', placeholder: 'Email' %>
+							</div>
+		        </div>
+		        <div class="form-group">
+		          <%= f.label :cardholder_phone_number, 'Phone', class: 'control-label col-sm-2' %>
+							<div class="col-sm-10">
+		          	<%= f.text_field :cardholder_phone_number, class: 'form-control col-sm-8', placeholder: 'Phone #' %>
+							</div>
+		        </div>
+					</div>
+	      </fieldset>
+	    <% end %>
+	  </div>
+	  <div class="col-md-4">
+	    <form>
+	      <fieldset>
+	          <h3>Credit Card Information</h3>
+		        <div class="form-group">
+		          <div class="card-number-row">
+		            <div class="card-col">
+		              <label class="control-label" for='card_number'>Card Number</label>
+		              <input class="form-control" id="card_number" type='text' placeholder='Credit Card Number'></input>
+		            </div>
+							</div>
+						</div>	      
+	
+	        <div class="form-group">
+	          <label class="control-label hidden col-sm-4" for='card_exp_month'> Card Exp Month</label>
+	          <label class="control-label hidden col-sm-4" for='card_exp_year'> Card Exp Year</label>
+	          <div class="card-meta-row">
+	            <div class="exp-date">
+								<div class="form-horizontal">	
+									<div class="col-sm-6 no-padding">
+	              		<label>Expiration date</label>
+									</div>
+									<div class="col-sm-4">
+										<label>CVC</label>
+									</div>
+									<div class="form-group">
+		           	   <div class="col-month">
+											<div class="col-sm-3">
+			                	<input class="form-control " id="card_exp_month" type='text' placeholder='MM'></input>
+											</div>
+			              </div>
+		              <div class="col-year">
+											<div class="col-sm-3 no-padding">
+		                		<input class="form-control" id="card_exp_year" type='text' placeholder='YYYY'></input>
+											</div>
+		              </div>
+		
+									 <div class="cvc-col"> 
+											<div class="col-sm-4">
+				              	<input class="form-control" id="card_cvc" type='text' placeholder='CVC'></input>
+											</div>
+				            </div>
+								</div>
+	            </div>
+	          </div>
+	        </div>
+	      </fieldset>
+				<div>
+          <%= image_tag('credit-cards-1.png', class: 'cards') %>
+          <%= image_tag('credit-cards-2.png', class: 'cards') %>
+        </div>
+	    </form>
+			
+	    <div class="form-group checkout-btn">
+	      <button class="btn btn-lg btn-primary" type="submit"> Complete Order</button>	
+	    </div>
+	  </div>
+	</div>
+
+	<%= form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do %>
+	  <%= hidden_field_tag :stripe_token %>
+	<% end %>
+
+	<% if flash[:stripe_error] %>
+	  <script>
+	    $('.errors-container').show();
+	  </script>
+	<% end %>
+	<script>
+	  var order = {
+	    name: '#{@order.video_length.name} video edit',
+	    cost: #{@order.order_cost.to_f},
+	    old_cost: #{@order.video_length.cost.to_f}
+	  };
+
+	</script>
+	  <script id="discount" type="text/x-mustache">
+	    <tr>
+	      <td>{{order_name}}</td>
+	      <td class="price">${{old_cost}}</td>
+	    </tr>
+	    <tr>
+	      <td>{{coupon_name}}</td>
+	      <td class="price">-${{coupon_discount}}</td>
+	    </tr>
+	    <tr class="separator">
+	      <td colspan="2"><hr/></td>
+	    </tr>
+	    <tr>
+	      <td><%= link_to "edit my order", orders_path %></td>
+	      <td class="total">
+	        Total ${{final_total}}
+	      </td>
+	    </tr>
+	  </script>
+</div>
