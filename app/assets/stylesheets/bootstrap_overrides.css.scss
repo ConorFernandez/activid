@@ -213,16 +213,42 @@ hr {
 
 /* Homepage */
 
-/* How It Work */
+/* How It Works & FAQ */
 
-.call_to_action {
-	background: yellow;
+.hero_unit {
+	background: url('yellow.jpeg') no-repeat top;
+	background-size: 100% auto;
+	height: 300px;
+}
+
+.hero_unit_copy {
+	margin-top: 50px;
+}
+
+.how_it_works_section {
+	margin-top: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+}
+
+.dark_section {
+	background-color: whitesmoke;
+}
+
+.how-container {
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+	padding-bottom: 100px;
 }
 
 /* Images */
 
 .thumbnail {
-	width: 200px;
+	width: 350px;
+	border: 0;
 }
 
 .about_image {
