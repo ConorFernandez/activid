@@ -6,9 +6,6 @@
   $blurbSeparation: 110px;
   $colBottomMargin: 20px;
 
-  // On the homepage only...
-  font-size: 18px;
-
   /* // Transparent navbar.
   .navbar {
     background: none;
@@ -62,10 +59,8 @@
   h2 {
     text-align: center;
     margin-top: 70px;
-    text-transform: uppercase;
-    color: $primaryColor;
     margin-bottom: 55px;
-    font-size: 46px;
+    
   }
 
   .jumbotron {

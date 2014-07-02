@@ -8,11 +8,6 @@ html, body {
   height: 100%;
 }
 
-h1, h2, h3, h4 {
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-	color: $primaryColor;
-}
-
 a.disabled {
   pointer-events: none;
 }
@@ -33,6 +28,21 @@ header {
 }
 
 /* Navbar */
+
+header {
+  height: 51px;
+
+  a.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 5px 0;
+    background: asset-url("activid-logo-144x40.png") no-repeat 15px top;
+    width: 174px;
+    height: 40px;
+    display: block;
+    text-indent: -4000px;
+  }
+}
 
 .navbar {
 	min-height: 60px;
@@ -63,7 +73,9 @@ footer {
 
   a {
     color: #fff;
-		font-size: 11pt;
+		font-size: 10pt;
+		margin-left: 15px;
+		line-height: 30px;
   }
 
   a:hover {
@@ -111,6 +123,7 @@ footer {
 
   & > .container {
     padding-bottom: 100px;
+		margin-top: 20px;
   }
 }
 
@@ -200,14 +213,20 @@ hr {
 
 /* Homepage */
 
-.homepage-blurb {
-  padding-bottom: 110px / 2 - 5px;
+/* How It Work */
+
+.call_to_action {
+	background: yellow;
 }
 
-homepage-container {
-	width: auto;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
+/* Images */
+
+.thumbnail {
+	width: 200px;
+}
+
+.about_image {
+	width: 340px;
+	margin-top: 20px;
+	margin-left: 40px;
 }
