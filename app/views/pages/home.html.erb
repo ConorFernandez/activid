@@ -1,38 +1,71 @@
-<% provide(:body_class, 'homepage') %>
 <div class="homepage">
-	<div class="wide-image">
-	  <div class="carousel fade" id="homepage-carousel" data-ride="carousel" data-interval="10000">
-	    <div class="carousel-inner">
-	      <div class="item active">
-	        <%= image_tag 'homepage/skiing.jpg' %>
-	      </div>
-	      <div class="item">
-	        <%= image_tag 'homepage/biking.jpg' %>
-	      </div>
-	      <div class="item">
-	        <%= image_tag 'homepage/surfing.jpg' %>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="container">
-	  <div class="jumbotron">
-	    <div class="spacer"></div>
-	    <div class="inner">
-	      <h1>
-	        <span>You Film.</span>
-	        <span>We Edit.</span>
-	      </h1>
-	      <p>
-	        <span>Transform your raw footage</span>
-	        <span>into a beautifully edited video</span>
-	      </p>
-	      <p>
-	        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
-	      </p>
-	    </div>
-	  </div>
-	</div>
+	<div class="carousel fade" id="homepage-carousel" data-ride="carousel" data-interval="5000">
+	     <div class="carousel-inner">
+	       <div class="item active">
+	         <%= image_tag 'homepage/biking.jpg' %>
+	         <div class="container">
+	           <div class="carousel-caption">
+	             	<h1>
+					        <span>You Film.</span>
+					        <span>We Edit.</span>
+					      </h1>
+								<div class="homepage-cta">
+						      <h3>
+						        <span>Transform your raw footage</span>
+						        <span>into a beautifully edited video.</span>
+						      </h3>
+						      <p>
+						        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
+						      </p>
+								</div>
+	           </div>
+	         </div>
+	       </div>
+	       <div class="item">
+	        	<%= image_tag 'homepage/skiing.jpg' %>
+	         <div class="container">
+	           <div class="carousel-caption">
+							<div class="inner">
+	             	<h1>
+					        <span>You Film.</span>
+					        <span>We Edit.</span>
+					      </h1>
+								<div class="homepage-cta">
+					      	<h3>
+						        <span>Transform your raw footage</span>
+						        <span>into a beautifully edited video.</span>
+						      </h3>
+						      <p>
+						        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
+						      </p>
+								</div>
+							</div>
+	           </div>
+	         </div>
+	       </div>
+	       <div class="item">
+	          <%= image_tag 'homepage/surfing.jpg' %>
+	         <div class="container">
+	           <div class="carousel-caption">
+	             	<h1>
+					        <span>You Film.</span>
+					        <span>We Edit.</span>
+					      </h1>
+								<div class="homepage-cta">
+					    	  <h3>
+						        <span>Transform your raw footage</span>
+						        <span>into a beautifully edited video.</span>
+						      </h3>
+						      <p>
+						        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
+						      </p>
+								</div>
+	           </div>
+	         </div>
+	       </div>
+	     </div>
+	   </div><!-- /.carousel -->
+
 	<div class="we-are-awesome">
 	  <div class="container homepage-blurb">
 			<h2>How People Use Activid</h2>
@@ -43,19 +76,20 @@
 	</div>
 	<div class="videos">
 	  <div class="container homepage-blurb">
-	    <div class="row">
-				<div class="col-md-3">
-	        <div text-center video><iframe src="//player.vimeo.com/video/89375270" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
-		      <div text-center video><iframe src="//player.vimeo.com/video/89375270" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
-	      </div>
-	      <div class="col-md-6 text-center video">
-	        <iframe src="//player.vimeo.com/video/89370714" width="400" height="304" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	      </div>
-	      <div class="col-md-3">
-	        	<div class="text-center video"><iframe src="//player.vimeo.com/video/89375270" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
-		        <div class="text-center video"><iframe src="//player.vimeo.com/video/89375270" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
-	      </div>
-	    </div>
+	   	<div class="row">
+				<div class="col-md-4 text-center video">
+			    <iframe src="//player.vimeo.com/video/89370714" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<h3>Video Title #1</h3>
+				</div>
+				<div class="col-md-4 text-center video">
+			    <iframe src="//player.vimeo.com/video/89370714" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<h3>Video Title #2</h3>
+				</div>
+				<div class="col-md-4 text-center video">
+			    <iframe src="//player.vimeo.com/video/89370714" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<h3>Video Title #3</h3>
+				</div>
+			</div>
 	  </div>
 	</div>
 	<div class="how">
@@ -129,7 +163,7 @@
 	  </div>
 	</div>
 	<div class="container bottom-cta">
-	  <p>Let us turn your raw footage into an amazing video!</p>
+	  <h4>Let us turn your raw footage into an amazing video!</h4>
 	  <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
 	</div>
 </div>
