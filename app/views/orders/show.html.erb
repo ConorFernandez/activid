@@ -1,0 +1,184 @@
+<div class="container">
+	<div class="row step">
+	  <div class="col-md-12">
+	    <%= form_for @order, url: orders_path, remote: true do |f| %>
+					<div class="col-md-6">
+	          <h3>Step 1: Give your project a name.</h3>
+					</div>
+					<div class="col-md-6 form-input-padding">
+	          <%= f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name' %>
+	      	</div>
+	    <% end %>
+		</div>
+	</div>
+	
+	<hr class="order-breakpoint">
+	
+	<div class="row step">
+	  <div class="col-md-12">
+			<div class="col-md-6">
+	    	<h3>Step 2: Upload Your Files.</h3>
+	    	<p class="subtext">Add videos, images, songs - any type. No size limit!</p>
+	   </div>
+		 <div class="col-md-6 form-input-padding">
+	 			<%= hidden_field_tag :key, s3_data.key %>
+		    <%= hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key %>
+		    <%= hidden_field_tag :acl, 'private' %>
+		    <%= hidden_field_tag :policy, s3_data.policy %>
+		    <%= hidden_field_tag :signature, s3_data.signature %>
+		    <%= hidden_field_tag :success_action_status, '201' %>
+		    <span class="btn btn-success fileinput-button">
+		      <i class="glyphicon glyphicon-plus"></i>
+		      <span>Add files...</span>
+		      <%= file_field_tag :file, multiple: true %>
+		    </span>
+		    <button class="btn btn-primary start" type="button">
+		      <i class="glyphicon glyphicon-upload"></i>
+		      <span>Start upload</span>
+		    </button>
+		    <button class="btn btn-warning cancel" type="button" style="display: none;">
+		      <i class="glyphicon glyphicon-ban-circle"></i>
+		      <span>Cancel upload</span>
+		    </button>
+		    <div class="progress" id="upload-progress" style="display: none;">
+		      <div class="progress-bar">
+		        0%
+		      </div>
+		    </div>
+		    <div class="attached-files"></div>
+		    <p class="subtext">
+		      <em>
+		        Your files will take some time to upload. No need to sit here watching them &mdash; just leave this page open and come back when they're finished!
+		      </em>
+		    </p>
+			</div>
+	  </div>
+	</div>
+	
+	<hr class="order-breakpoint">
+	
+	<div class="row step">
+	  <div class="col-md-12">
+	    <%= form_for @order, url: orders_path, remote: true do |f| %>
+	      <div class="form-group">
+	      	<div class="col-md-6">
+	          <h3>Step 3: Give us any additional instructions.</h3>
+	          <p class="subtext">
+	            Please include any details you'd like to see incorporated into your video.
+	            Feel free to be as brief or as detailed as you would like. If there's a song or musical genre you want your video set to, let us know. You can also leave the song picking to us!
+	          </p>
+					</div>
+					<div class="col-md-6 form-input-padding">
+	          <%= f.text_area :instructions, class: 'persistent form-control', placeholder: 'Any additional instructions go here.' %>
+					</div>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>
+	
+	<hr class="order-breakpoint">
+	
+	<div class="row step">
+	  <div class="col-md-12">
+	    <%= form_for @order, url: orders_path, remote: true do |f| %>
+	    	<div class="col-md-6">
+	        <h3>Step 4: When do you want your video back?</h3>
+				</div>
+				<div class="col-md-6 form-input-padding">
+	        <div class="btn-group radios video_lengths">
+	          <% VideoLength.enabled.each do |video_length| %>
+	            <label class="btn btn-default">
+	              <%= video_length.name %>
+	              <br/>
+	              <%= number_to_currency(Order.video_cost(video_length)) %>
+	              <%= f.radio_button :video_length_id, video_length.id, class: 'persistent' %>
+	            </label>
+	          <% end %>
+	        </div>
+	        <p class="subtext">
+	          <em>
+	            Don't worry, your credit card won't be charged until
+	            <u>after</u>
+	            you are 100% satisfied with your video.
+	          </em>
+	        </p>
+	    	</div>
+	    <% end %>
+	  </div>
+	</div>
+	
+	<hr class="order-breakpoint">
+	
+	<div class="navigation step">
+		<div class="col-md-6">
+	  	<h3>Step 5: Check out</h3>
+		</div>
+		<div class="col-md-6 form-input-padding">
+		  <%= link_to checkout_orders_path, class: 'btn btn-primary' do %>
+		    Proceed to Checkout
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		  <% end %>
+		  <p class="subtext">
+		    <em>
+		      Please wait until your files have finished
+		      <br/>
+		      uploading before proceeding to Checkout page.
+		    </em>
+		  </p>
+		</div>
+	</div>
+	<div class="modal fade" id="preview-modal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button class="close">(type="button"  data-dismiss="modal") &times;</button>
+	        <h4>
+	          Preview
+	          <span class="filename"></span>
+	        </h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="preview">
+	          <img class="hidden"/>
+	          <video class="hidden">(controls)</video>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button class="btn btn-primary">(type="button" data-dismiss="modal") Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div><!--Container-->
+<script>
+  
+  window.uploadedFiles = #{order_files_to_json(@order.order_files)};
+
+
+</script>
+<plain>
+  <script id="upload-file-template" type="text/x-mustache">
+    <div class='file'>
+      <div class='preview'>
+        <a href data-toggle="modal" data-target="#preview-modal">
+          <img title='{{file_name}}' class='hidden'  />
+          <video class='hidden' />
+        </a>
+        <span class='file-name'>{{file_name}}</span>
+      </div>
+      {{#done}}
+      <div class='pull-right'>
+        <span class='label label-success'>uploaded!</span>
+      </div>
+      {{/done}}
+      {{#uploadable}}
+      <div class='file-actions'>
+        <button type='button' class='btn btn-warning remove'>Remove</button>
+        <div class='progress' style='display:none'>
+          <div class='progress-bar'></div>
+        </div>
+      </div>
+      {{/uploadable}}
+    </div>
+  </script>
+</plain>
