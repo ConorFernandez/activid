@@ -1,117 +1,107 @@
 <div class="orders">
 	<div class="container">
 		<div class="row step step-first">
-		  <div class="col-md-12">
-		    <%= form_for @order, url: orders_path, remote: true do |f| %>
-						<div class="col-md-6">
-		          <h3>Project Name</h3>
-						</div>
-						<div class="col-md-6 form-input-padding">
-		          <%= f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name' %>
-		      	</div>
-		    <% end %>
+	    <%= form_for @order, url: orders_path, remote: true do |f| %>
+					<div class="col-md-7">
+	          <h3>Project Name</h3>
+					</div>
+					<div class="col-md-5 form-input-padding">
+	          <%= f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name' %>
+	      	</div>
+	    <% end %>
+		</div>
+	
+		<div class="row step">
+			<div class="col-md-7">
+	    	<h3>Upload Your Files</h3>
+	    	<p class="order-sub-text">Add videos, images, songs - any type. No size limit!</p>
+				<p class="order-sub-text">When uploading video files, make sure you're on a strong internet connection. Use the Speedtest to check your upload speed strength.</p>
+				<p><a href="http://www.speedtest.net/">Check your upload speed now.</a></p>
+				<p class="order-sub-text">Alternatively, you can send us a Dropbox link to your videos. Just include the link in the instructions section below.</p>
+	   </div>
+		 <div class="col-md-5 form-input-padding">
+	 			<%= hidden_field_tag :key, s3_data.key %>
+		    <%= hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key %>
+		    <%= hidden_field_tag :acl, 'private' %>
+		    <%= hidden_field_tag :policy, s3_data.policy %>
+		    <%= hidden_field_tag :signature, s3_data.signature %>
+		    <%= hidden_field_tag :success_action_status, '201' %>
+		    <span class="btn btn-success fileinput-button">
+		      <i class="glyphicon glyphicon-plus"></i>
+		      <span>Add files</span>
+		      <%= file_field_tag :file, multiple: true %>
+		    </span>
+		    <button class="btn btn-warning start" type="button">
+		      <i class="glyphicon glyphicon-upload"></i>
+		      <span>Start upload</span>
+		    </button>
+		    <button class="btn btn-warning cancel" type="button" style="display: none;">
+		      <i class="glyphicon glyphicon-ban-circle"></i>
+		      <span>Cancel upload</span>
+		    </button>
+		    <div class="progress" id="upload-progress" style="display: none;">
+		      <div class="progress-bar">
+		        0%
+		      </div>
+		    </div>
+		    <div class="attached-files"></div>
+		    <p class="order-sub-text">
+		    	Your files might take some time to upload. No need to sit here watching them &mdash; just leave this page open, set your computer to never enter sleep mode, and come back when they're finished!
+		    </p>
 			</div>
 		</div>
 	
 		<div class="row step">
-		  <div class="col-md-12">
-				<div class="col-md-6">
-		    	<h3>Upload Your Files</h3>
-		    	<p class="order-sub-text">Add videos, images, songs - any type. No size limit!</p>
-					<p class="order-sub-text">When uploading video files, make sure you're on a strong internet connection. Use the Speedtest to check your upload speed strength.</p>
-					<p><a href="http://www.speedtest.net/">Check your upload speed now.</a></p>
-					<p class="order-sub-text">Alternatively, you can send us a Dropbox link to your videos. Just include the link in the instructions section below.</p>
-		   </div>
-			 <div class="col-md-6 form-input-padding">
-		 			<%= hidden_field_tag :key, s3_data.key %>
-			    <%= hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key %>
-			    <%= hidden_field_tag :acl, 'private' %>
-			    <%= hidden_field_tag :policy, s3_data.policy %>
-			    <%= hidden_field_tag :signature, s3_data.signature %>
-			    <%= hidden_field_tag :success_action_status, '201' %>
-			    <span class="btn btn-success fileinput-button">
-			      <i class="glyphicon glyphicon-plus"></i>
-			      <span>Add files</span>
-			      <%= file_field_tag :file, multiple: true %>
-			    </span>
-			    <button class="btn btn-warning start" type="button">
-			      <i class="glyphicon glyphicon-upload"></i>
-			      <span>Start upload</span>
-			    </button>
-			    <button class="btn btn-warning cancel" type="button" style="display: none;">
-			      <i class="glyphicon glyphicon-ban-circle"></i>
-			      <span>Cancel upload</span>
-			    </button>
-			    <div class="progress" id="upload-progress" style="display: none;">
-			      <div class="progress-bar">
-			        0%
-			      </div>
-			    </div>
-			    <div class="attached-files"></div>
-			    <p class="order-sub-text">
-			    	Your files might take some time to upload. No need to sit here watching them &mdash; just leave this page open, set your computer to never enter sleep mode, and come back when they're finished!
-			    </p>
-				</div>
-		  </div>
-		</div>
-	
-		<div class="row step">
-		  <div class="col-md-12">
-		    <%= form_for @order, url: orders_path, remote: true do |f| %>
-		      <div class="form-group">
-		      	<div class="col-md-6">
-		          <h3>Add Any Instructions</h3>
-		          <p class="order-sub-text">
-		            Let us know if you'd like anything specific in your video. Feel free to be as brief or detailed as you would like.
-		          </p>
-						</div>
-						<div class="col-md-6 form-input-padding">
-		          <%= f.text_area :instructions, class: 'persistent form-control', placeholder: 'Please include the shot of my friends dancing!', rows: '10' %>
-						</div>
-		      </div>
-		    <% end %>
-		  </div>
-		</div>
-	
-		<div class="row step">
-		  <div class="col-md-12">
-		    <%= form_for @order, url: orders_path, remote: true do |f| %>
-		    	<div class="col-md-6">
-		        <h3>When Do You Want Your Video Back?</h3>
-						<p class="order-sub-text">
-							 Don't worry, your credit card won't be charged until after you are 100% satisfied with your video.
-						</p>
+	    <%= form_for @order, url: orders_path, remote: true do |f| %>
+	      <div class="form-group">
+	      	<div class="col-md-6">
+	          <h3>Add Any Instructions</h3>
+	          <p class="order-sub-text">
+	            Let us know if you'd like anything specific in your video. Feel free to be as brief or detailed as you would like.
+	          </p>
 					</div>
 					<div class="col-md-6 form-input-padding">
-		        <div class="btn-group radios video_lengths">
-		          <% VideoLength.enabled.each do |video_length| %>
-		            <label class="btn btn-default">
-		              <%= video_length.name %>
-		              <br/>
-		              <%= number_to_currency(Order.video_cost(video_length)) %>
-		              <%= f.radio_button :video_length_id, video_length.id, class: 'persistent' %>
-		            </label>
-		          <% end %>
-		        </div>
-		    	</div>
-		    <% end %>
-		  </div>
+	          <%= f.text_area :instructions, class: 'persistent form-control', placeholder: 'Please include the shot of my friends dancing!', rows: '10' %>
+					</div>
+	      </div>
+	    <% end %>
+		</div>
+	
+		<div class="row step">
+			<%= form_for @order, url: orders_path, remote: true do |f| %>
+	    	<div class="col-md-6">
+	        <h3>When Do You Want Your Video Back?</h3>
+					<p class="order-sub-text">
+						 Don't worry, your credit card won't be charged until after you are 100% satisfied with your video.
+					</p>
+				</div>
+				<div class="col-md-6 form-input-padding">
+	        <div class="btn-group radios video_lengths">
+	          <% VideoLength.enabled.each do |video_length| %>
+	            <label class="btn btn-default">
+	              <%= video_length.name %>
+	              <br/>
+	              <%= number_to_currency(Order.video_cost(video_length)) %>
+	              <%= f.radio_button :video_length_id, video_length.id, class: 'persistent' %>
+	            </label>
+	          <% end %>
+	        </div>
+	    	</div>
+	    <% end %>
 		</div>
 		
 		<div class="row step-last">
-			<div class="col-md-12">
-				<div class="col-md-6">
-			  	<h3>Proceed To Confirmation</h3>
-				  <p class="order-sub-text">
-				  	Please wait until your files have finished uploading before proceeding to Checkout page.
-				  </p>
-				</div>
-				<div class="col-md-6 form-input-padding">
-				  <%= link_to checkout_orders_path, class: 'btn btn-primary' do %>
-				    Proceed to Confirmation
-				    <span class="glyphicon glyphicon-chevron-right"></span>
-				  <% end %>
-				</div>
+			<div class="col-md-6">
+		  	<h3>Proceed To Confirmation</h3>
+			  <p class="order-sub-text">
+			  	Please wait until your files have finished uploading before proceeding to Checkout page.
+			  </p>
+			</div>
+			<div class="col-md-6 form-input-padding">
+			  <%= link_to checkout_orders_path, class: 'btn btn-primary' do %>
+			    Proceed to Confirmation
+			    <span class="glyphicon glyphicon-chevron-right"></span>
+			  <% end %>
 			</div>
 		</div>
 		<div class="modal fade" id="preview-modal">
