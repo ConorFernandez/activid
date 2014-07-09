@@ -1,50 +1,8 @@
 <div class="homepage">
-	<div class="carousel fade" id="homepage-carousel" data-ride="carousel" data-interval="5000">
+	<div class="carousel">
 	     <div class="carousel-inner">
 	       <div class="item active">
-	         <%= image_tag 'homepage/biking.jpg' %>
-	         <div class="container">
-	           <div class="carousel-caption">
-	             	<h1>
-					        <span>You Film.,</span>
-					        <span>We Edit.</span>
-					      </h1>
-								<div class="homepage-cta">
-						      <h3>
-						        <span>Transform your raw footage</span>
-						        <span>into a beautifully edited video.</span>
-						      </h3>
-					        <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
-										<h3>Get Started.</h3>
-										<p>Only $95. Satisfaction Guaranteed.</p>
-									<% end %>
-								</div>
-	           </div>
-	         </div>
-	       </div>
-	       <div class="item">
-	       	 <%= image_tag 'homepage/skiing.jpg' %>
-	         <div class="container">
-	           <div class="carousel-caption">
-							 	<h1>
-					        <span>You Film,</span>
-					        <span>We Edit.</span>
-					      </h1>
-								<div class="homepage-cta">
-						      <h3>
-						        <span>Transform your raw footage</span>
-						        <span>into a beautifully edited video.</span>
-						      </h3>
-					        <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
-										<h3>Get Started.</h3>
-										<p>Only $95. Satisfaction Guaranteed.</p>
-									<% end %>
-								</div>
-	           </div>
-	         </div>
-	       </div>
-	       <div class="item">
-	          <%= image_tag 'homepage/surfing.jpg' %>
+	         <%= image_tag 'birthday.jpg' %>
 	         <div class="container">
 	           <div class="carousel-caption">
 	             	<h1>
@@ -57,8 +15,9 @@
 						        <span>into a beautifully edited video.</span>
 						      </h3>
 					        <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
-										<h3>Get Started.</h3>
-										<p>Only $95. Satisfaction Guaranteed.</p>
+										<span class="main-text">Get Started.</span>
+										<br>
+										<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
 									<% end %>
 								</div>
 	           </div>
@@ -69,34 +28,34 @@
 
 	<div class="row">
 	  <div class="container homepage-blurb">
-			<h2>How People Use Activid</h2>
+			<h2 class="video-section">How People Use Activid</h2>
 	    <p>
 	      Videos for any occasion or business need.
 	    </p>
-	  </div>
-	  <div class="container homepage-blurb">
-	   	<div class="row">
-				<div class="col-md-4 text-center video">
-			    	<iframe src="//player.vimeo.com/video/89370714" height="100" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-						<iframe src="//player.vimeo.com/video/89370714" height="100" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<h3>Travel Videos</h3>
+	  	<div class="container homepage-videos">
+		   	<div class="row">
+					<div class="col-md-4 text-center video">
+				    	<iframe src="//player.vimeo.com/video/89370714" height="100" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							<iframe src="//player.vimeo.com/video/89370714" height="100" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<h3>Travel Videos</h3>
+					</div>
+					<div class="col-md-4 text-center video">
+				    <iframe src="//player.vimeo.com/video/89370714" height="300" width="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<h3>Family Videos</h3>
+					</div>
+					<div class="col-md-4 text-center video">
+				    <iframe src="//player.vimeo.com/video/89370714" height="100" width="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<iframe src="//player.vimeo.com/video/89370714" height="100" width="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<h3>Promo Videos</h3>
+					</div>
 				</div>
-				<div class="col-md-4 text-center video">
-			    <iframe src="//player.vimeo.com/video/89370714" height="300" width="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<h3>Family Videos</h3>
+				<div class="col-md-12">
+					<%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
+						<span class="main-text">Watch More Customer Videos</span>
+					<% end %>
 				</div>
-				<div class="col-md-4 text-center video">
-			    <iframe src="//player.vimeo.com/video/89370714" height="100" width="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<iframe src="//player.vimeo.com/video/89370714" height="100" width="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<h3>Promo Videos</h3>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
-					<p>Watch More Customer Videos</p>
-				<% end %>
-			</div>
-	  </div>
+		  </div>
+		</div>
 	</div>
 	<div class="dark_section">
 	  <div class="container homepage-blurb">
@@ -142,36 +101,37 @@
 	          <%= image_tag 'homepage/expert.png' %>
 	        </p>
 	        <h3>Quality</h3>
-	        We only work with top editors which means your video is going to turn out great.
+	        <p>We only work with top editors which means your video is going to turn out great.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag 'homepage/72h.png' %>
 	        </p>
 	        <h3>Speed</h3>
-	        We guarantee a set turnaround time for your final video.
+	        <p>We guarantee a set turnaround time for your final video.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag 'homepage/cost.png' %>
 	        </p>
 	        <h3>Affordability</h3>
-	        We offer the most affordable pricing of any human-powered editing service. An Activid video starts at just $95.
+	        <p>We offer the most affordable pricing of any human-powered editing service. An Activid video starts at just $95.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag 'homepage/guarantee.png' %>
 	        </p>
 	        <h3>Guarantee</h3>
-	        Get a video that you absolutely love, or your money back. Guaranteed.
+	        <p>Get a video that you absolutely love, or your money back. Guaranteed.</p>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	<div class="container bottom-cta">
 	  <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
-			<h3>Get Started.</h3>
-			<p>Only $95. Satisfaction Guaranteed.</p>
+			<span class="main-text">Get Started.</span>
+			<br>
+			<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
 		<% end %>
 	</div>
 </div>

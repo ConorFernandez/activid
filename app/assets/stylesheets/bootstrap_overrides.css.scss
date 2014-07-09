@@ -163,19 +163,21 @@ footer {
 }
 
 .btn-xxl {
-  font-size: 11px;
-	padding: 9px;
+	font-size: 19px;
+	padding: 27px 20px;
 	
-	h3 {
-		font-size: 21px;
-		margin-top: 6px;
-		margin-bottom: 5px;
+	.main-text {
 		color: #000;
 	}
 	
-	p {
+	.sub-text {
 		color: #000;
+		font-size: 14px;
 	}
+}
+
+.btn-xxl:hover {
+	background-color: #FFC956;
 }
 
 .errors-container {
@@ -333,13 +335,28 @@ hr {
 
 /* Orders */
 
+.orders {
+	padding: 20px;
+	background-color: whitesmoke;
+}
+
+.order-sub-text {
+	color: #8a8c8e;
+}
+
 .form-input-padding {
 	margin-top: 22px;
 }
 
 .step {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 50px;
+	border-bottom: 1px solid #e3e4e8;
+	padding-bottom: 30px;
+}
+
+.step-last {
+	margin-bottom: 50px;
+	padding-bottom: 30px;
 }
 
 hr.order-breakpoint {
