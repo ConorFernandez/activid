@@ -365,4 +365,28 @@ hr {
 	.step-first {
 		margin-top: 20px;
 	}
+	
+	.btn-group > .btn {
+		margin-right: 10px;
+		border-radius: 6px;
+		padding: 15px;
+	}
+	
+	.btn-group > .btn:last-child:not(:first-child) {
+		border-bottom-left-radius: 6px;
+		border-top-left-radius: 6px;
+	}
+	
+	.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+		border-radius: 6px;
+	}
+	
+	.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+		border-bottom-right-radius: 6px;
+		border-top-right-radius: 6px;
+	}
+	
+	.btn-default.active {
+		background-color: #f0ad4e;
+	}
 }
