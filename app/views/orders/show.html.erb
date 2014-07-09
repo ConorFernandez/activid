@@ -1,10 +1,10 @@
 <div class="orders">
 	<div class="container">
-		<div class="row step">
+		<div class="row step step-first">
 		  <div class="col-md-12">
 		    <%= form_for @order, url: orders_path, remote: true do |f| %>
 						<div class="col-md-6">
-		          <h3>Step 1: Give your project a name.</h3>
+		          <h3>Project Name</h3>
 						</div>
 						<div class="col-md-6 form-input-padding">
 		          <%= f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name' %>
@@ -16,7 +16,7 @@
 		<div class="row step">
 		  <div class="col-md-12">
 				<div class="col-md-6">
-		    	<h3>Step 2: Upload Your Files.</h3>
+		    	<h3>Upload Your Files</h3>
 		    	<p class="order-sub-text">Add videos, images, songs - any type. No size limit!</p>
 					<p class="order-sub-text">When uploading video files, make sure you're on a strong internet connection. Use the Speedtest to check your upload speed strength.</p>
 					<p><a href="http://www.speedtest.net/">Check your upload speed now.</a></p>
@@ -60,13 +60,13 @@
 		    <%= form_for @order, url: orders_path, remote: true do |f| %>
 		      <div class="form-group">
 		      	<div class="col-md-6">
-		          <h3>Step 3: Give us any additional instructions.</h3>
+		          <h3>Add Any Instructions</h3>
 		          <p class="order-sub-text">
 		            Let us know if you'd like anything specific in your video. Feel free to be as brief or detailed as you would like.
 		          </p>
 						</div>
 						<div class="col-md-6 form-input-padding">
-		          <%= f.text_area :instructions, class: 'persistent form-control', placeholder: 'Any additional instructions go here.' %>
+		          <%= f.text_area :instructions, class: 'persistent form-control', placeholder: 'Please include the shot of my friends dancing!', rows: '10' %>
 						</div>
 		      </div>
 		    <% end %>
@@ -77,8 +77,8 @@
 		  <div class="col-md-12">
 		    <%= form_for @order, url: orders_path, remote: true do |f| %>
 		    	<div class="col-md-6">
-		        <h3>Step 4: When do you want your video back?</h3>
-						<p >
+		        <h3>When Do You Want Your Video Back?</h3>
+						<p class="order-sub-text">
 							 Don't worry, your credit card won't be charged until after you are 100% satisfied with your video.
 						</p>
 					</div>
@@ -101,7 +101,7 @@
 		<div class="row step-last">
 			<div class="col-md-12">
 				<div class="col-md-6">
-			  	<h3>Step 5: Check out</h3>
+			  	<h3>Proceed To Confirmation</h3>
 				  <p class="order-sub-text">
 				  	Please wait until your files have finished uploading before proceeding to Checkout page.
 				  </p>
