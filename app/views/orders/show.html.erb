@@ -26,16 +26,16 @@
 		    <%= hidden_field_tag :policy, s3_data.policy %>
 		    <%= hidden_field_tag :signature, s3_data.signature %>
 		    <%= hidden_field_tag :success_action_status, '201' %>
-		    <span class="btn btn-success fileinput-button">
+		    <span class="btn btn-primary fileinput-button">
 		      <i class="glyphicon glyphicon-plus"></i>
 		      <span>Add files</span>
 		      <%= file_field_tag :file, multiple: true %>
 		    </span>
-		    <button class="btn btn-warning start" type="button">
+		    <button class="btn btn-primary start" type="button">
 		      <i class="glyphicon glyphicon-upload"></i>
 		      <span>Start upload</span>
 		    </button>
-		    <button class="btn btn-warning cancel" type="button" style="display: none;">
+		    <button class="btn btn-primary cancel" type="button" style="display: none;">
 		      <i class="glyphicon glyphicon-ban-circle"></i>
 		      <span>Cancel upload</span>
 		    </button>
