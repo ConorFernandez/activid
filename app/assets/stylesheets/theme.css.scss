@@ -6,20 +6,22 @@ $secondaryBorder: #acadaf;
 
 $altBg: #f3f3f3;
 
-.carousel-caption h1 {
-	font-size: 57px;
-	color: #fff;
-} 
-
 h1, h2 {
 	color: $primaryColor;
 }
 
 h2 {
- font-size: 35px;
+	font-size: 35px;
+	font-weight: 300;
 }
 
 h3, h4, h5, h6 {
 	color: $secondaryColor;
+}
+
+p {
+	margin: 0 0 1.8em;
+	font-size: 16px;
+	font-weight: 300;
 }
 
