@@ -31,6 +31,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.5)
     arel (5.0.0)
+    aws-sdk (1.43.2)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     blankslate (3.1.2)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
@@ -307,6 +310,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk (~> 1.43.2)
   bootstrap-sass
   capybara-screenshot
   coffee-rails (~> 4.0.0)

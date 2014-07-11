@@ -7,6 +7,24 @@
     %link(rel='icon' href='/activid_favicon.png' type='image/png')
     %script(type='text/javascript' src='https://js.stripe.com/v2/')
     = csrf_meta_tags
+
+    = yield :header
+
+    :javascript
+      (function() {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+          var fbds = document.createElement('script');
+          fbds.async = true;
+          fbds.src = '//connect.facebook.net/en_US/fbds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(fbds, s);
+          _fbq.loaded = true;
+        }
+        _fbq.push(['addPixelId', '142283342608773']);
+      })();
+      window._fbq = window._fbq || [];
+      window._fbq.push(['track', 'PixelInitialized', {}]);
   %body(class="#{content_for(:body_class)}")
     #container
       %header
@@ -52,3 +70,19 @@
 
     :javascript
       Stripe.setPublishableKey(#{Rails.application.secrets.stripe_publishable_key.to_json})
+
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 971667032;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/971667032/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>

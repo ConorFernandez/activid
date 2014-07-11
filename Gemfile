@@ -50,6 +50,8 @@ gem 'rails_admin'
 
 gem 'thin'
 
+gem 'aws-sdk', '~> 1.43.2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
