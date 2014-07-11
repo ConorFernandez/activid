@@ -10,5 +10,5 @@
   })();
 </script>
 <script>
-  Stripe.setPublishableKey(#{Rails.application.secrets.stripe_publishable_key.to_json})
+  Stripe.setPublishableKey(<%= raw(Rails.application.secrets.stripe_publishable_key.to_json) %>)
 </script>

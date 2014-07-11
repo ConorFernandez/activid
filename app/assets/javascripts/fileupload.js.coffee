@@ -17,11 +17,12 @@ jQuery ()->
         $(data.context)
           .data('fileupload', data)
           .appendTo('.attached-files')
-          .find('.remove').on('click', ()-> $(this).parents('.file').remove() )
-          .end()
+
+        # Start file uploads automatically.
+        data.submit()
 
       send: (e, data) ->
-        console.log 'Sending File', data
+        #console.log 'Sending File', data
 
 
       start: (e, data) ->
@@ -37,11 +38,6 @@ jQuery ()->
         $('.progress', data.context).show();
         $('.progress-bar', data.context).css('width', percent + '%');
         $('.progress-bar', data.context).text("#{percent}%");
-        # The data object we're expecting (the file upload) isn't present in the success handler.
-        # Therefore, this cheap hack does the same thing.
-        if data.loaded == data.total
-          markAsUploaded(data)
-          renderSuccessUpload(data)
 
       progressall: (e, data) ->
         percent = ( (data.loaded / data.total) * 100).toFixed(2)
@@ -49,10 +45,11 @@ jQuery ()->
         $('#upload-progress .progress-bar').text("#{percent}%")
 
       fail: (e, data) ->
-        console.log 'Complete Failure!'
+        #console.log 'Complete Failure!'
 
       done: (event, data) ->
-        console.log 'Successfully uploaded all files!'
+        markAsUploaded(data).then ->
+          renderSuccessUpload(data)
 
     # TODO: this should work with file resume... so long as they don't leave the page.
     # We're transforming the file name to include a unique key
@@ -73,6 +70,7 @@ jQuery ()->
 
     # Start all uploads when user clicks the 'start' button
     $('button.start', form).on 'click', () ->
+      $(this).fadeOut()
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
         if fu
@@ -80,6 +78,7 @@ jQuery ()->
 
     # Cancel all current and pending uploads.
     $('button.cancel', form).on 'click', () ->
+      $('button.start', form).fadeIn()
       $('.attached-files .file').each () ->
         fu = $(this).data('fileupload')
         if fu
@@ -87,14 +86,20 @@ jQuery ()->
 
 markAsUploaded = (data) ->
   $.ajax
-    type: 'PUT'
-    url: '/orders'
+    type: 'POST'
+    url: '/orders/order_files.json'
+    dataType: 'json'
     data:
-      order:
-        'order_files_attributes': [
+      order_file:
           uploaded_filename: data.renamedFile
           original_filename: data.filename
-        ]
+    success: (json, textStatus, xhr)->
+      data.file_id = json.id
+
+deleteUploadedFile = (id) ->
+  $.ajax
+    type: 'DELETE'
+    url: "/orders/order_files/#{id}.json"
 
 # TODO: move into another file when done prototyping
 renderFileTemplate = (data, view) ->
@@ -106,6 +111,7 @@ renderFileTemplate = (data, view) ->
 renderSuccessUpload = (data) ->
   file = _.first(data.files)
   newContext = renderFileTemplate data,
+    file_id: data.file_id
     file_name: file.name
     uploadable: false
     done: true
@@ -138,10 +144,10 @@ jQuery () ->
     _.each window.uploadedFiles, (f) =>
       template = $('#upload-file-template').text()
       rendered = Mustache.render template,
+        file_id: f.id
         file_name: f.original_filename
         done: true
       $(rendered).appendTo('.attached-files')
-
 
 # Handle the modal preview dialogs
 jQuery ->
@@ -151,3 +157,18 @@ jQuery ->
     $('.preview img, .preview video', this).addClass('hidden')
     $('span.filename', this).text(file.name)
     generatePreview fu, $('#preview-modal')
+
+# Handle removing files
+jQuery ->
+  $('.attached-files').on 'click', '.file .delete', ->
+    fileDiv = $(this).parents('.file')
+    fileId  = $(fileDiv).find('input[name="file_id"]').val()
+
+    deleteUploadedFile(fileId)
+    fileDiv.remove()
+
+  $('.attached-files').on 'click', '.file .cancel', ->
+    fileDiv = $(this).parents('.file')
+    fu = fileDiv.data('fileupload')
+    fu.abort()
+    fileDiv.remove()
