@@ -483,7 +483,7 @@ hr {
 }
 
 .vid-list {
-	width: 1344px;
+	width: 1360px;
 	position: relative;
 	top:0;
 	left: 0;
@@ -491,8 +491,6 @@ hr {
 
 .vid-item {
 	display: block;
-	width: 148px;
-	height: 148px;
 	float: left;
 	margin: 0;
 	padding: 10px;
@@ -500,13 +498,13 @@ hr {
 
 .thumb {
 	overflow:hidden;
-	height: 84px;
 }
 
 .thumb img {
-	width: 100%;
+	width: auto;
 	position: relative;
 	top: -13px;
+	height: 200px;
 }
 
 .arrows {
