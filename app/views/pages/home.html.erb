@@ -1,12 +1,12 @@
 <div class="homepage">
-	<div class="carousel fade" id="homepage-carousel" data-ride="carousel" data-interval="5000">
+	<div class="carousel">
 	     <div class="carousel-inner">
 	       <div class="item active">
-	         <%= image_tag 'homepage/biking.jpg' %>
+	         <%= image_tag 'birthday.jpg' %>
 	         <div class="container">
 	           <div class="carousel-caption">
 	             	<h1>
-					        <span>You Film.</span>
+					        <span>You Film,</span>
 					        <span>We Edit.</span>
 					      </h1>
 								<div class="homepage-cta">
@@ -14,51 +14,11 @@
 						        <span>Transform your raw footage</span>
 						        <span>into a beautifully edited video.</span>
 						      </h3>
-						      <p>
-						        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
-						      </p>
-								</div>
-	           </div>
-	         </div>
-	       </div>
-	       <div class="item">
-	        	<%= image_tag 'homepage/skiing.jpg' %>
-	         <div class="container">
-	           <div class="carousel-caption">
-							<div class="inner">
-	             	<h1>
-					        <span>You Film.</span>
-					        <span>We Edit.</span>
-					      </h1>
-								<div class="homepage-cta">
-					      	<h3>
-						        <span>Transform your raw footage</span>
-						        <span>into a beautifully edited video.</span>
-						      </h3>
-						      <p>
-						        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
-						      </p>
-								</div>
-							</div>
-	           </div>
-	         </div>
-	       </div>
-	       <div class="item">
-	          <%= image_tag 'homepage/surfing.jpg' %>
-	         <div class="container">
-	           <div class="carousel-caption">
-	             	<h1>
-					        <span>You Film.</span>
-					        <span>We Edit.</span>
-					      </h1>
-								<div class="homepage-cta">
-					    	  <h3>
-						        <span>Transform your raw footage</span>
-						        <span>into a beautifully edited video.</span>
-						      </h3>
-						      <p>
-						        <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
-						      </p>
+					        <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
+										<span class="main-text">Get Started.</span>
+										<br>
+										<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
+									<% end %>
 								</div>
 	           </div>
 	         </div>
@@ -66,42 +26,57 @@
 	     </div>
 	   </div><!-- /.carousel -->
 
-	<div class="we-are-awesome">
+	<div class="row">
 	  <div class="container homepage-blurb">
-			<h2>How People Use Activid</h2>
+			<h2 class="video-section">How People Use Activid</h2>
 	    <p>
-	      We create amazing videos for you to share with friends and family. Check out some of our latest ones below!
+	      Videos for any occasion or business need.
 	    </p>
-	  </div>
+	  	<div class="container homepage-videos">
+		   	<div class="row">
+					<div class="col-md-3 text-center">
+							<div class="video">
+				    		<iframe width="225" height="127" src="//www.youtube.com/embed/9h-xWA5B1T8?list=UU09eP0HZqKT1ZOk9rrv4CDQ" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<div class="video">
+								<iframe width="225" height="127" src="//www.youtube.com/embed/bTuCQwl8dN8?list=UU09eP0HZqKT1ZOk9rrv4CDQ" frameborder="0" allowfullscreen></iframe>
+							</div>
+						<h3>Travel Videos</h3>
+					</div>
+					<div class="col-md-6 text-center">
+						<div class="video">
+							<iframe width="420" height="263" src="//www.youtube.com/embed/7fC8tN09B30?list=PL2_o9Anq-s1Xn7z-T9DWPcM8BYerusOGl" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<h3>Family Videos</h3>
+					</div>
+					<div class="col-md-3 text-center">
+						<div class="video">
+				    	<iframe width="225" height="127" src="//www.youtube.com/embed/bTuCQwl8dN8?list=UU09eP0HZqKT1ZOk9rrv4CDQ" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="video">
+							<iframe width="225" height="127" src="//www.youtube.com/embed/bTuCQwl8dN8?list=UU09eP0HZqKT1ZOk9rrv4CDQ" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<h3>Promo Videos</h3>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
+						<span class="main-text">Watch More Customer Videos</span>
+					<% end %>
+				</div>
+		  </div>
+		</div>
 	</div>
-	<div class="videos">
+	<div class="dark_section">
 	  <div class="container homepage-blurb">
-	   	<div class="row">
-				<div class="col-md-4 text-center video">
-			    <iframe src="//player.vimeo.com/video/89370714" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<h3>Video Title #1</h3>
-				</div>
-				<div class="col-md-4 text-center video">
-			    <iframe src="//player.vimeo.com/video/89370714" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<h3>Video Title #2</h3>
-				</div>
-				<div class="col-md-4 text-center video">
-			    <iframe src="//player.vimeo.com/video/89370714" width="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<h3>Video Title #3</h3>
-				</div>
-			</div>
-	  </div>
-	</div>
-	<div class="how">
-	  <div class="container homepage-blurb">
-	    <h2>How does ActiVid work?</h2>
+	    <h2>Create a Video in 4 Simple Steps</h2>
 	    <div class="row">
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag "homepage/video.png" %>
 	        </p>
 	        <h3>Transfer</h3>
-	        <p>First, take all that awesome video you recorded on your last vacation, and transfer it to your computer.</p>
+	        <p>First, transfer your video to your computer.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
@@ -115,19 +90,19 @@
 	          <%= image_tag "homepage/edit.png" %>
 	        </p>
 	        <h3>Edit</h3>
-	        <p>Next, our editors will cut out all the boring stuff, leaving you with an amazing highlight video.</p>
+	        <p>Next, our editors will create a beautiful video from your raw footage.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag "homepage/stunt.png" %>
 	        </p>
 	        <h3>Share</h3>
-	        Once you're happy, post your video and show off your awesomeness to friends and family.
+	        <p>Once you're happy, post your video online to share with friends, family, or customers.</p>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	<div class="why">
+	<div class="row">
 	  <div class="container homepage-blurb">
 	    <h2>Why Use ActiVid?</h2>
 	    <div class="row">
@@ -136,34 +111,37 @@
 	          <%= image_tag 'homepage/expert.png' %>
 	        </p>
 	        <h3>Quality</h3>
-	        We work with the best video editors out there, which means your video is going to turn out great!
+	        <p>We only work with top editors which means your video is going to turn out great.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag 'homepage/72h.png' %>
 	        </p>
 	        <h3>Speed</h3>
-	        We guarantee a 3 business day turnaround for your final video.
+	        <p>We guarantee a set turnaround time for your final video.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag 'homepage/cost.png' %>
 	        </p>
 	        <h3>Affordability</h3>
-	        We offer the most affordable pricing of any video editing service. While others can charge over $250, an Actvid video starts at just $95.
+	        <p>We offer the most affordable pricing of any human-powered editing service. An Activid video starts at just $95.</p>
 	      </div>
 	      <div class="col-sm-3">
 	        <p class="icon">
 	          <%= image_tag 'homepage/guarantee.png' %>
 	        </p>
 	        <h3>Guarantee</h3>
-	        Get a video that you absolutely love, or your money back. Guaranteed.
+	        <p>Get a video that you absolutely love, or your money back. Guaranteed.</p>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	<div class="container bottom-cta">
-	  <h4>Let us turn your raw footage into an amazing video!</h4>
-	  <%= link_to 'Get started', orders_path, class: 'btn btn-primary btn-xxl get-started' %>
+	  <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
+			<span class="main-text">Get Started.</span>
+			<br>
+			<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
+		<% end %>
 	</div>
 </div>

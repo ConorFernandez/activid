@@ -3,8 +3,8 @@
 		<div class="col-md-12 text-center hero_unit">
 			<div class="container">
 				<div class="col-md-8 col-md-offset-2 hero_unit_copy">
-					<h1>A beautiful video, every time.</h1>
-					<p>At Activid, we know that editing video can be a hassle. But that doesn't mean you need to enroll in film school to make your videos look great. We're proud to offer you the simplest way to create beautiful videos, whether for yourself, your friends, your family, or your business.</p>
+					<h1>Filmmaking Tips</h1>
+					<p>We all know that [].</p>
 				</div>
 			</div>
 		</div>
@@ -12,22 +12,22 @@
 
 	<div class="row">
 		<div class="container how_it_works_section">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<h2>The Best Videos Tell a Story</h2>
 				<p>Capture the entire story of your trip, not just the action-packed parts.  Set the scene – film people getting ready in the morning, preparing for the day’s events, eating lunch, laughing with each other, and the ride home.  Did you hike a mountain?  Show people tying their shoes, hiking up the trail, and celebrating at the top.  This makes for a much more compelling video that people can connect with.   Think about the story you want to want to tell, and record your video with that story in mind.</p>
 			</div>
-			<div class="col-md-4">
-				<%= image_tag('placeholder.jpg') %>
+			<div class="col-md-5 col-md-offset-1">
+				<%= image_tag('placeholder.jpg', class: 'thumbnail') %>
 			</div>
 		</div>
 	</div>
 
 	<div class="row dark_section">
 		<div class="container how_it_works_section">
-			<div class="col-md-4">
-				<%= image_tag('placeholder.jpg') %>
+			<div class="col-md-6">
+				<%= image_tag('placeholder.jpg', class: 'thumbnail') %>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<h2>Shoot People, Not Scenery</h2>
 				<p>The reason you’re shooting video in the first place is to remember how much fun everyone had.  Although its good to have a few shots of amazing vistas or that giant waterfall, the primary subject of your video should be people.  This goes hand-in-hand with storytelling – every story needs characters.  Even in scenic shots, try to include a few people in the background.</p>
 			</div>
@@ -36,22 +36,22 @@
 
 	<div class="row">
 		<div class="container how_it_works_section">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<h2>Film People Being Themselves</h2>
 				<p>Many people get camera-shy, so try to act natural when filming.  Instead of sticking a camera in their face and asking them to recap the day’s events, casually film people in their natural element.</p>
 			</div>
-			<div class="col-md-4">
-				<%= image_tag('placeholder.jpg') %>
+			<div class="col-md-5 col-md-offset-1">
+				<%= image_tag('placeholder.jpg', class: 'thumbnail') %>
 			</div>
 		</div>
 	</div>
 
 	<div class="row dark_section">
-		<div class="container">
-			<div class="col-md-4">
-				<%= image_tag('placeholder.jpg') %>
+		<div class="container how_it_works_section">
+			<div class="col-md-6">
+				<%= image_tag('placeholder.jpg', class: 'thumbnail') %>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<h2>Capture Video in Motion</h2>
 				<p>In general, far away shots of people where the camera is still makes for boring video.  Some of the best video comes from when the camera is moving or panning, so as to give the viewer more of a first person perspective.  This is why GoPro videos are so fun to watch – the videographer is often racing down a mountain or filming another subject as they move in tandem.  However, keep in mind that an unsteady camera detracts from the action.  When possible, try to keep the camera steady – using both hands or a pole can help.</p>
 
@@ -62,22 +62,22 @@
 
 	<div class="row">
 		<div class="container how_it_works_section">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<h2>Shoot From Multiple Angles</h2>
 				<p>Recording an entire trip from one angle could be a bit dull to watch later.  Get high shots, low shots and panoramic views.  If you’re at a baseball game, footage captured from beside first base, the top of the bleachers, and the dugout can result in a much more interesting mix of shots, and can heighten the drama of important moments.  Adding different perspectives to your video will make for a much more dynamic, visually interesting film once you cut it all together.</p>
 			</div>
-			<div class="col-md-4">
-				<%= image_tag('placeholder.jpg') %>
+			<div class="col-md-5 col-md-offset-1">
+				<%= image_tag('placeholder.jpg', class: 'thumbnail') %>
 			</div>
 		</div>
 	</div>
 
 	<div class="row dark_section">
 		<div class="container how_it_works_section">
-			<div class="col-md-4">
-				<%= image_tag('placeholder.jpg') %>
+			<div class="col-md-6">
+				<%= image_tag('placeholder.jpg', class: 'thumbnail') %>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<h2>Keep Your Shots Short</h2>
 				<p>When filming in a beautiful location, it’s easy to get carried away and record everything you see.  But this can make editing a bit of a headache.  So be selective and shoot each video with a purpose in mind, utilizing multiple shots at different angles and distances.</p>
 
@@ -89,8 +89,11 @@
 	<div class="row">
 		<div class="container how_it_works_section">
 			<div class="col-md-12 text-center">
-				<h4>Only $95. Satisfaction Guaranteed.</h4>
-				<p><%= link_to "Get Started", "#", class: 'btn btn-xxl btn-primary' %></p></p>
+			  <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
+					<span class="main-text">Get Started.</span>
+					<br>
+					<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
+				<% end %>
 			</div>
 		</div>
 	</div>
