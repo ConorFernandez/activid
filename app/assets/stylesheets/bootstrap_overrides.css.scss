@@ -300,6 +300,7 @@ hr {
   padding-left: 0;
   padding-right: 0;
 	padding-bottom: 100px;
+	overflow: hidden;
 	
 	.thumbnail {
 		width: 435px;
@@ -508,11 +509,6 @@ hr {
 	top: -13px;
 }
 
-.vid-item .desc {
-	color: #21A1D2;
-	font-size: 15px;
-	margin-top:5px;
-}
 
 .arrows {
 	position:relative;
@@ -520,25 +516,19 @@ hr {
 }
 
 .arrow-left {
-	color: #fff;
 	position: absolute;
-	background: #777;
 	padding: 15px;
 	left: -25px;
 	top: -130px;
 	z-index: 99;
-	cursor: pointer;
 }
 
 .arrow-right {
-	color: #fff;
 	position: absolute;
-	background: #777;
 	padding: 15px;
 	right: -25px;
 	top: -130px;
 	z-index:100;
-	cursor: pointer;
 }
 
 @media (max-width: 624px) {
