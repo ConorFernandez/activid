@@ -245,7 +245,7 @@ hr {
 /* Homepage */
 
 .carousel-inner > .item > img {
-	width: 100%
+	width: 100%;
 }
 
 .video {
@@ -272,6 +272,21 @@ hr {
 		color: #fff;
 		text-shadow: none;
 		font-weight: 300;
+	}
+}
+
+@media (max-width: 480px) { 
+	.carousel-caption {
+		width: 100%;
+		text-align: left;
+		top: 0%;
+		left: 10%;
+	
+		 h1 {
+			font-size: 20px;
+			color: #fff;
+			font-weight: 600;
+		}
 	}
 }
 
