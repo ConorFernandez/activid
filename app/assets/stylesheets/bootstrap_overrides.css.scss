@@ -121,6 +121,17 @@ footer {
   }
 }
 
+@media (max-width: 480px) {
+	footer .social {
+		float: none;
+		text-align: center;
+	}
+	
+	footer .links {
+		text-align: center;
+	}
+}
+
 #container {
   min-height: 100%;
   position: relative;
@@ -293,6 +304,10 @@ hr {
 	background-color: #F9F9F9;
 }
 
+.last_section {
+	margin: -15px;
+}
+
 .how-container {
   width: auto;
   margin-left: 0;
@@ -306,6 +321,12 @@ hr {
 		width: 435px;
 		border: 0px;
 		background: transparent;
+	}
+}
+
+@media (max-width: 480px) {
+	.how-container .thumbnail {
+		width: 90%;
 	}
 }
 
@@ -444,15 +465,19 @@ hr {
 	.btn-default.active {
 		background-color: #f0ad4e;
 	}
-	
-	.guarantee .guarantee-text .glyphicon:before {
-	vertical-align: -10%;
-	font-size: 28px;
-	display: inline-block;
-	width: 1.07142857em;
-	text-align: center;
-	margin-right: 5px;
-	}
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.guarantee-text {
+	display: inline;
+}
+
+.inline-guarantee {
+	display: inline;
 }
 
 /* Videos */
