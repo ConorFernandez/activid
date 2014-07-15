@@ -168,12 +168,21 @@
           <%= image_tag('credit-cards-1.png', class: 'cards') %>
           <%= image_tag('credit-cards-2.png', class: 'cards') %>
         </div>
+				<div class="secure-text">	
+					<i class="glyphicon glyphicon-lock gurantee-icon"></i>
+					<p>Secure Credit Card Payment</p>
+					<p class="secure-sub-text">This is a 2048-bit SSL encrypted payment.</p>
+				</div>
 	    </form>
-			
-	    <div class="form-group checkout-btn">
-	      <button class="btn btn-primary" type="submit"> Complete Order</button>	
-	    </div>
-	  </div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-6 col-md-offset-6">
+				<div class="form-group checkout-btn">
+		      <button class="btn btn-primary" type="submit"> Complete Order</button>	
+		    </div>
+			</div>
+		</div>
 	</div>
 
 	<%= form_tag submit_payment_orders_path, id: 'stripe-token-form', class: 'hidden' do %>

@@ -416,6 +416,24 @@ hr {
 	margin-top: 20px;
 }
 
+.secure-text {
+	margin-top: 26px;
+	
+	p {
+		margin: 0;
+	}
+	
+	p.secure-sub-text {
+		font-size: 12px;
+	}
+}
+
+.secure-icon {
+	float: left;
+	font-size: 24px;
+	padding-right: 16px;
+}
+
 /* Images */
 
 .thumbnail {
