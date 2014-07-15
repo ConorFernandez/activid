@@ -315,8 +315,14 @@ hr {
 .hero_unit_copy {
 	margin-top: 140px;
 	
+	h1 {
+		color: #000;
+		font-size: 42px;
+	}
+	
 	p {
 		padding-top: 15px;
+		font-size: 18px;
 	}
 }
 
@@ -350,6 +356,10 @@ hr {
 		width: 435px;
 		border: 0px;
 		background: transparent;
+	}
+	
+	p {
+		font-size: 18px;
 	}
 }
 
