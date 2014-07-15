@@ -472,13 +472,17 @@ hr {
 
 	.step {
 		margin-bottom: 50px;
-		padding-bottom: 50px;
 		margin-left: 7px;
 	}
 	
 	.hr-padding {
 		padding-left: 0;
 		padding-right: 15px;
+		margin-top: 50px;
+	}
+	
+	.no-padding-left {
+		padding-left: 0;
 	}
 
 	.step-last {
@@ -521,8 +525,19 @@ hr {
   margin: 0 auto;
 }
 
+.center {
+	margin: 0 auto;
+	width: 400px;
+}
+
 .guarantee-text {
 	display: inline;
+}
+
+.gurantee-icon {
+	float: left;
+	font-size: 47px;
+	padding-right: 16px;
 }
 
 .inline-guarantee {
