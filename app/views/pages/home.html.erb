@@ -1,30 +1,27 @@
 <div class="homepage">
-	<div class="carousel">
-     <div class="carousel-inner">
-       <div class="item active">
-         <%= image_tag 'birthday.jpg' %>
-         <div class="container">
-           <div class="carousel-caption">
-             	<h1>
-				        <span>You Film,</span>
-				        <span>We Edit.</span>
-				      </h1>
-							<div class="homepage-cta">
-					      <h3>
-					        <span>Transform your raw footage</span>
-					        <span>into a beautifully edited video.</span>
-					      </h3>
-				        <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
-									<span class="main-text">Get Started.</span>
-									<br>
-									<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
-								<% end %>
-							</div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div><!-- /.carousel -->
+	<div class="jumbotron main-padding">
+	  <div class="row">
+	    <div class="col-md-11 col-md-offset-1">
+	      <div class="jumbotron-marketing">
+	        	<h1>
+			        <span>You Film,</span>
+			        <span>We Edit.</span>
+			      </h1>
+  					<div class="homepage-cta">
+			      	<h3>
+				        <span>Transform your raw footage</span>
+				        <span>into a beautifully edited video.</span>
+				      </h3>
+		        <%= link_to orders_path, class: 'btn btn-primary btn-xxl get-started' do %>
+							<span class="main-text">Get Started.</span>
+							<br>
+							<span class="sub-text">Only $95. Satisfaction Guaranteed.</span>
+						<% end %>
+					</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	
 	<div class="row">
 	  <div class="container homepage-blurb">
