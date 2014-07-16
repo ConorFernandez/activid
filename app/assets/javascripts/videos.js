@@ -12,9 +12,6 @@ $(document).ready(function () {
         }, 750);
     });
     
-    var section = 1;
-    $("#video").attr("id", "section" + section++).appendTo("#video");
-    
     $("#video").click(function() {
        var src = $(".vid-src").text();
        var title = $(".vid-title").text();
