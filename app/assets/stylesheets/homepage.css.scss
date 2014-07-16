@@ -83,26 +83,21 @@
 
   .jumbotron {
     position: relative;
-    z-index: 5;
     color: white;
     margin-bottom: 0;
-    box-sizing: border-box;
 		padding: 0;
 	  background-image: url('/assets/birthday.jpg');
-	  background-position-x: 50%;
-	  background-position-y: 67%;
 	  background-repeat: no-repeat;
 		background-size: cover;
 	  color: #fff;
-	
+		border-radius: 0px;
 		
 		
 		.jumbotron-marketing {
 			width: 100%;
 			text-align: left;
-			top: 20%;
-			margin-top: 20%;
-			margin-bottom: 20%;
+			margin-top: 10%;
+			margin-bottom: 15%;
 		
 			 h1 {
 				font-size: 57px;
