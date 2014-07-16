@@ -590,6 +590,7 @@ hr {
 }
 
 .vid-list {
+	/* Define This Based on # of Videos */
 	width: 2112px;
 	position: relative;
 	top:0;
@@ -608,17 +609,23 @@ hr {
 	font-size: 28px;
 }
 
+.thumb {
+	float:left;
+	margin:.5em 10px .5em 0;
+	overflow:hidden; /* this is important */
+	border:0px solid #ccc;
+}
+
 .thumb img {
 	width: auto;
 	position: relative;
 	top: -13px;
 	height: 200px;
+	margin: -12px -0px -38px 0px;
 }
 
 .vid-title {
 	width: 90%;
-	text-align: center;
-	margin-left: 5%;
 }
 
 .arrows {

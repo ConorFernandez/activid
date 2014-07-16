@@ -11,4 +11,9 @@ $(document).ready(function () {
             scrollLeft: "-=336"
         }, 750);
     });
+    
+    $("#video").click(function() {
+       var linkText = $(this).text();
+       $("#vid-title-1").html(linkText);
+    })
 });

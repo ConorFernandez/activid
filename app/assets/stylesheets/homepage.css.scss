@@ -101,10 +101,8 @@
 			width: 100%;
 			text-align: left;
 			top: 20%;
-			left: 10%;
 			margin-top: 20%;
 			margin-bottom: 20%;
-			margin-left: 26px;
 		
 			 h1 {
 				font-size: 57px;
@@ -156,6 +154,12 @@
       width: 100%;
     }
   }
+
+	@media (max-width: 960px) {
+		.jumbotron-marketing {
+			margin-left: 20%
+		}
+	}
 
   @media (max-width: 520px) {
     .jumbotron .inner {
