@@ -281,6 +281,7 @@ hr {
 		color: #fff;
 		text-shadow: none;
 		font-weight: 300;
+		margin-bottom: 25px;
 	}
 }
 
@@ -566,7 +567,7 @@ hr {
 
 .vid-container {
 	position: relative;
-	padding-bottom: 52%;
+	padding-bottom: 50%;
 	padding-top: 30px; 
 	height: 0; 
 }
@@ -626,6 +627,14 @@ hr {
 
 .vid-title {
 	width: 90%;
+}
+
+.vid-src {
+	display: none;	
+}
+
+.vid-desc {
+	display: none;
 }
 
 .arrows {

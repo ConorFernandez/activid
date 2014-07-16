@@ -12,8 +12,16 @@ $(document).ready(function () {
         }, 750);
     });
     
+    var section = 1;
+    $("#video").attr("id", "section" + section++).appendTo("#video");
+    
     $("#video").click(function() {
-       var linkText = $(this).text();
-       $("#vid-title-1").html(linkText);
+       var src = $(".vid-src").text();
+       var title = $(".vid-title").text();
+       var desc =  $(".vid-desc").text();
+       $("#vid_frame").attr("src", src);
+       $("#vid-main-title").text(title);
+       $("#vid-main-description").text(desc);
     })
+
 });
