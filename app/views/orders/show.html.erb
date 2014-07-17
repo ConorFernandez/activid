@@ -89,7 +89,7 @@
 		              <%= video_length.name %>
 		              <br/>
 		              <%= number_to_currency(Order.video_cost(video_length)) %>
-		              <%= f.radio_button :video_length_id, video_length.id, class: 'persistent' %>
+		              <%= f.radio_button :video_length_id, video_length.id, class: 'persistent no-display' %>
 		            </label>
 		          <% end %>
 		         </div>
