@@ -1,0 +1,109 @@
+/* How It Works & FAQ */
+
+.faq-row {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.hero_unit {
+	background: image-url('yellow.jpeg') no-repeat top;
+	background-size: 100% auto;
+	height: 450px;
+}
+
+.hero_unit_copy {
+	margin-top: 140px;
+	
+	h1 {
+		color: #000;
+		font-size: 42px;
+	}
+	
+	p {
+		padding-top: 15px;
+		font-size: 18px;
+	}
+}
+
+.how_it_works_section {
+	width: 100%;
+	padding: 19px;
+	margin-bottom: 70px;
+	margin-top: 80px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.dark_section {
+	background-color: #F9F9F9;
+}
+
+.last_section {
+	margin: -15px;
+}
+
+.how-container {
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+	padding-bottom: 100px;
+	overflow: hidden;
+	
+	.thumbnail {
+		width: 435px;
+		border: 0px;
+		background: transparent;
+	}
+	
+	h2 {
+		padding-bottom: 10px;
+	}
+	
+	p {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 480px) {
+	.how-container .thumbnail {
+		width: 90%;
+	}
+}
+
+.panel {
+	box-shadow: none;
+	
+	h4 {
+		font-size: 26px;
+	}
+	
+	a h4:hover {
+		color: #B4B6B8;
+	}
+	
+	a:hover {
+		text-decoration: none;
+	}
+}
+
+.panel-collapse {
+	height: 20px;
+	width: 66%;
+	
+	p {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 992px) {
+	.hero_unit {
+		background-size: auto;
+		text-align: center;
+	}
+	
+	.thumbnail {
+		margin: 0 auto;
+	}	
+}

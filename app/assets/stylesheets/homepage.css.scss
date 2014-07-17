@@ -202,3 +202,58 @@
 		margin-bottom: 70px;
   }
 }
+
+.carousel-inner > .item > img {
+	width: 100%;
+}
+
+.video {
+	margin-bottom: 10px;
+}
+
+.main-video-container {
+	overflow: hidden;
+}
+
+.main-video {
+	margin: -47px -0px -46px 0px;
+}
+
+.carousel-caption {
+	width: 75%;
+	text-align: left;
+	top: 20%;
+	left: 10%;
+	
+	 h1 {
+		font-size: 57px;
+		color: #fff;
+		font-weight: 600;
+	}
+}
+
+.homepage-cta {
+	width: 45%;
+	
+	h3 {
+		color: #fff;
+		text-shadow: none;
+		font-weight: 300;
+		margin-bottom: 25px;
+	}
+}
+
+@media (max-width: 480px) { 
+	.carousel-caption {
+		width: 100%;
+		text-align: left;
+		top: 0%;
+		left: 10%;
+	
+		 h1 {
+			font-size: 20px;
+			color: #fff;
+			font-weight: 600;
+		}
+	}
+}

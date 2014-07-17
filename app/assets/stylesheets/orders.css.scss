@@ -1,83 +1,138 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Orders */
+
 .orders {
-  h3 {
-    text-transform: uppercase;
-  }
+	padding: 20px;
+	background-color: #F9F9F9;
+	
+	h3 {
+		color: #000;
+	}
 
-  p.subtext {
-    font-weight: normal;
-  }
+	.order-sub-text {
+		color: #8a8c8e;
+	}
 
-  .step {
-    margin-bottom: 40px; // Client wants "2 inches" of whitespaces between each step...
-    .tip {
-      padding-top: 56px;
-    }
-  }
-}
-.attached-files {
-  margin-top: 10px;
-  max-height: 250px;
-  overflow: hidden;
-  overflow-y: auto;
-}
+	.form-input-padding {
+		margin-top: 22px;
+	}
 
-.file {
-  .file-name {
-    font-weight: bold;
-  }
+	.step {
+		margin-bottom: 50px;
+		margin-left: 7px;
+	}
+	
+	.hr-padding {
+		padding-left: 0;
+		padding-right: 15px;
+		margin-top: 50px;
+	}
+	
+	.no-padding-left {
+		padding-left: 0;
+	}
 
-  &:nth-child(odd) {
-    background-color: #F9F9F9;
-  }
-
-  margin-bottom: 6px;
-  padding: 5px 0 5px 0;
-}
-
-
-
-.preview {
-  display: inline-block;
-  text-align: center;
-}
-
-.attached-files {
-  .preview img, .preview video {
-    width: 120px;
-    display: block;
-  }
-}
-
-#preview-modal {
-  .modal-dialog {
-    width: 720px;
-  }
-  .preview img, .preview video {
-    width: 640px;
-  }
-}
-
-
-form.edit_order {
-  textarea {
-    width: 100%;
-    height: 150px;
-  }
-}
-
-
-p.subtext {
-  font-size: 16px;
-  font-weight: bold;
+	.step-last {
+		margin-bottom: 50px;
+		padding-bottom: 30px;
+		margin-left: -8px;
+	}
+	
+	.step-first {
+		margin-top: 20px;
+	}
+	
+	.btn-group > .btn {
+		margin-right: 10px;
+		border-radius: 6px;
+		padding: 15px;
+	}
+	
+	.btn-group > .btn:last-child:not(:first-child) {
+		border-bottom-left-radius: 6px;
+		border-top-left-radius: 6px;
+	}
+	
+	.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+		border-radius: 6px;
+	}
+	
+	.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+		border-bottom-right-radius: 6px;
+		border-top-right-radius: 6px;
+	}
+	
+	.btn-default.active {
+		background-color: #f0ad4e;
+	}
 }
 
-.progress {
-  width: 50%;
+.col-centered{
+  float: none;
+  margin: 0 auto;
 }
 
-.video_lengths label {
-  font-size: 18px;
+.center {
+	margin: 0 auto;
+	width: 400px;
+}
+
+.guarantee-text {
+	display: inline;
+}
+
+.gurantee-icon {
+	float: left;
+	font-size: 47px;
+	padding-right: 16px;
+}
+
+.inline-guarantee {
+	display: inline;
+}
+
+/* Checkout */
+
+.cards {
+	width: 100px;
+	margin-top: 20px;
+}
+
+.secure-text {
+	margin-top: 32px;
+	
+	p {
+		margin: 0;
+	}
+	
+	p.secure-sub-text {
+		font-size: 12px;
+	}
+}
+
+.secure-icon {
+	float: left;
+	font-size: 36px;
+	padding-right: 16px;
+}
+
+
+.no-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.summary_table > tbody > tr > td {
+	border-top: 0px;
+}
+
+.summary_table > tbody > tr.total {
+	border-top: 1px solid #dddddd;
+}
+
+.right-text {
+	text-align: right;
+}
+
+.order-thumbnail {
+	width: 300px;
 }
