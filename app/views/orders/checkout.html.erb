@@ -196,9 +196,9 @@
 	<% end %>
 	<script>
 	  var order = {
-	    name: <%= "#{@order.video_length.name} video edit" %>,
+	    name: "#{@order.video_length.name} video edit",
 	    cost: <%= @order.order_cost.to_f %>,
-	    old_cost: <%= @order.video_length.cost.to_f %.
+	    old_cost: <%= @order.video_length.cost.to_f %>
 	  };
 
 	</script>
