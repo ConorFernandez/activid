@@ -243,6 +243,12 @@
 	}
 }
 
+@media (max-width: 640px) { 	
+	.homepage .jumbotron .jumbotron-marketing h1 {
+		font-size: 36px;
+	}
+}
+
 @media (max-width: 480px) { 
 	.carousel-caption {
 		width: 100%;
