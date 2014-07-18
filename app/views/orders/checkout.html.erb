@@ -196,7 +196,7 @@
 	<% end %>
 	<script>
 	  var order = {
-	    name: "#{@order.video_length.name} video edit",
+	    name: "<%="#{@order.video_length.name}" %> video edit",
 	    cost: <%= @order.order_cost.to_f %>,
 	    old_cost: <%= @order.video_length.cost.to_f %>
 	  };
@@ -205,18 +205,18 @@
 	  <script id="discount" type="text/x-mustache">
 	    <tr>
 	      <td>{{order_name}}</td>
-	      <td class="price">${{old_cost}}</td>
+	      <td class="price right-text">${{old_cost}}</td>
 	    </tr>
 	    <tr>
 	      <td>{{coupon_name}}</td>
-	      <td class="price">-${{coupon_discount}}</td>
+	      <td class="price right-text">-${{coupon_discount}}</td>
 	    </tr>
 	    <tr class="separator">
 	      <td colspan="2"><hr/></td>
 	    </tr>
 	    <tr>
 	      <td><%= link_to "edit my order", orders_path %></td>
-	      <td class="total">
+	      <td class="total right-text">
 	        Total ${{final_total}}
 	      </td>
 	    </tr>

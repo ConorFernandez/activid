@@ -160,10 +160,17 @@
 	padding-right: 16px;
 }
 
+.price {
+	text-align: right;
+}
 
 .no-padding {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+.tr-padding {
+	padding: 8px;
 }
 
 .summary_table > tbody > tr > td {
