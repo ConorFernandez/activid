@@ -2,10 +2,10 @@
 	<div class="container">
 		<div class="row step step-first">
 	    <%= form_for @order, url: orders_path, remote: true do |f| %>
-	      <div class="col-md-7 no-padding-left">
+	      <div class="col-md-6 no-padding-left">
           <h3>Project Name</h3>
 				</div>
-				<div class="col-md-5 form-input-padding">
+				<div class="col-md-6 form-input-padding">
           <%= f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name' %>
       	</div>
 				<div class="col-md-12 hr-padding">
@@ -16,13 +16,13 @@
 		
 		<div class="row step">
 			<form class="fileupload" action="<%= "https://#{Rails.application.secrets.s3_bucket}.s3.amazonaws.com" %>" enctype="multipart/form-data">
-			 	<div class="col-md-7 no-padding-left">
+			 	<div class="col-md-6 no-padding-left">
 		    	<h3>Upload Your Files</h3>
 		    	<p class="order-sub-text">Add videos, images, songs - any type. No size limit!</p>
 					<p class="order-sub-text">When uploading video files, make sure you're on a strong internet connection. Use the <a href="http://www.speedtest.net/" target="_blank">Speedtest</a> to check your upload speed strength.</p>
 					<p class="order-sub-text">Alternatively, you can send us a Dropbox link to your videos. Just include the link in the instructions section below.</p>
 		   </div>
-			 <div class="col-md-5 form-input-padding">
+			 <div class="col-md-6 form-input-padding">
 			    <%= hidden_field_tag :key, s3_data.key %>
 			    <%= hidden_field_tag 'AWSAccessKeyId', Rails.application.secrets.aws_access_key %>
 			    <%= hidden_field_tag :acl, 'private' %>
