@@ -70,6 +70,47 @@
 	}
 }
 
+.attached-files {
+  margin-top: 10px;
+  max-height: 250px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.file {
+  .file-name {
+    font-weight: bold;
+  }
+
+  &:nth-child(odd) {
+    background-color: #F9F9F9;
+  }
+
+  margin-bottom: 6px;
+  padding: 5px 0 5px 0;
+}
+
+.preview {
+  display: inline-block;
+  text-align: center;
+}
+
+.attached-files {
+  .preview img, .preview video {
+    width: 120px;
+    display: block;
+  }
+}
+
+#preview-modal {
+  .modal-dialog {
+    width: 720px;
+  }
+  .preview img, .preview video {
+    width: 640px;
+  }
+}
+
 .col-centered{
   float: none;
   margin: 0 auto;
