@@ -22,4 +22,4 @@
 /app/views/pages/.DS_Store
 /db/.DS_Store
 /db/cms_fixtures/.DS_Store
-/app/assets/.DS_Store
+app/assets/.DS_Store
