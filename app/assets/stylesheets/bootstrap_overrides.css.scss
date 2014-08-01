@@ -62,6 +62,11 @@ header {
 	font-size: 11pt;
 }
 
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
 /* Footer */
 
 footer {
