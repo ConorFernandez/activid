@@ -155,12 +155,6 @@
     }
   }
 
-	@media (max-width: 960px) {
-		.jumbotron-marketing {
-			margin-left: 20%
-		}
-	}
-
   @media (max-width: 520px) {
     .jumbotron .inner {
       position: static;
@@ -245,6 +239,14 @@
 @media (max-width: 640px) { 	
 	.homepage .jumbotron .jumbotron-marketing h1 {
 		font-size: 36px;
+	}
+}
+
+
+@media (max-width: 992px) { 	
+	.homepage .jumbotron {
+		padding-left: 60px;
+    padding-right: 60px;
 	}
 }
 
