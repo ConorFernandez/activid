@@ -8,12 +8,21 @@
 				<div class="col-md-6 form-input-padding">
           <%= f.text_field :project_name, class: 'persistent form-control', placeholder: 'Project name' %>
       	</div>
+				<%# Change at your leisure, as long as its within a form_for @order tag -- Arron %>
+				<div class="col-md-12 hr-padding">
+				</div>
+				<div class="col-md-6 no-padding-left">
+					<h3>Your Email</h3>
+				</div>
+				<div class="col-md-6 form-input-padding">
+					<%= f.text_field :cardholder_email, class: 'persistent form-control', placeholder: 'Email' %>
+				</div>
 				<div class="col-md-12 hr-padding">
 					<hr>
 				</div>
 	    <% end %>
 		</div>
-		
+
 		<div class="row step">
 			<form class="fileupload" action="<%= "https://#{Rails.application.secrets.s3_bucket}.s3.amazonaws.com" %>" enctype="multipart/form-data">
 			 	<div class="col-md-6 no-padding-left">
