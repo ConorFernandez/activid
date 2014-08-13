@@ -51,7 +51,7 @@
 			      <i class="glyphicon glyphicon-ban-circle"></i>
 			      <span>Cancel upload</span>
 			    </button>
-					<div id="upload-progress" class="progress" style="display: none;">	
+					<div id="upload-progress" class="progress" style="display: none;">
 						<div class="progress-bar"></div>
 					</div>
 					<div class="attached-files"></div>
@@ -65,7 +65,7 @@
 				</div>
 			</form>
 		</div>
-		
+
 		<div class="row step">
 		    <%= form_for @order, url: orders_path, remote: true do |f| %>
 					<div class="form-group">
@@ -84,7 +84,7 @@
 					</div>
 		    <% end %>
 		</div>
-		
+
 		<div class="row step">
 		   <%= form_for @order, url: orders_path, remote: true do |f| %>
 				<div class="col-md-6 no-padding-left">
@@ -110,7 +110,7 @@
 					</div>
 		    <% end %>
 			</div>
-			
+
 			<div class="row step-last">
 				<div class="col-md-6">
 			  	<h3>Proceed To Confirmation</h3>
@@ -150,7 +150,7 @@
 
 					<div class="row step-last">
 						<div class="center">
-							<div class="guarantee-text">	
+							<div class="guarantee-text">
 								<i class="glyphicon glyphicon-ok gurantee-icon"></i>
 								<h4>100% money back guarantee</h4>
 								<p class="order-sub-text">A video you love or your money back</p>
@@ -162,7 +162,7 @@
 <script>
   window.uploadedFiles = <%= raw(order_files_to_json(@order.order_files)) %>;
 </script>
-  
+
 <script id="upload-file-template" type="text/x-mustache">
   <div class='file'>
     <div class='preview'>

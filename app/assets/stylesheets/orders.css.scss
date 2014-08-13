@@ -3,7 +3,7 @@
 .orders {
 	padding: 20px;
 	background-color: #F9F9F9;
-	
+
 	h3 {
 		color: #000;
 	}
@@ -20,13 +20,13 @@
 		margin-bottom: 50px;
 		margin-left: 7px;
 	}
-	
+
 	.hr-padding {
 		padding-left: 0;
 		padding-right: 15px;
 		margin-top: 50px;
 	}
-	
+
 	.no-padding-left {
 		padding-left: 0;
 	}
@@ -36,35 +36,35 @@
 		padding-bottom: 30px;
 		margin-left: -8px;
 	}
-	
+
 	.step-first {
 		margin-top: 20px;
 	}
-	
+
 	.btn-group > .btn {
 		margin-right: 10px;
 		border-radius: 6px;
 		padding: 15px;
 	}
-	
+
 	.btn-group > .btn:last-child:not(:first-child) {
 		border-bottom-left-radius: 6px;
 		border-top-left-radius: 6px;
 	}
-	
+
 	.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
 		border-radius: 6px;
 	}
-	
+
 	.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
 		border-bottom-right-radius: 6px;
 		border-top-right-radius: 6px;
 	}
-	
+
 	.btn-default.active {
 		background-color: #f0ad4e;
 	}
-	
+
 	.no-display {
 		display: none;
 	}
@@ -144,11 +144,11 @@
 
 .secure-text {
 	margin-top: 32px;
-	
+
 	p {
 		margin: 0;
 	}
-	
+
 	p.secure-sub-text {
 		font-size: 12px;
 	}
